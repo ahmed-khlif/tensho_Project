@@ -1,17 +1,18 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
-export function MagneticCursor() {
+export const MagneticCursor = memo(function MagneticCursor() {
   const [isVisible, setIsVisible] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
+  const rafRef = useRef<number>()
 
-  const springX = useSpring(mouseX, { stiffness: 500, damping: 25 })
-  const springY = useSpring(mouseY, { stiffness: 500, damping: 25 })
+  const springX = useSpring(mouseX, { stiffness: 300, damping: 30 })
+  const springY = useSpring(mouseY, { stiffness: 300, damping: 30 })
 
   useEffect(() => {
     // Check if device is mobile/touch
@@ -20,22 +21,26 @@ export function MagneticCursor() {
 
     if (isTouchDevice) return
 
-    let mouseTimeout: NodeJS.Timeout
+    let mouseTimeout: number
 
-    const handleMouseMove = (e: MouseEvent) => {
-      // Update position immediately for smooth following
-      mouseX.set(e.clientX - 12) // Center the cursor
+    const updatePosition = (e: MouseEvent) => {
+      mouseX.set(e.clientX - 12)
       mouseY.set(e.clientY - 12)
       setIsVisible(true)
 
-      // Clear any existing timeout
       clearTimeout(mouseTimeout)
-
-      // Set a timeout to hide cursor after 10 seconds of no movement (increased for better UX)
-      mouseTimeout = setTimeout(() => {
+      mouseTimeout = window.setTimeout(() => {
         setIsVisible(false)
         setIsHovering(false)
       }, 10000)
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (rafRef.current) return
+      rafRef.current = requestAnimationFrame(() => {
+        updatePosition(e)
+        rafRef.current = undefined
+      })
     }
 
     const handleMouseLeave = () => {
@@ -45,68 +50,12 @@ export function MagneticCursor() {
     }
 
     // Check if hovering over interactive elements
-    const handleMouseOver = (e: MouseEvent) => {
+    const handleMouseOver = useCallback((e: MouseEvent) => {
       const target = e.target as HTMLElement
-
-      // More comprehensive interactive element detection
-      let isInteractive = false
-
-      // Direct element checks
-      if (target.closest('button, a, [role="button"], input, textarea, select, [data-magnetic], .cursor-magnetic, [onclick], [onClick], [onmouseenter], [onmouseleave], .interactive, [tabindex]:not([tabindex="-1"]), area, summary, details')) {
-        isInteractive = true
-      }
-      // Check for elements with event listeners
-      else if (target.onclick !== null || target.onmouseenter !== null || target.onmouseleave !== null) {
-        isInteractive = true
-      }
-      // Check for elements that might be interactive based on CSS
-      else if (window.getComputedStyle(target).cursor === 'pointer') {
-        isInteractive = true
-      }
-      // Check for parent elements that might be interactive
-      else if (target.parentElement?.closest('button, a, [role="button"], [onclick], [onClick]')) {
-        isInteractive = true
-      }
-      // Check for elements with click handlers in parent chain
-      else {
-        let parent = target.parentElement
-        while (parent && parent !== document.body) {
-          if (parent.onclick || parent.getAttribute('onclick') || parent.getAttribute('onClick')) {
-            isInteractive = true
-            break
-          }
-          parent = parent.parentElement
-        }
-      }
-
-      // Special check for elements that should be interactive but might not have obvious indicators
-      if (!isInteractive) {
-        // Check if element has hover effects or is part of a clickable container
-        const computedStyle = window.getComputedStyle(target)
-        if (computedStyle.cursor === 'pointer' ||
-            target.classList.contains('hover:scale') ||
-            target.classList.contains('hover:bg') ||
-            target.classList.contains('cursor-pointer') ||
-            target.closest('[class*="hover"]') ||
-            target.closest('.group')) {
-          isInteractive = true
-        }
-      }
-
-      // Additional check for motion elements that might be interactive
-      if (!isInteractive && target.closest('[data-projection-id]')) {
-        // Check if it's a Framer Motion element that might be interactive
-        const motionElement = target.closest('[data-projection-id]')
-        if (motionElement && (
-          motionElement.querySelector('button, a, [onclick]') ||
-          window.getComputedStyle(motionElement).cursor === 'pointer'
-        )) {
-          isInteractive = true
-        }
-      }
-
+      const isInteractive = target.closest('button, a, input, textarea, select, [role="button"], [data-magnetic], .magnetic, [onclick]') !== null ||
+                           window.getComputedStyle(target).cursor === 'pointer'
       setIsHovering(isInteractive)
-    }
+    }, [])
 
     // Always hide default cursor when component is active
     document.body.style.cursor = 'none'
@@ -123,11 +72,11 @@ export function MagneticCursor() {
     mouseY.set(window.innerHeight / 2 - 12)
 
     return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
       clearTimeout(mouseTimeout)
       document.removeEventListener("mousemove", handleMouseMove, true)
       document.removeEventListener("mouseover", handleMouseOver, true)
       document.removeEventListener("mouseleave", handleMouseLeave, true)
-      // Restore default cursor on cleanup
       document.body.style.cursor = 'auto'
     }
   }, [mouseX, mouseY])
@@ -210,4 +159,4 @@ export function MagneticCursor() {
       </motion.div>
     </motion.div>
   )
-}
+})
