@@ -147,7 +147,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-brand-black text-text-light;
     @apply bg-background text-foreground;
   }
 }
