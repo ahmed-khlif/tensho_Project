@@ -1,0 +1,60 @@
+import type React from "react"
+import type { Metadata, Viewport } from "next"
+import { Oswald, Inter } from "next/font/google"
+import { ThemeProvider } from "@/components/layout/theme-provider"
+import { ErrorBoundary } from "@/components/layout/error-boundary"
+import { MagneticCursor } from "@/components/animations/magnetic-cursor"
+import { ScrollProgress } from "@/components/layout/scroll-progress"
+import { FloatingActionButton } from "@/components/animations/floating-action-button"
+import { CookieConsent } from "@/components/common/cookie-consent"
+import "./globals.css"
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
+  weight: ["400", "500", "600", "700"],
+})
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
+
+export const metadata: Metadata = {
+  title: "Tensho International Sports Academy | Martial Arts Excellence",
+  description:
+    "The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.",
+  keywords: ["martial arts", "academy", "certification", "dojo", "training"],
+    generator: 'v0.app'
+}
+
+export const viewport: Viewport = {
+  themeColor: "#111111",
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${oswald.variable} ${inter.variable} font-sans antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <ErrorBoundary>
+            <MagneticCursor />
+            <ScrollProgress />
+            {children}
+            <FloatingActionButton />
+            <CookieConsent />
+          </ErrorBoundary>
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
