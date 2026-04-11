@@ -238,6 +238,7 @@ export default function RegisterPage() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
+                <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Step 1: Personal Information */}
                   {currentStep === 1 && (
                     <div className="space-y-6">
