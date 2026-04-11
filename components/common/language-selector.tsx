@@ -1,6 +1,8 @@
 "use client"
 
+import { useRouter, usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -32,8 +34,17 @@ const languages = [
 ]
 
 export function LanguageSelector() {
-  // Temporarily simplified to avoid i18n issues during build
-  const currentLanguage = languages[0] // Default to English
+  const router = useRouter()
+  const pathname = usePathname()
+  const { i18n } = useTranslation()
+
+  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0]
+
+  const changeLanguage = (langCode: string) => {
+    i18n.changeLanguage(langCode)
+    // In Next.js 13+ App Router, we don't need to manually update the URL
+    // The i18n instance will handle the language switching
+  }
 
   return (
     <DropdownMenu>
@@ -57,8 +68,9 @@ export function LanguageSelector() {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
+            onClick={() => changeLanguage(lang.code)}
             className={`flex items-center gap-3 px-3 py-2 cursor-pointer transition-colors ${
-              currentLanguage.code === lang.code
+              i18n.language === lang.code
                 ? 'bg-brand-gold/20 text-brand-gold'
                 : 'text-text-muted hover:text-text-light hover:bg-white/5'
             }`}
@@ -68,7 +80,7 @@ export function LanguageSelector() {
               <span className="text-sm font-medium">{lang.nativeName}</span>
               <span className="text-xs text-text-muted">{lang.name}</span>
             </div>
-            {currentLanguage.code === lang.code && (
+            {i18n.language === lang.code && (
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}

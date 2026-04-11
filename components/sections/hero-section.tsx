@@ -171,7 +171,7 @@ export function HeroSection() {
                   animate={{ boxShadow: ["0 0 10px rgba(212, 175, 55, 0.5)", "0 0 20px rgba(208, 28, 28, 0.3)", "0 0 10px rgba(212, 175, 55, 0.5)"] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 />
-                {t('hero.badge')}
+                The World's Premier Martial Arts Excellence Network
               </span>
             </motion.div>
           </div>
@@ -187,7 +187,7 @@ export function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            {t('hero.title')}
+            Dominance Through Dedication
           </motion.span>
         </motion.h1>
 
@@ -196,7 +196,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="mt-6 text-lg sm:text-xl text-text-muted max-w-2xl mx-auto text-pretty"
         >
-          {t('hero.subtitle')}
+          Shaping the Next Generation of Martial Artists. Rise, Lead, and Inspire with Tensho International.
         </motion.p>
 
         {/* CTA Buttons */}
