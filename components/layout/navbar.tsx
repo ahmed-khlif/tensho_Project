@@ -5,6 +5,8 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Swords, LogIn, UserPlus, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { LanguageSelector } from "@/components/common/language-selector"
+import { ThemeSelector } from "@/components/common/theme-selector"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -208,7 +210,9 @@ export function Navbar() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <ThemeSelector />
+            <LanguageSelector />
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

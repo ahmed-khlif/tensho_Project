@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "leadership": "Leadership",
+    "certificates": "Certificates",
+    "programs": "Programs",
+    "events": "Events",
+    "blogs": "Blogs",
+    "gallery": "Gallery",
+    "calendar": "Calendar",
+    "resources": "Resources",
+    "shop": "Shop",
+    "membership": "Membership",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "join": "Join"
+  },
+  "hero": {
+    "badge": "The World's Premier Martial Arts Excellence Network",
+    "title": "Dominance Through Dedication",
+    "subtitle": "Shaping the Next Generation of Martial Artists. Rise, Lead, and Inspire with Tensho International.",
+    "joinElite": "Join The Elite",
+    "whoWeAre": "Who We Are",
+    "stats": {
+      "years": "Years of Excellence",
+      "clubs": "Registered Clubs",
+      "countries": "Countries",
+      "students": "Trained Students"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back, Warrior",
+      "subtitle": "Re-enter the dojo and continue your path to mastery. Your martial arts journey awaits.",
+      "email": "Email Address",
+      "password": "Password",
+      "remember": "Remember me",
+      "forgot": "Forgot password?",
+      "submit": "Enter the Dojo",
+      "social": "Or continue with"
+    },
+    "register": {
+      "title": "Begin Your Legend",
+      "subtitle": "Join Tensho International and step into a world where discipline meets destiny. Transform your potential into mastery.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "dateOfBirth": "Date of Birth",
+      "experience": "Martial Arts Experience",
+      "terms": "I agree to the Terms of Service and Privacy Policy",
+      "newsletter": "Subscribe to newsletter",
+      "submit": "Join The Elite Ranks",
+      "social": "Or continue with"
+    }
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light",
+    "auto": "Auto"
+  },
+  "language": {
+    "english": "English",
+    "french": "Français",
+    "arabic": "العربية"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "testimonials": "Témoignages",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "leadership": "Direction",
+    "certificates": "Certificats",
+    "programs": "Programmes",
+    "events": "Événements",
+    "blogs": "Blogs",
+    "gallery": "Galerie",
+    "calendar": "Calendrier",
+    "resources": "Ressources",
+    "shop": "Boutique",
+    "membership": "Adhésion",
+    "dashboard": "Tableau de bord",
+    "login": "Connexion",
+    "join": "Rejoindre"
+  },
+  "hero": {
+    "badge": "Le Réseau Premier d'Excellence des Arts Martiaux Mondiaux",
+    "title": "La Domination par la Dédication",
+    "subtitle": "Façonner la Prochaine Génération d'Artistes Martiaux. Élevez-vous, Dirigez et Inspirez avec Tensho International.",
+    "joinElite": "Rejoignez l'Élite",
+    "whoWeAre": "Qui Nous Sommes",
+    "stats": {
+      "years": "Années d'Excellence",
+      "clubs": "Clubs Enregistrés",
+      "countries": "Pays",
+      "students": "Étudiants Formés"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenue de Retour, Guerrier",
+      "subtitle": "Rentre à nouveau dans le dojo et continue ton chemin vers la maîtrise. Ton voyage dans les arts martiaux t'attend.",
+      "email": "Adresse Email",
+      "password": "Mot de Passe",
+      "remember": "Se souvenir de moi",
+      "forgot": "Mot de passe oublié ?",
+      "submit": "Entrez dans le Dojo",
+      "social": "Ou continuer avec"
+    },
+    "register": {
+      "title": "Commencez Votre Légende",
+      "subtitle": "Rejoignez Tensho International et entrez dans un monde où la discipline rencontre le destin. Transformez votre potentiel en maîtrise.",
+      "firstName": "Prénom",
+      "lastName": "Nom de Famille",
+      "email": "Adresse Email",
+      "phone": "Numéro de Téléphone",
+      "password": "Mot de Passe",
+      "confirmPassword": "Confirmer le Mot de Passe",
+      "dateOfBirth": "Date de Naissance",
+      "experience": "Expérience en Arts Martiaux",
+      "terms": "J'accepte les Conditions d'Utilisation et la Politique de Confidentialité",
+      "newsletter": "S'abonner à la newsletter",
+      "submit": "Rejoignez les Rangées d'Élite",
+      "social": "Ou continuer avec"
+    }
+  },
+  "theme": {
+    "dark": "Sombre",
+    "light": "Clair",
+    "auto": "Auto"
+  },
+  "language": {
+    "english": "English",
+    "french": "Français",
+    "arabic": "العربية"
+  }
+}

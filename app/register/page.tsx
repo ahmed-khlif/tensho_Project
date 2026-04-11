@@ -2,18 +2,25 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Swords, Eye, EyeOff, Mail, Lock, User, Phone, Calendar, Trophy } from "lucide-react"
+import { Swords, Eye, EyeOff, Mail, Lock, User, Phone, Calendar, Trophy, ChevronLeft, ChevronRight, Check } from "lucide-react"
+
+const steps = [
+  { id: 1, title: "Personal Info", icon: User },
+  { id: 2, title: "Account Setup", icon: Lock },
+  { id: 3, title: "Experience", icon: Trophy },
+  { id: 4, title: "Confirmation", icon: Check }
+]
 
 export default function RegisterPage() {
+  const [currentStep, setCurrentStep] = useState(1)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [formData, setFormData] = useState({
@@ -34,6 +41,18 @@ export default function RegisterPage() {
       ...prev,
       [field]: value
     }))
+  }
+
+  const nextStep = () => {
+    if (currentStep < steps.length) {
+      setCurrentStep(currentStep + 1)
+    }
+  }
+
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1)
+    }
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -139,241 +158,389 @@ export default function RegisterPage() {
         </div>
       </section>
 
-      <div className="max-w-2xl mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto px-4 py-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="relative bg-gradient-to-br from-brand-dark-grey/80 to-brand-black/80 rounded-3xl p-8 border border-white/10 backdrop-blur-sm shadow-2xl"
+          className="relative bg-gradient-to-br from-brand-dark-grey/90 to-brand-black/90 rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-sm shadow-2xl"
         >
           {/* Decorative Border */}
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-brand-red/20 via-transparent to-brand-gold/20 opacity-50" />
           <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-br from-brand-black to-brand-dark-grey" />
 
           <div className="relative z-10">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name Fields */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName" className="text-text-light font-medium">
-                  First Name
-                </Label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                  <Input
-                    id="firstName"
-                    type="text"
-                    placeholder="John"
-                    value={formData.firstName}
-                    onChange={(e) => handleInputChange("firstName", e.target.value)}
-                    className="pl-9 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
-                    required
-                  />
-                </div>
+            {/* Stepper Header */}
+            <div className="mb-8">
+              <div className="flex items-center justify-center mb-8">
+                {steps.map((step, index) => {
+                  const Icon = step.icon
+                  const isCompleted = currentStep > step.id
+                  const isCurrent = currentStep === step.id
+                  const isUpcoming = currentStep < step.id
+
+                  return (
+                    <div key={step.id} className="flex items-center">
+                      <motion.div
+                        className={`relative flex items-center justify-center w-12 h-12 rounded-full border-2 transition-all duration-300 ${
+                          isCompleted
+                            ? 'bg-brand-gold border-brand-gold text-brand-black'
+                            : isCurrent
+                            ? 'border-brand-gold text-brand-gold bg-brand-gold/10'
+                            : 'border-white/20 text-text-muted bg-white/5'
+                        }`}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        {isCompleted ? (
+                          <Check className="w-5 h-5" />
+                        ) : (
+                          <Icon className="w-5 h-5" />
+                        )}
+                        {isCurrent && (
+                          <motion.div
+                            className="absolute inset-0 rounded-full border-2 border-brand-gold"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                          />
+                        )}
+                      </motion.div>
+                      {index < steps.length - 1 && (
+                        <motion.div
+                          className={`w-16 h-0.5 mx-4 rounded ${
+                            isCompleted ? 'bg-brand-gold' : 'bg-white/20'
+                          }`}
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: isCompleted ? 1 : 0 }}
+                          transition={{ duration: 0.5 }}
+                        />
+                      )}
+                    </div>
+                  )
+                })}
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="lastName" className="text-text-light font-medium">
-                  Last Name
-                </Label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                  <Input
-                    id="lastName"
-                    type="text"
-                    placeholder="Doe"
-                    value={formData.lastName}
-                    onChange={(e) => handleInputChange("lastName", e.target.value)}
-                    className="pl-9 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
-                    required
-                  />
-                </div>
+              <div className="text-center">
+                <h2 className="text-xl font-bold text-text-light mb-2">
+                  {steps.find(s => s.id === currentStep)?.title}
+                </h2>
+                <p className="text-text-muted">
+                  Step {currentStep} of {steps.length}
+                </p>
               </div>
             </div>
 
-            {/* Email Field */}
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-text-light font-medium">
-                Email Address
-              </Label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="pl-9 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Phone Field */}
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-text-light font-medium">
-                Phone Number
-              </Label>
-              <div className="relative">
-                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="+1 (555) 123-4567"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
-                  className="pl-9 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
-                />
-              </div>
-            </div>
-
-            {/* Date of Birth & Experience */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="dateOfBirth" className="text-text-light font-medium">
-                  Date of Birth
-                </Label>
-                <div className="relative">
-                  <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                  <Input
-                    id="dateOfBirth"
-                    type="date"
-                    value={formData.dateOfBirth}
-                    onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
-                    className="pl-9 bg-brand-black/50 border-white/10 text-text-light focus:border-brand-gold"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="experience" className="text-text-light font-medium">
-                  Experience Level
-                </Label>
-                <div className="relative">
-                  <Trophy className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                  <select
-                    id="experience"
-                    value={formData.experience}
-                    onChange={(e) => handleInputChange("experience", e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 bg-brand-black/50 border border-white/10 rounded-md text-text-light focus:border-brand-gold focus:outline-none"
-                  >
-                    <option value="">Select level</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
-                    <option value="black-belt">Black Belt</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Password Fields */}
-            <div className="space-y-2">
-              <Label htmlFor="password" className="text-text-light font-medium">
-                Password
-              </Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Create a strong password"
-                  value={formData.password}
-                  onChange={(e) => handleInputChange("password", e.target.value)}
-                  className="pl-9 pr-10 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-light transition-colors"
-                >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-text-light font-medium">
-                Confirm Password
-              </Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                <Input
-                  id="confirmPassword"
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Confirm your password"
-                  value={formData.confirmPassword}
-                  onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                  className="pl-9 pr-10 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-light transition-colors"
-                >
-                  {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
-              </div>
-            </div>
-
-            {/* Terms and Newsletter */}
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Checkbox
-                  id="terms"
-                  checked={formData.agreeToTerms}
-                  onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
-                  className="mt-1 border-white/10 data-[state=checked]:bg-brand-gold data-[state=checked]:border-brand-gold"
-                />
-                <Label htmlFor="terms" className="text-sm text-text-muted leading-relaxed">
-                  I agree to the{" "}
-                  <Link href="#" className="text-brand-gold hover:text-brand-gold/80">
-                    Terms of Service
-                  </Link>{" "}
-                  and{" "}
-                  <Link href="#" className="text-brand-gold hover:text-brand-gold/80">
-                    Privacy Policy
-                  </Link>
-                </Label>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Checkbox
-                  id="newsletter"
-                  checked={formData.subscribeNewsletter}
-                  onCheckedChange={(checked) => handleInputChange("subscribeNewsletter", checked as boolean)}
-                  className="mt-1 border-white/10 data-[state=checked]:bg-brand-gold data-[state=checked]:border-brand-gold"
-                />
-                <Label htmlFor="newsletter" className="text-sm text-text-muted">
-                  Subscribe to our newsletter for training tips and event updates
-                </Label>
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red/70 text-text-light font-bold py-4 text-lg shadow-lg shadow-brand-red/25 disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={!formData.agreeToTerms}
+            {/* Step Content */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentStep}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
               >
-                <Swords className="w-5 h-5 mr-2" />
-                Begin Your Martial Arts Journey
-              </Button>
-            </motion.div>
-            {!formData.agreeToTerms && (
-              <p className="text-sm text-brand-gold text-center mt-2">
-                Please accept the terms to continue
-              </p>
-            )}
-          </form>
+                  {/* Step 1: Personal Information */}
+                  {currentStep === 1 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-6">
+                        <User className="w-12 h-12 text-brand-gold mx-auto mb-4" />
+                        <h3 className="text-lg font-semibold text-text-light mb-2">Personal Information</h3>
+                        <p className="text-text-muted">Tell us about yourself to get started</p>
+                      </div>
 
-          {/* Social Registration Options */}
-          <div className="mt-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName" className="text-text-light font-medium">
+                            First Name
+                          </Label>
+                          <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                            <Input
+                              id="firstName"
+                              type="text"
+                              placeholder="John"
+                              value={formData.firstName}
+                              onChange={(e) => handleInputChange("firstName", e.target.value)}
+                              className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName" className="text-text-light font-medium">
+                            Last Name
+                          </Label>
+                          <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                            <Input
+                              id="lastName"
+                              type="text"
+                              placeholder="Doe"
+                              value={formData.lastName}
+                              onChange={(e) => handleInputChange("lastName", e.target.value)}
+                              className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-text-light font-medium">
+                          Email Address
+                        </Label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="your@email.com"
+                            value={formData.email}
+                            onChange={(e) => handleInputChange("email", e.target.value)}
+                            className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-text-light font-medium">
+                          Phone Number
+                        </Label>
+                        <div className="relative">
+                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                          <Input
+                            id="phone"
+                            type="tel"
+                            placeholder="+1 (555) 123-4567"
+                            value={formData.phone}
+                            onChange={(e) => handleInputChange("phone", e.target.value)}
+                            className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 2: Account Setup */}
+                  {currentStep === 2 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-6">
+                        <Lock className="w-12 h-12 text-brand-gold mx-auto mb-4" />
+                        <h3 className="text-lg font-semibold text-text-light mb-2">Account Setup</h3>
+                        <p className="text-text-muted">Create your secure account credentials</p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="password" className="text-text-light font-medium">
+                          Password
+                        </Label>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                          <Input
+                            id="password"
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Create a strong password"
+                            value={formData.password}
+                            onChange={(e) => handleInputChange("password", e.target.value)}
+                            className="pl-12 pr-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
+                            required
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-light transition-colors"
+                          >
+                            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="confirmPassword" className="text-text-light font-medium">
+                          Confirm Password
+                        </Label>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                          <Input
+                            id="confirmPassword"
+                            type={showConfirmPassword ? "text" : "password"}
+                            placeholder="Confirm your password"
+                            value={formData.confirmPassword}
+                            onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
+                            className="pl-12 pr-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
+                            required
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted hover:text-text-light transition-colors"
+                          >
+                            {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 3: Martial Arts Experience */}
+                  {currentStep === 3 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-6">
+                        <Trophy className="w-12 h-12 text-brand-gold mx-auto mb-4" />
+                        <h3 className="text-lg font-semibold text-text-light mb-2">Martial Arts Experience</h3>
+                        <p className="text-text-muted">Share your background to personalize your journey</p>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="dateOfBirth" className="text-text-light font-medium">
+                            Date of Birth
+                          </Label>
+                          <div className="relative">
+                            <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                            <Input
+                              id="dateOfBirth"
+                              type="date"
+                              value={formData.dateOfBirth}
+                              onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
+                              className="pl-12 bg-brand-black/50 border-white/10 text-text-light focus:border-brand-gold h-12"
+                            />
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="experience" className="text-text-light font-medium">
+                            Experience Level
+                          </Label>
+                          <div className="relative">
+                            <Trophy className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                            <select
+                              id="experience"
+                              value={formData.experience}
+                              onChange={(e) => handleInputChange("experience", e.target.value)}
+                              className="w-full pl-12 pr-4 py-3 bg-brand-black/50 border border-white/10 rounded-md text-text-light focus:border-brand-gold focus:outline-none h-12"
+                            >
+                              <option value="">Select level</option>
+                              <option value="beginner">Beginner</option>
+                              <option value="intermediate">Intermediate</option>
+                              <option value="advanced">Advanced</option>
+                              <option value="black-belt">Black Belt</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Step 4: Confirmation */}
+                  {currentStep === 4 && (
+                    <div className="space-y-6">
+                      <div className="text-center mb-6">
+                        <Check className="w-12 h-12 text-brand-gold mx-auto mb-4" />
+                        <h3 className="text-lg font-semibold text-text-light mb-2">Final Confirmation</h3>
+                        <p className="text-text-muted">Review and confirm your registration</p>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3">
+                          <Checkbox
+                            id="terms"
+                            checked={formData.agreeToTerms}
+                            onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
+                            className="mt-1 border-white/10 data-[state=checked]:bg-brand-gold data-[state=checked]:border-brand-gold"
+                          />
+                          <Label htmlFor="terms" className="text-sm text-text-muted leading-relaxed">
+                            I agree to the{" "}
+                            <Link href="#" className="text-brand-gold hover:text-brand-gold/80">
+                              Terms of Service
+                            </Link>{" "}
+                            and{" "}
+                            <Link href="#" className="text-brand-gold hover:text-brand-gold/80">
+                              Privacy Policy
+                            </Link>
+                          </Label>
+                        </div>
+
+                        <div className="flex items-start gap-3">
+                          <Checkbox
+                            id="newsletter"
+                            checked={formData.subscribeNewsletter}
+                            onCheckedChange={(checked) => handleInputChange("subscribeNewsletter", checked as boolean)}
+                            className="mt-1 border-white/10 data-[state=checked]:bg-brand-gold data-[state=checked]:border-brand-gold"
+                          />
+                          <Label htmlFor="newsletter" className="text-sm text-text-muted">
+                            Subscribe to our newsletter for training tips and event updates
+                          </Label>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+
+                {/* Navigation Buttons */}
+                <div className="flex justify-between items-center mt-8 pt-6 border-t border-white/10">
+                  <Button
+                    type="button"
+                    onClick={prevStep}
+                    disabled={currentStep === 1}
+                    variant="outline"
+                    className="border-white/10 text-text-muted hover:text-text-light hover:bg-white/5 disabled:opacity-50"
+                  >
+                    <ChevronLeft className="w-4 h-4 mr-2" />
+                    Previous
+                  </Button>
+
+                  <div className="flex space-x-2">
+                    {steps.map((step) => (
+                      <motion.div
+                        key={step.id}
+                        className={`w-2 h-2 rounded-full ${
+                          currentStep === step.id ? 'bg-brand-gold' : 'bg-white/20'
+                        }`}
+                        whileHover={{ scale: 1.2 }}
+                      />
+                    ))}
+                  </div>
+
+                  {currentStep < steps.length ? (
+                    <Button
+                      type="button"
+                      onClick={nextStep}
+                      className="bg-brand-gold hover:bg-brand-gold/90 text-brand-black"
+                    >
+                      Next
+                      <ChevronRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  ) : (
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <Button
+                        type="submit"
+                        className="bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red/70 text-text-light font-bold px-8 py-3 shadow-lg shadow-brand-red/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={!formData.agreeToTerms}
+                      >
+                        <Swords className="w-5 h-5 mr-2" />
+                        Begin Your Martial Arts Journey
+                      </Button>
+                    </motion.div>
+                  )}
+                </div>
+
+                {currentStep === steps.length && !formData.agreeToTerms && (
+                  <p className="text-sm text-brand-gold text-center mt-4">
+                    Please accept the terms to complete registration
+                  </p>
+                )}
+              </form>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        {/* Social Registration Options */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-8"
+        >
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <Separator className="w-full bg-white/10" />

@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
+import { useTranslation } from 'react-i18next'
 import { MagneticButton } from "@/components/animations/magnetic-button"
 
 export function HeroSection() {
+  const { t } = useTranslation('common')
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -168,7 +171,7 @@ export function HeroSection() {
                   animate={{ boxShadow: ["0 0 10px rgba(212, 175, 55, 0.5)", "0 0 20px rgba(208, 28, 28, 0.3)", "0 0 10px rgba(212, 175, 55, 0.5)"] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 />
-                The World's Premier Martial Arts Excellence Network
+                {t('hero.badge')}
               </span>
             </motion.div>
           </div>
@@ -184,22 +187,7 @@ export function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Dominance Through
-          </motion.span>
-          <br />
-          <motion.span
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-brand-red relative"
-          >
-            Dedication
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 1.4 }}
-              className="absolute -bottom-2 left-0 right-0 h-1 bg-brand-red/50 rounded-full origin-left"
-            />
+            {t('hero.title')}
           </motion.span>
         </motion.h1>
 
@@ -208,7 +196,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="mt-6 text-lg sm:text-xl text-text-muted max-w-2xl mx-auto text-pretty"
         >
-          Shaping the Next Generation of Martial Artists. Rise, Lead, and Inspire with Tensho International.
+          {t('hero.subtitle')}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -220,14 +208,14 @@ export function HeroSection() {
             onClick={() => scrollToSection("registration")}
             className="font-semibold text-lg px-8 py-6 shadow-lg shadow-brand-red/25"
           >
-            Join The Elite
+            {t('hero.joinElite')}
           </MagneticButton>
           <MagneticButton
             variant="outline"
             onClick={() => scrollToSection("about")}
             className="border-2 border-brand-gold text-brand-gold font-semibold text-lg px-8 py-6"
           >
-            Who We Are
+            {t('hero.whoWeAre')}
           </MagneticButton>
         </motion.div>
 

@@ -8,6 +8,7 @@ import { ScrollProgress } from "@/components/layout/scroll-progress"
 import { FloatingActionButton } from "@/components/animations/floating-action-button"
 import { CookieConsent } from "@/components/common/cookie-consent"
 import "./globals.css"
+import "../lib/i18n"
 
 const oswald = Oswald({
   subsets: ["latin"],
