@@ -25,7 +25,16 @@ export const metadata: Metadata = {
   description:
     "The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.",
   keywords: ["martial arts", "academy", "certification", "dojo", "training"],
-    generator: 'v0.app'
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-dark-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-light-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/apple-icon.png",
+  },
 }
 
 export const viewport: Viewport = {
