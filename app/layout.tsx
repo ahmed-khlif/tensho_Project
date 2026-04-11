@@ -26,7 +26,6 @@ export const metadata: Metadata = {
   description:
     "The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.",
   keywords: ["martial arts", "academy", "certification", "dojo", "training"],
-  generator: 'v0.app',
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -35,6 +34,16 @@ export const metadata: Metadata = {
     ],
     shortcut: "/icon.svg",
     apple: "/apple-icon.png",
+  },
+  openGraph: {
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Tensho International Sports Academy",
+      },
+    ],
   },
 }
 
