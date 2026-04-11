@@ -124,25 +124,54 @@ export function HeroSection() {
         animate="visible"
         className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-20"
       >
-        {/* Logo */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <div className="flex justify-center mb-6">
+        {/* Logo and Badge */}
+        <motion.div variants={itemVariants} className="mb-12">
+          <div className="flex flex-col items-center gap-6">
+            {/* Premium Logo Container */}
             <motion.div
-              className="relative h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24"
+              className="relative"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <img
-                src="/logo.png"
-                alt="Tensho International Logo"
-                className="h-full w-full object-contain drop-shadow-2xl"
-              />
+              {/* Outer glow ring */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-brand-gold/10 via-brand-red/5 to-brand-gold/10 rounded-full blur-xl animate-pulse" />
+
+              {/* Main logo container */}
+              <div className="relative bg-gradient-to-br from-white/5 to-white/1 backdrop-blur-sm rounded-2xl p-4 border border-white/10 shadow-2xl">
+                <motion.div
+                  className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28"
+                  whileHover={{ rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                >
+                  <img
+                    src="/logo.png"
+                    alt="Tensho International Logo"
+                    className="h-full w-full object-contain drop-shadow-lg"
+                  />
+
+                  {/* Subtle inner glow */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-gold/5 to-transparent rounded-full" />
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Enhanced Badge */}
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-brand-gold/50 to-brand-red/50 rounded-full blur opacity-30" />
+              <span className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-brand-black/95 to-brand-dark-grey/95 border border-brand-gold/50 text-brand-gold text-sm font-semibold shadow-xl backdrop-blur-md">
+                <motion.span
+                  className="w-3 h-3 bg-gradient-to-r from-brand-gold to-brand-red rounded-full shadow-lg"
+                  animate={{ boxShadow: ["0 0 10px rgba(212, 175, 55, 0.5)", "0 0 20px rgba(208, 28, 28, 0.3)", "0 0 10px rgba(212, 175, 55, 0.5)"] }}
+                  transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                />
+                The World's Premier Martial Arts Excellence Network
+              </span>
             </motion.div>
           </div>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-dark-grey/80 border border-brand-gold/30 text-brand-gold text-sm font-medium">
-            <span className="w-2 h-2 bg-brand-gold rounded-full animate-pulse" />
-            The Fastest Growing Global Martial Arts Association
-          </span>
         </motion.div>
 
         {/* Main Headline */}
