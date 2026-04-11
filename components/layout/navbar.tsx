@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Swords, LogIn, UserPlus, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -37,6 +38,7 @@ const moreLinks = [
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
@@ -65,7 +67,7 @@ export function Navbar() {
   const handleNavClick = (href: string) => {
     if (href.startsWith("#")) {
       // If on home page, scroll to section
-      if (window.location.pathname === "/") {
+      if (pathname === "/") {
         const element = document.getElementById(href.replace("#", ""))
         if (element) {
           element.scrollIntoView({ behavior: "smooth" })
