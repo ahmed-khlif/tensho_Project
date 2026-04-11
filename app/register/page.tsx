@@ -81,10 +81,19 @@ export default function RegisterPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-red/20 to-brand-gold/20 border border-brand-gold/30 text-brand-gold text-sm font-medium mb-8 shadow-lg"
+            className="flex flex-col items-center gap-4 mb-8"
           >
-            <Swords className="w-5 h-5" />
-            Join the Elite Ranks
+            <div className="relative h-12 w-12 sm:h-16 sm:w-16">
+              <img
+                src="/logo.png"
+                alt="Tensho International"
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-red/20 to-brand-gold/20 border border-brand-gold/30 text-brand-gold text-sm font-medium shadow-lg">
+              <Swords className="w-5 h-5" />
+              Join the Elite Ranks
+            </span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -144,7 +153,7 @@ export default function RegisterPage() {
           <div className="relative z-10">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Fields */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="firstName" className="text-text-light font-medium">
                   First Name
@@ -219,7 +228,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Date of Birth & Experience */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="dateOfBirth" className="text-text-light font-medium">
                   Date of Birth

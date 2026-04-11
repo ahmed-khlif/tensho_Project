@@ -42,8 +42,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <motion.div whileHover={{ scale: 1.02 }} className="flex items-center gap-2 mb-4">
-              <Swords className="h-8 w-8 text-brand-red" />
+            <motion.div whileHover={{ scale: 1.02 }} className="flex items-center gap-3 mb-4">
+              <div className="relative h-10 w-10">
+                <img
+                  src="/logo.png"
+                  alt="Tensho International"
+                  className="h-full w-full object-contain"
+                />
+              </div>
               <span className="font-serif text-2xl font-bold text-text-light">TENSHO</span>
             </motion.div>
             <p className="text-text-muted text-sm leading-relaxed mb-6">

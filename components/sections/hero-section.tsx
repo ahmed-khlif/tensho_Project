@@ -124,8 +124,21 @@ export function HeroSection() {
         animate="visible"
         className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-20"
       >
-        {/* Badge */}
-        <motion.div variants={itemVariants} className="mb-6">
+        {/* Logo */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <div className="flex justify-center mb-6">
+            <motion.div
+              className="relative h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img
+                src="/logo.png"
+                alt="Tensho International Logo"
+                className="h-full w-full object-contain drop-shadow-2xl"
+              />
+            </motion.div>
+          </div>
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-dark-grey/80 border border-brand-gold/30 text-brand-gold text-sm font-medium">
             <span className="w-2 h-2 bg-brand-gold rounded-full animate-pulse" />
             The Fastest Growing Global Martial Arts Association

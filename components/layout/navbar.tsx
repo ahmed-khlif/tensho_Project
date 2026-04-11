@@ -90,9 +90,15 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.02 }}>
-            <div className="relative">
-              <Swords className="h-7 w-7 text-brand-red" />
-            </div>
+            <Link href="/">
+              <div className="relative h-8 w-8 sm:h-10 sm:w-10">
+                <img
+                  src="/logo.png"
+                  alt="Tensho International"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            </Link>
             <span className="font-serif text-lg sm:text-xl font-bold tracking-wider text-text-light">TENSHO</span>
           </motion.div>
 

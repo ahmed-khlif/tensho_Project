@@ -62,10 +62,19 @@ export default function LoginPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-gold/20 to-brand-red/20 border border-brand-gold/30 text-brand-gold text-sm font-medium mb-8 shadow-lg"
+            className="flex flex-col items-center gap-4 mb-8"
           >
-            <Swords className="w-5 h-5" />
-            Student Portal Access
+            <div className="relative h-12 w-12 sm:h-16 sm:w-16">
+              <img
+                src="/logo.png"
+                alt="Tensho International"
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-gold/20 to-brand-red/20 border border-brand-gold/30 text-brand-gold text-sm font-medium shadow-lg">
+              <Swords className="w-5 h-5" />
+              Student Portal Access
+            </span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
