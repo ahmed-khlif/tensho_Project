@@ -6,6 +6,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion"
 export function MagneticCursor() {
   const [isVisible, setIsVisible] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
@@ -13,6 +14,12 @@ export function MagneticCursor() {
   const springY = useSpring(mouseY, { stiffness: 500, damping: 25 })
 
   useEffect(() => {
+    // Check if device is mobile/touch
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768
+    setIsMobile(isTouchDevice)
+
+    if (isTouchDevice) return
+
     let mouseTimeout: NodeJS.Timeout
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -124,6 +131,9 @@ export function MagneticCursor() {
       document.body.style.cursor = 'auto'
     }
   }, [mouseX, mouseY])
+
+  // Don't render on mobile devices
+  if (isMobile) return null
 
   return (
     <motion.div
