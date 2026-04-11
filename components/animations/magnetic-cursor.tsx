@@ -1,9 +1,9 @@
 "use client"
 
-import { memo, useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
-export const MagneticCursor = memo(function MagneticCursor() {
+export function MagneticCursor() {
   const [isVisible, setIsVisible] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -50,12 +50,12 @@ export const MagneticCursor = memo(function MagneticCursor() {
     }
 
     // Check if hovering over interactive elements
-    const handleMouseOver = useCallback((e: MouseEvent) => {
+    const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
       const isInteractive = target.closest('button, a, input, textarea, select, [role="button"], [data-magnetic], .magnetic, [onclick]') !== null ||
                            window.getComputedStyle(target).cursor === 'pointer'
       setIsHovering(isInteractive)
-    }, [])
+    }
 
     // Always hide default cursor when component is active
     document.body.style.cursor = 'none'
@@ -159,4 +159,4 @@ export const MagneticCursor = memo(function MagneticCursor() {
       </motion.div>
     </motion.div>
   )
-})
+}
