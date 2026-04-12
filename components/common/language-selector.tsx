@@ -68,24 +68,14 @@ export function LanguageSelector() {
           <DropdownMenuItem
             key={lang.code}
             onClick={() => void handleLanguageChange(lang.code)}
-            className={`flex items-center gap-3 px-3 py-2 cursor-pointer transition-colors ${
-              currentLanguage.code === lang.code
-                ? 'bg-brand-gold/20 text-brand-gold'
-                : 'text-text-muted hover:text-text-light hover:bg-white/5'
-            }`}
+            className={`flex items-center gap-3 px-3 py-2 cursor-pointer transition-colors text-text-muted hover:text-text-light hover:bg-white/5 dark:text-gray-300 dark:hover:text-gray-200 dark:hover:bg-gray-700`}
           >
             <span className="text-lg">{lang.flag}</span>
             <div className="flex flex-col">
               <span className="text-sm font-medium">{lang.nativeName}</span>
               <span className="text-xs text-text-muted">{lang.name}</span>
             </div>
-            {currentLanguage.code === lang.code && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="ml-auto w-2 h-2 bg-brand-gold rounded-full"
-              />
-            )}
+            {currentLanguage.code === lang.code && <div className="ml-auto h-2 w-2 rounded-full bg-primary" />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
