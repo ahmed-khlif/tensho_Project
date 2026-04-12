@@ -10,7 +10,6 @@ import { FloatingActionButton } from "@/components/animations/floating-action-bu
 import { CookieConsent } from "@/components/common/cookie-consent"
 import { I18nProvider } from "@/components/common/i18n-provider"
 import { PWARegister } from "@/components/common/pwa-register"
-import { WhatsAppButton } from "@/components/common/whatsapp-button"
 // @ts-ignore
 import "./globals.css"
 
@@ -105,7 +104,6 @@ export default function RootLayout({
               <ScrollProgress />
               {children}
               <FloatingActionButton />
-              <WhatsAppButton />
               <CookieConsent />
             </ErrorBoundary>
           </I18nProvider>

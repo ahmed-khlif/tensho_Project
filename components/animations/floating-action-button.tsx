@@ -19,11 +19,11 @@ export function FloatingActionButton() {
       }
     },
     {
-      icon: Phone,
-      label: "Call Now",
+      icon: MessageCircle,
+      label: "WhatsApp",
       color: "bg-green-500 hover:bg-green-600",
       action: () => {
-        window.location.href = "tel:+1234567890"
+        window.open('https://wa.me/58318124', '_blank')
       }
     },
     {
