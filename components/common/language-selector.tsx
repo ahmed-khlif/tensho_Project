@@ -34,7 +34,7 @@ const languages = [
 ]
 
 export function LanguageSelector() {
-  const { i18n } = useTranslation()
+  const { i18n } = useTranslation('common')
 
   const currentLanguage = useMemo(() => {
     return languages.find((lang) => lang.code === i18n.language) ?? languages[0]

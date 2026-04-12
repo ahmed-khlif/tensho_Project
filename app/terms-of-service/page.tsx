@@ -1,11 +1,9 @@
-'use client'
-
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { useTranslation } from 'react-i18next'
 
 export default function TermsOfService() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   return (
     <div className="min-h-screen bg-background">

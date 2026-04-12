@@ -7,13 +7,13 @@ import ar from '../public/locales/ar/common.json'
 
 const resources = {
   en: {
-    translation: en,
+    common: en,
   },
   fr: {
-    translation: fr,
+    common: fr,
   },
   ar: {
-    translation: ar,
+    common: ar,
   },
 }
 
@@ -24,11 +24,12 @@ if (!i18n.isInitialized) {
       resources,
       lng: 'en',
       fallbackLng: 'en',
-      ns: ['translation'],
-      defaultNS: 'translation',
+      ns: ['common'],
+      defaultNS: 'common',
       interpolation: {
         escapeValue: false,
       },
+      load: 'currentOnly',
     })
 }
 

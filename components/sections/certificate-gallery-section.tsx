@@ -132,6 +132,7 @@ export function CertificateGallerySection() {
                       src={cert.image || "/placeholder.svg"}
                       alt={`${cert.name} Certificate`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
                     />
                     {/* Status Badge */}
                     <div className="absolute top-4 right-4">

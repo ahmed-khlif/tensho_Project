@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { useTranslation } from 'react-i18next'
 
 export function WhatsAppButton() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   const handleClick = () => {
     window.open('https://wa.me/58318124', '_blank')

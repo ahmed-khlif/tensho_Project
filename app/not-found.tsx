@@ -6,7 +6,7 @@ import { MagneticButton } from "@/components/animations/magnetic-button"
 import { useTranslation } from 'react-i18next'
 
 export default function NotFound() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   return (
     <div className="min-h-screen bg-background">
