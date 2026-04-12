@@ -5,12 +5,18 @@ import { Footer } from "@/components/layout/footer"
 import { useTranslation } from 'react-i18next'
 
 export default function PrivacyPolicy() {
-  const { t, i18n } = useTranslation('common')
+  const { t, i18n, ready } = useTranslation()
 
   // Debug logging
+  console.log('i18n ready:', ready)
   console.log('Current language:', i18n.language)
   console.log('Privacy title:', t('privacy.title'))
   console.log('Available languages:', i18n.languages)
+  console.log('Has common namespace:', i18n.hasResourceBundle(i18n.language, 'common'))
+
+  // Fallback to direct translation access
+  const privacyTitle = i18n.t('privacy.title', { lng: i18n.language })
+  console.log('Direct translation:', privacyTitle)
 
   return (
     <div className="min-h-screen bg-background">

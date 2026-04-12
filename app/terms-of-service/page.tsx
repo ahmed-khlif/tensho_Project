@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer"
 import { useTranslation } from 'react-i18next'
 
 export default function TermsOfService() {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation()
 
   return (
     <div className="min-h-screen bg-background">

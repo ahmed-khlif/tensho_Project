@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { MagneticButton } from "@/components/animations/magnetic-button"
 
 export function HeroSection() {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation()
 
   const containerVariants = {
     hidden: { opacity: 0 },

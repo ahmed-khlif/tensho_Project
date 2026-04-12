@@ -13,7 +13,7 @@ export default function Error({
   error: Error & { digest?: string }
   reset: () => void
 }) {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation()
 
   useEffect(() => {
     // Log the error to an error reporting service
