@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Oswald, Inter } from "next/font/google"
+import Script from "next/script"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { ErrorBoundary } from "@/components/layout/error-boundary"
 import { MagneticCursor } from "@/components/animations/magnetic-cursor"
@@ -8,6 +9,8 @@ import { ScrollProgress } from "@/components/layout/scroll-progress"
 import { FloatingActionButton } from "@/components/animations/floating-action-button"
 import { CookieConsent } from "@/components/common/cookie-consent"
 import { I18nProvider } from "@/components/common/i18n-provider"
+import { PWARegister } from "@/components/common/pwa-register"
+// @ts-ignore
 import "./globals.css"
 
 const oswald = Oswald({
@@ -36,7 +39,12 @@ export const metadata: Metadata = {
     shortcut: "/icon.svg",
     apple: "/apple-icon.png",
   },
+  manifest: "/manifest.json",
   openGraph: {
+    type: 'website',
+    url: 'https://tenshoacademy.com',
+    title: 'Tensho International Sports Academy | Martial Arts Excellence',
+    description: 'The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.',
     images: [
       {
         url: "/logo.png",
@@ -45,6 +53,12 @@ export const metadata: Metadata = {
         alt: "Tensho International Sports Academy",
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tensho International Sports Academy | Martial Arts Excellence',
+    description: 'The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.',
+    images: ['/logo.png'],
   },
 }
 
@@ -68,6 +82,24 @@ export default function RootLayout({
         >
           <I18nProvider>
             <ErrorBoundary>
+              <PWARegister />
+              <Script
+                id="structured-data"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Organization",
+                    name: "Tensho International Sports Academy",
+                    url: "https://tenshoacademy.com",
+                    logo: "https://tenshoacademy.com/logo.png",
+                    description: "The global standard for martial arts excellence, certification, and dojo management.",
+                    sameAs: [
+                      "https://github.com/ahmedKhlif/tensho_Project"
+                    ]
+                  }),
+                }}
+              />
               <MagneticCursor />
               <ScrollProgress />
               {children}

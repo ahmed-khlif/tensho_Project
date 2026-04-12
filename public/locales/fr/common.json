@@ -28,6 +28,7 @@
     "joinElite": "Rejoignez l'Élite",
     "whoWeAre": "Qui Nous Sommes",
     "scroll": "Défiler",
+    "scrollToAbout": "Faire défiler vers la section à propos",
     "stats": {
       "years": "Années d'Excellence",
       "clubs": "Clubs Enregistrés",
@@ -297,6 +298,19 @@
         "categories": "Catégories",
         "access": "Accès"
       }
+    },
+    "error": {
+      "404": {
+        "title": "Page non trouvée",
+        "description": "La page que vous recherchez n'existe pas."
+      },
+      "500": {
+        "title": "Quelque chose s'est mal passé",
+        "description": "Nous avons rencontré une erreur. Veuillez réessayer."
+      },
+      "goBack": "Retourner",
+      "goHome": "Accueil",
+      "tryAgain": "Réessayer"
     },
     "shop": {
       "badge": "Boutique Officielle",

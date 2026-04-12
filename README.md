@@ -25,12 +25,12 @@ A modern, responsive landing page for Tensho International Sports Academy - the 
 ## 🛠️ Tech Stack
 
 ### Framework & Language
-- **Next.js 16** - React framework with App Router
-- **React 19** - UI library
+- **Next.js 15** - React framework with App Router
+- **React 18** - UI library
 - **TypeScript** - Type-safe JavaScript
 
 ### Styling & UI
-- **Tailwind CSS 4** - Utility-first CSS framework
+- **Tailwind CSS 4.1.9** - Utility-first CSS framework
 - **shadcn/ui** - Component library built on Radix UI
 - **Framer Motion** - Animation library
 - **Lucide React** - Icon library
@@ -78,7 +78,7 @@ tensho-landing-page/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/tensho-landing-page.git
+git clone https://github.com/ahmedKhlif/tensho_Project.git
 cd tensho-landing-page
 ```
 

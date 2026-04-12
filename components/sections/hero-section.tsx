@@ -232,7 +232,7 @@ export function HeroSection() {
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
-              className="text-center group cursor-pointer"
+              className="text-center group"
               whileHover={{
                 scale: 1.1,
                 y: -5
@@ -284,6 +284,7 @@ export function HeroSection() {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
           className="flex flex-col items-center gap-2 text-text-muted hover:text-text-light transition-colors"
+          aria-label={t('hero.scrollToAbout')}
         >
           <span className="text-xs uppercase tracking-widest">{t('hero.scroll')}</span>
           <ChevronDown className="w-5 h-5" />

@@ -28,6 +28,7 @@
     "joinElite": "Join The Elite",
     "whoWeAre": "Who We Are",
     "scroll": "Scroll",
+    "scrollToAbout": "Scroll to about section",
     "stats": {
       "years": "Years of Excellence",
       "clubs": "Registered Clubs",
@@ -297,6 +298,19 @@
         "categories": "Categories",
         "access": "Access"
       }
+    },
+    "error": {
+      "404": {
+        "title": "Page Not Found",
+        "description": "The page you are looking for does not exist."
+      },
+      "500": {
+        "title": "Something went wrong",
+        "description": "We encountered an error. Please try again."
+      },
+      "goBack": "Go Back",
+      "goHome": "Go Home",
+      "tryAgain": "Try Again"
     },
     "shop": {
       "badge": "Official Store",
