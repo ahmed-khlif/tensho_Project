@@ -19,7 +19,8 @@
     "dashboard": "Dashboard",
     "studentLogin": "Student Login",
     "login": "Login",
-    "join": "Join"
+    "join": "Join",
+    "privacyPolicy": "Privacy Policy"
   },
   "hero": {
     "badge": "The World's Premier Martial Arts Excellence Network",
@@ -311,6 +312,59 @@
       "goBack": "Go Back",
       "goHome": "Go Home",
       "tryAgain": "Try Again"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: {{date}}",
+      "introduction": {
+        "title": "Introduction",
+        "content": "Tensho International Sports Academy (\"we,\" \"our,\" or \"us\") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services."
+      },
+      "collection": {
+        "title": "Information We Collect",
+        "personal": {
+          "title": "Personal Information",
+          "content": "We may collect personal information that you provide directly to us, such as your name, email address, phone number, and any other information you choose to provide when registering for our services or contacting us."
+        },
+        "automatic": {
+          "title": "Automatically Collected Information",
+          "content": "We automatically collect certain information when you visit our website, including your IP address, browser type, operating system, referring URLs, and browsing behavior. We use cookies and similar technologies to enhance your experience."
+        }
+      },
+      "use": {
+        "title": "How We Use Your Information",
+        "1": "To provide and maintain our services",
+        "2": "To communicate with you about our services",
+        "3": "To improve our website and services",
+        "4": "To comply with legal obligations",
+        "5": "To protect our rights and prevent fraud"
+      },
+      "sharing": {
+        "title": "Information Sharing",
+        "content": "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy or as required by law."
+      },
+      "security": {
+        "title": "Data Security",
+        "content": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "We use cookies to enhance your browsing experience. You can control cookie settings through your browser preferences."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "content": "Depending on your location, you may have certain rights regarding your personal information, including:",
+        "1": "Access to your personal information",
+        "2": "Correction of inaccurate information",
+        "3": "Deletion of your personal information",
+        "4": "Restriction of processing",
+        "5": "Data portability",
+        "6": "Objection to processing"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at privacy@tenshoacademy.com."
+      }
     },
     "contact": {
       "whatsapp": "Contact via WhatsApp"

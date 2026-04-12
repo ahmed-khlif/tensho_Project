@@ -36,6 +36,7 @@ const moreLinks = [
   { key: "nav.shop", href: "/shop" },
   { key: "nav.membership", href: "/membership" },
   { key: "nav.dashboard", href: "/dashboard" },
+  { key: "nav.privacyPolicy", href: "/privacy-policy" },
 ]
 
 export function Navbar() {

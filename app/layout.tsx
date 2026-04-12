@@ -25,7 +25,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tenshoacademy.com"),
+  metadataBase: new URL("https://tensho-project.vercel.app"),
   title: "Tensho International Sports Academy | Martial Arts Excellence",
   description:
     "The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.",

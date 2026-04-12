@@ -2,7 +2,7 @@
   "name": "Tensho International Sports Academy",
   "short_name": "Tensho Academy",
   "description": "The global standard for martial arts excellence, certification, and dojo management.",
-  "start_url": "/",
+  "start_url": "https://tensho-project.vercel.app",
   "display": "standalone",
   "background_color": "#111111",
   "theme_color": "#d4af37",
