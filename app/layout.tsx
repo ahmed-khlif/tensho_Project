@@ -32,12 +32,10 @@ export const metadata: Metadata = {
   keywords: ["martial arts", "academy", "certification", "dojo", "training"],
   icons: {
     icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-dark-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon-light-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", type: "image/png" },
     ],
-    shortcut: "/icon.svg",
-    apple: "/apple-icon.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
   manifest: "/manifest.json",
   openGraph: {
