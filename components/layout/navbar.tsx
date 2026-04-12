@@ -288,7 +288,30 @@ export function Navbar() {
             }}
             className="fixed top-20 left-1/2 -translate-x-1/2 w-[90%] max-w-md z-40 bg-brand-dark-grey/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden lg:hidden"
           >
-            <div className="p-4 space-y-1">
+            <div className="p-4">
+              {/* Mobile Controls */}
+              <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <ThemeSelector />
+                  <LanguageSelector />
+                </div>
+                <motion.button
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(208, 28, 28, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group"
+                >
+                  <Link href="/register">
+                    <Button size="sm" className="bg-brand-red hover:bg-brand-red/90 text-text-light font-medium px-3 py-1 text-xs">
+                      <UserPlus className="h-3 w-3 mr-1" />
+                      {t("nav.join")}
+                    </Button>
+                  </Link>
+                </motion.button>
+              </div>
+              <div className="space-y-1">
               {navLinks.map((link, index) => {
                 const isActive = link.href.startsWith("#")
                   ? activeSection === link.href.replace("#", "")
@@ -346,6 +369,7 @@ export function Navbar() {
                     {t("nav.studentLogin")}
                   </Button>
                 </Link>
+              </div>
               </div>
             </div>
           </motion.div>
