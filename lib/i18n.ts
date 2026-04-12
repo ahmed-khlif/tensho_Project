@@ -17,17 +17,20 @@ const resources = {
   },
 }
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: 'en', // default language
-    fallbackLng: 'en',
-    ns: ['common'],
-    defaultNS: 'common',
-    interpolation: {
-      escapeValue: false,
-    },
-  })
+if (!i18n.isInitialized) {
+  i18n
+    .use(initReactI18next)
+    .init({
+      resources,
+      lng: 'en',
+      fallbackLng: 'en',
+      ns: ['common'],
+      defaultNS: 'common',
+      interpolation: {
+        escapeValue: false,
+      },
+      load: 'currentOnly',
+    })
+}
 
 export default i18n

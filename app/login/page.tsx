@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
@@ -13,6 +14,7 @@ import { Separator } from "@/components/ui/separator"
 import { Swords, Eye, EyeOff, Mail, Lock, User, Phone, Calendar, Trophy, UserPlus } from "lucide-react"
 
 export default function LoginPage() {
+  const { t } = useTranslation("common")
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -24,7 +26,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-brand-black relative overflow-hidden">
+    <main className="min-h-screen bg-background relative overflow-hidden">
       <Navbar />
 
       {/* Background Elements */}
@@ -73,7 +75,7 @@ export default function LoginPage() {
             </div>
             <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-gold/20 to-brand-red/20 border border-brand-gold/30 text-brand-gold text-sm font-medium shadow-lg">
               <Swords className="w-5 h-5" />
-              Student Portal Access
+              {t("auth.login.portalAccess")}
             </span>
           </motion.div>
           <motion.h1
@@ -82,7 +84,7 @@ export default function LoginPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6 leading-tight"
           >
-            Welcome Back, <span className="text-brand-gold">Warrior</span>
+            {t("auth.login.title")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -90,7 +92,7 @@ export default function LoginPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-text-muted text-lg max-w-2xl mx-auto"
           >
-            Re-enter the dojo and continue your path to mastery. Your martial arts journey awaits.
+            {t("auth.login.subtitle")}
           </motion.p>
 
           {/* Quick Stats */}
@@ -101,9 +103,9 @@ export default function LoginPage() {
             className="flex justify-center gap-8 mt-12"
           >
             {[
-              { value: "156", label: "Sessions This Month" },
-              { value: "12", label: "Day Streak" },
-              { value: "4.9", label: "Avg Rating" },
+              { value: "156", label: t("auth.login.stats.sessionsThisMonth") },
+              { value: "12", label: t("auth.login.stats.dayStreak") },
+              { value: "4.9", label: t("auth.login.stats.avgRating") },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -136,14 +138,14 @@ export default function LoginPage() {
             {/* Email Field */}
             <div className="space-y-2">
               <Label htmlFor="email" className="text-text-light font-medium">
-                Email Address
+                {t("auth.login.email")}
               </Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                 <Input
                   id="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder={t("auth.login.emailPlaceholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
@@ -155,14 +157,14 @@ export default function LoginPage() {
             {/* Password Field */}
             <div className="space-y-2">
               <Label htmlFor="password" className="text-text-light font-medium">
-                Password
+                {t("auth.login.password")}
               </Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder={t("auth.login.passwordPlaceholder")}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="pl-10 pr-10 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold"
@@ -185,13 +187,13 @@ export default function LoginPage() {
                   type="checkbox"
                   className="rounded border-white/10 bg-brand-black/50 text-brand-gold focus:ring-brand-gold"
                 />
-                Remember me
+                {t("auth.login.remember")}
               </label>
               <Link
                 href="#"
                 className="text-brand-gold hover:text-brand-gold/80 transition-colors"
               >
-                Forgot password?
+                {t("auth.login.forgot")}
               </Link>
             </div>
 
@@ -205,7 +207,7 @@ export default function LoginPage() {
                 className="w-full bg-gradient-to-r from-brand-gold to-brand-gold/80 hover:from-brand-gold/90 hover:to-brand-gold/70 text-brand-black font-bold py-4 text-lg shadow-lg shadow-brand-gold/25"
               >
                 <Swords className="w-5 h-5 mr-2" />
-                Enter the Dojo
+                {t("auth.login.submit")}
               </Button>
             </motion.div>
           </form>
@@ -217,7 +219,7 @@ export default function LoginPage() {
                 <Separator className="w-full bg-white/10" />
               </div>
               <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-brand-dark-grey px-2 text-text-muted">Or continue with</span>
+                <span className="bg-brand-dark-grey px-2 text-text-muted">{t("auth.login.social")}</span>
               </div>
             </div>
 
@@ -261,12 +263,12 @@ export default function LoginPage() {
           {/* Sign Up Link */}
           <div className="mt-8 text-center">
             <p className="text-text-muted">
-              New to Tensho?{" "}
+              {t("auth.login.newToTensho")}{" "}
               <Link
                 href="/register"
                 className="text-brand-gold hover:text-brand-gold/80 font-medium transition-colors"
               >
-                Create your account
+                {t("auth.login.createAccount")}
               </Link>
             </p>
           </div>
@@ -281,37 +283,37 @@ export default function LoginPage() {
           className="mt-16"
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-text-light mb-4">Continue Your Journey</h3>
-            <p className="text-text-muted">Your path to mastery awaits - access all your training resources</p>
+            <h3 className="text-2xl font-bold text-text-light mb-4">{t("auth.login.continueJourneyTitle")}</h3>
+            <p className="text-text-muted">{t("auth.login.continueJourneySubtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Trophy,
-                title: "Track Progress",
-                description: "Monitor your belt advancement and skill development",
+                title: t("auth.login.benefits.trackProgress.title"),
+                description: t("auth.login.benefits.trackProgress.description"),
                 color: "from-yellow-500 to-yellow-600",
                 bgColor: "bg-yellow-500/10"
               },
               {
                 icon: Calendar,
-                title: "Book Classes",
-                description: "Reserve spots in upcoming training sessions",
+                title: t("auth.login.benefits.bookClasses.title"),
+                description: t("auth.login.benefits.bookClasses.description"),
                 color: "from-blue-500 to-blue-600",
                 bgColor: "bg-blue-500/10"
               },
               {
                 icon: Swords,
-                title: "Master Techniques",
-                description: "Access advanced kata and self-defense training",
+                title: t("auth.login.benefits.masterTechniques.title"),
+                description: t("auth.login.benefits.masterTechniques.description"),
                 color: "from-red-500 to-red-600",
                 bgColor: "bg-red-500/10"
               },
               {
                 icon: User,
-                title: "Community",
-                description: "Connect with fellow martial artists worldwide",
+                title: t("auth.login.benefits.community.title"),
+                description: t("auth.login.benefits.community.description"),
                 color: "from-purple-500 to-purple-600",
                 bgColor: "bg-purple-500/10"
               }
@@ -346,14 +348,14 @@ export default function LoginPage() {
             className="mt-12 bg-gradient-to-r from-brand-black/50 to-brand-dark-grey/50 rounded-3xl p-8 border border-white/5"
           >
             <div className="text-center mb-6">
-              <h4 className="text-xl font-bold text-text-light mb-2">Quick Access</h4>
-              <p className="text-text-muted">Jump back into your training routine</p>
+              <h4 className="text-xl font-bold text-text-light mb-2">{t("auth.login.quickAccess.title")}</h4>
+              <p className="text-text-muted">{t("auth.login.quickAccess.subtitle")}</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { label: "View Dashboard", href: "/dashboard", color: "bg-brand-gold text-brand-black" },
-                { label: "Upcoming Events", href: "/calendar", color: "bg-brand-red text-text-light" },
-                { label: "Training Gallery", href: "/gallery", color: "bg-purple-500 text-text-light" }
+                { label: t("auth.login.quickAccess.dashboard"), href: "/dashboard", color: "bg-brand-gold text-brand-black" },
+                { label: t("auth.login.quickAccess.upcomingEvents"), href: "/calendar", color: "bg-brand-red text-text-light" },
+                { label: t("auth.login.quickAccess.trainingGallery"), href: "/gallery", color: "bg-purple-500 text-text-light" }
               ].map((link, index) => (
                 <Link key={link.label} href={link.href}>
                   <motion.div

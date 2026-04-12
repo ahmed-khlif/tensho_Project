@@ -1,6 +1,8 @@
 "use client"
 
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -8,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { ChevronDown, Languages } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 const languages = [
   {
@@ -32,8 +34,16 @@ const languages = [
 ]
 
 export function LanguageSelector() {
-  // Temporarily simplified without i18n
-  const currentLanguage = languages[0] // Default to English
+  const { i18n } = useTranslation('common')
+
+  const currentLanguage = useMemo(() => {
+    return languages.find((lang) => lang.code === i18n.language) ?? languages[0]
+  }, [i18n.language])
+
+  const handleLanguageChange = async (code: string) => {
+    await i18n.changeLanguage(code)
+    window.localStorage.setItem('tensho_lang', code)
+  }
 
   return (
     <DropdownMenu>
@@ -43,9 +53,9 @@ export function LanguageSelector() {
           size="sm"
           className="gap-2 text-text-muted hover:text-text-light hover:bg-white/5 transition-colors"
         >
-          <Languages className="h-4 w-4" />
+          <span className="text-base" aria-hidden="true">{currentLanguage.flag}</span>
           <span className="hidden sm:inline text-sm font-medium">
-            EN
+            {currentLanguage.code.toUpperCase()}
           </span>
           <ChevronDown className="h-4 w-4 opacity-50" />
         </Button>
@@ -57,6 +67,7 @@ export function LanguageSelector() {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
+            onClick={() => void handleLanguageChange(lang.code)}
             className={`flex items-center gap-3 px-3 py-2 cursor-pointer transition-colors ${
               currentLanguage.code === lang.code
                 ? 'bg-brand-gold/20 text-brand-gold'

@@ -5,6 +5,7 @@
     "testimonials": "الشهادات",
     "faq": "الأسئلة الشائعة",
     "contact": "اتصل بنا",
+    "more": "المزيد",
     "leadership": "القيادة",
     "certificates": "الشهادات",
     "programs": "البرامج",
@@ -16,6 +17,7 @@
     "shop": "المتجر",
     "membership": "العضوية",
     "dashboard": "لوحة التحكم",
+    "studentLogin": "دخول الطالب",
     "login": "تسجيل الدخول",
     "join": "انضم"
   },
@@ -25,6 +27,7 @@
     "subtitle": "تشكيل الجيل القادم من فناني الفنون القتالية. ارتفع، قُد وألهم مع تنشو إنترناشونال.",
     "joinElite": "انضم للنخبة",
     "whoWeAre": "من نحن",
+    "scroll": "مرر",
     "stats": {
       "years": "سنوات التميز",
       "clubs": "الأندية المسجلة",
@@ -36,16 +39,73 @@
     "login": {
       "title": "مرحباً بعودتك، المحارب",
       "subtitle": "أعد الدخول للدوجو واستمر في طريقك نحو الإتقان. رحلتك في الفنون القتالية تنتظرك.",
+      "portalAccess": "الدخول إلى بوابة الطالب",
       "email": "البريد الإلكتروني",
+      "emailPlaceholder": "your@email.com",
       "password": "كلمة المرور",
+      "passwordPlaceholder": "أدخل كلمة المرور",
       "remember": "تذكرني",
       "forgot": "نسيت كلمة المرور؟",
       "submit": "ادخل الدوجو",
-      "social": "أو تابع مع"
+      "social": "أو تابع مع",
+      "newToTensho": "جديد في تنشو؟",
+      "createAccount": "أنشئ حسابك",
+      "continueJourneyTitle": "واصل رحلتك",
+      "continueJourneySubtitle": "طريقك نحو الإتقان بانتظارك - الوصول إلى جميع موارد التدريب",
+      "stats": {
+        "sessionsThisMonth": "جلسات هذا الشهر",
+        "dayStreak": "سلسلة الأيام",
+        "avgRating": "متوسط التقييم"
+      },
+      "benefits": {
+        "trackProgress": {
+          "title": "تتبع التقدم",
+          "description": "راقب تقدم الحزام وتطور المهارات"
+        },
+        "bookClasses": {
+          "title": "حجز الحصص",
+          "description": "احجز مكانك في الجلسات القادمة"
+        },
+        "masterTechniques": {
+          "title": "إتقان التقنيات",
+          "description": "الوصول إلى تدريبات كاتا ودفاع عن النفس متقدمة"
+        },
+        "community": {
+          "title": "المجتمع",
+          "description": "تواصل مع ممارسي الفنون القتالية حول العالم"
+        }
+      },
+      "quickAccess": {
+        "title": "وصول سريع",
+        "subtitle": "ارجع بسرعة إلى روتين تدريبك",
+        "dashboard": "عرض لوحة التحكم",
+        "upcomingEvents": "الفعاليات القادمة",
+        "trainingGallery": "معرض التدريب"
+      }
     },
     "register": {
       "title": "ابدأ أسطورتك",
+      "titleHighlight": "أسطورتك",
+      "joinEliteRanks": "انضم إلى صفوف النخبة",
       "subtitle": "انضم لتنشو إنترناشونال وادخل عالماً حيث تلتقي الانضباط بالقدر. حوّل إمكانياتك إلى إتقان.",
+      "stats": {
+        "activeMembers": "الأعضاء النشطون",
+        "countries": "الدول",
+        "yearsExcellence": "سنوات التميز"
+      },
+      "steps": {
+        "personalInfo": "المعلومات الشخصية",
+        "accountSetup": "إعداد الحساب",
+        "experience": "الخبرة",
+        "confirmation": "التأكيد"
+      },
+      "stepDescriptions": {
+        "personalInfo": "أخبرنا عن نفسك للبدء",
+        "accountSetup": "أنشئ بيانات حسابك الآمنة",
+        "experience": "شارك خلفيتك لتخصيص رحلتك",
+        "confirmation": "راجع وأكد تسجيلك"
+      },
+      "stepOf": "الخطوة {{current}} من {{total}}",
       "firstName": "الاسم الأول",
       "lastName": "اسم العائلة",
       "email": "البريد الإلكتروني",
@@ -53,11 +113,64 @@
       "password": "كلمة المرور",
       "confirmPassword": "تأكيد كلمة المرور",
       "dateOfBirth": "تاريخ الميلاد",
+      "experienceLevel": "مستوى الخبرة",
+      "selectLevel": "اختر المستوى",
+      "levels": {
+        "beginner": "مبتدئ",
+        "intermediate": "متوسط",
+        "advanced": "متقدم",
+        "blackBelt": "حزام أسود"
+      },
+      "placeholders": {
+        "firstName": "أحمد",
+        "lastName": "خليف",
+        "email": "your@email.com",
+        "phone": "+216 XX XXX XXX",
+        "password": "أنشئ كلمة مرور قوية",
+        "confirmPassword": "أكد كلمة المرور"
+      },
+      "iAgree": "أوافق على",
+      "termsOfService": "شروط الخدمة",
+      "and": "و",
+      "privacyPolicy": "سياسة الخصوصية",
       "experience": "خبرة الفنون القتالية",
       "terms": "أوافق على شروط الخدمة وسياسة الخصوصية",
       "newsletter": "الاشتراك في النشرة الإخبارية",
+      "newsletterLong": "الاشتراك في نشرتنا للحصول على نصائح تدريب وتحديثات الفعاليات",
+      "previous": "السابق",
+      "next": "التالي",
+      "submitJourney": "ابدأ رحلتك في الفنون القتالية",
       "submit": "انضم لصفوف النخبة",
-      "social": "أو تابع مع"
+      "social": "أو سجّل باستخدام",
+      "acceptTermsWarning": "يرجى قبول الشروط لإكمال التسجيل",
+      "alreadyHaveAccount": "لديك حساب بالفعل؟",
+      "signInHere": "سجّل الدخول هنا",
+      "pathToMastery": {
+        "title": "طريقك نحو الإتقان",
+        "subtitle": "انضم إلى إرث من المحاربين الذين غيّروا حياتهم بالانضباط والتفاني"
+      },
+      "benefits": {
+        "freeTrial": {
+          "title": "حصة تجريبية مجانية",
+          "description": "جرّب تدريباً أصيلاً في الفنون القتالية"
+        },
+        "personalDashboard": {
+          "title": "لوحة تحكم شخصية",
+          "description": "تابع رحلتك وإنجازاتك"
+        },
+        "masterInstruction": {
+          "title": "تدريب من أساتذة",
+          "description": "تعلّم من فناني قتال أسطوريين"
+        },
+        "eventAccess": {
+          "title": "وصول للفعاليات",
+          "description": "بطولات وندوات حصرية"
+        }
+      },
+      "successStories": {
+        "title": "قصص النجاح",
+        "subtitle": "تحولات حقيقية من مجتمعنا"
+      }
     }
   },
   "theme": {
@@ -69,5 +182,33 @@
     "english": "English",
     "french": "Français",
     "arabic": "العربية"
+  },
+  "footer": {
+    "description": "أكاديمية تنشو الدولية الرياضية. ربط ممارسي الفنون القتالية حول العالم.",
+    "titles": {
+      "navigation": "التنقل",
+      "resources": "الموارد",
+      "contact": "التواصل"
+    },
+    "navigation": {
+      "home": "الرئيسية",
+      "about": "حولنا",
+      "affiliation": "الانتساب",
+      "clubRegistration": "تسجيل النادي",
+      "events": "الفعاليات",
+      "blogs": "المدونة"
+    },
+    "resources": {
+      "studentPortal": "بوابة الطالب",
+      "certifications": "الشهادات",
+      "beltRankings": "مراتب الأحزمة",
+      "membership": "العضوية"
+    },
+    "legal": {
+      "privacy": "سياسة الخصوصية",
+      "terms": "شروط الخدمة",
+      "cookie": "سياسة ملفات تعريف الارتباط"
+    },
+    "copyright": "© 1997-2026 أكاديمية تنشو الدولية الرياضية. جميع الحقوق محفوظة."
   }
 }

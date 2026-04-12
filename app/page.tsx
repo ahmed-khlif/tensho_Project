@@ -24,7 +24,7 @@ import { BackToTop } from "@/components/layout/back-to-top"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-brand-black">
+    <main className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
       <AboutSection />

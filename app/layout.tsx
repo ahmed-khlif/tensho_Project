@@ -7,8 +7,8 @@ import { MagneticCursor } from "@/components/animations/magnetic-cursor"
 import { ScrollProgress } from "@/components/layout/scroll-progress"
 import { FloatingActionButton } from "@/components/animations/floating-action-button"
 import { CookieConsent } from "@/components/common/cookie-consent"
+import { I18nProvider } from "@/components/common/i18n-provider"
 import "./globals.css"
-// import "../lib/i18n" // Temporarily disabled for testing
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -22,6 +22,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tenshoacademy.com"),
   title: "Tensho International Sports Academy | Martial Arts Excellence",
   description:
     "The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.",
@@ -57,21 +58,23 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <body className={`${oswald.variable} ${inter.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem={true}
           disableTransitionOnChange
         >
-          <ErrorBoundary>
-            <MagneticCursor />
-            <ScrollProgress />
-            {children}
-            <FloatingActionButton />
-            <CookieConsent />
-          </ErrorBoundary>
+          <I18nProvider>
+            <ErrorBoundary>
+              <MagneticCursor />
+              <ScrollProgress />
+              {children}
+              <FloatingActionButton />
+              <CookieConsent />
+            </ErrorBoundary>
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

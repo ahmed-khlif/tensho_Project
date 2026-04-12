@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Swords, LogIn, UserPlus, Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { LanguageSelector } from "@/components/common/language-selector"
@@ -16,29 +17,30 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "#about" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { key: "nav.home", href: "/" },
+  { key: "nav.about", href: "#about" },
+  { key: "nav.testimonials", href: "#testimonials" },
+  { key: "nav.faq", href: "#faq" },
+  { key: "nav.contact", href: "#contact" },
 ]
 
 const moreLinks = [
-  { label: "Leadership", href: "/leadership" },
-  { label: "Certificates", href: "/certificates" },
-  { label: "Programs", href: "/programs" },
-  { label: "Events", href: "/events" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Calendar", href: "/calendar" },
-  { label: "Resources", href: "/resources" },
-  { label: "Shop", href: "/shop" },
-  { label: "Membership", href: "/membership" },
-  { label: "Dashboard", href: "/dashboard" },
+  { key: "nav.leadership", href: "/leadership" },
+  { key: "nav.certificates", href: "/certificates" },
+  { key: "nav.programs", href: "/programs" },
+  { key: "nav.events", href: "/events" },
+  { key: "nav.blogs", href: "/blogs" },
+  { key: "nav.gallery", href: "/gallery" },
+  { key: "nav.calendar", href: "/calendar" },
+  { key: "nav.resources", href: "/resources" },
+  { key: "nav.shop", href: "/shop" },
+  { key: "nav.membership", href: "/membership" },
+  { key: "nav.dashboard", href: "/dashboard" },
 ]
 
 export function Navbar() {
   const pathname = usePathname()
+  const { t } = useTranslation("common")
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
@@ -114,7 +116,7 @@ export function Navbar() {
                 : false
 
               return link.href.startsWith("/") ? (
-                <Link key={link.label} href={link.href}>
+                <Link key={link.key} href={link.href}>
                   <motion.div
                     className={`px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 cursor-pointer relative overflow-hidden ${isActive
                         ? "text-brand-red bg-brand-red/10"
@@ -139,7 +141,7 @@ export function Navbar() {
                       whileHover={{ x: 1 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
-                      {link.label}
+                      {t(link.key)}
                     </motion.span>
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
@@ -151,7 +153,7 @@ export function Navbar() {
                 </Link>
               ) : (
                 <motion.button
-                  key={link.label}
+                  key={link.key}
                   onClick={() => handleNavClick(link.href)}
                   className={`px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 relative overflow-hidden ${isActive
                       ? "text-brand-red bg-brand-red/10"
@@ -176,7 +178,7 @@ export function Navbar() {
                     whileHover={{ x: 1 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   >
-                    {link.label}
+                    {t(link.key)}
                   </motion.span>
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
@@ -194,17 +196,17 @@ export function Navbar() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  More <ChevronDown className="w-4 h-4" />
+                  {t("nav.more")} <ChevronDown className="w-4 h-4" />
                 </motion.button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-brand-dark-grey border-white/10">
                 {moreLinks.map((link) => (
                   <DropdownMenuItem
-                    key={link.label}
+                    key={link.key}
                     asChild
                     className="text-text-muted hover:text-text-light hover:bg-white/5 cursor-pointer"
                   >
-                    <Link href={link.href}>{link.label}</Link>
+                    <Link href={link.href}>{t(link.key)}</Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -233,7 +235,7 @@ export function Navbar() {
                     transition={{ duration: 0.6 }}
                   />
                   <LogIn className="h-4 w-4 relative z-10" />
-                  <span className="hidden md:inline relative z-10">Login</span>
+                  <span className="hidden md:inline relative z-10">{t("nav.login")}</span>
                 </Button>
               </Link>
             </motion.div>
@@ -254,7 +256,7 @@ export function Navbar() {
                     transition={{ duration: 0.6 }}
                   />
                   <UserPlus className="h-4 w-4 sm:mr-2 relative z-10" />
-                  <span className="hidden sm:inline relative z-10">Join</span>
+                  <span className="hidden sm:inline relative z-10">{t("nav.join")}</span>
                 </Button>
               </Link>
             </motion.div>
@@ -293,7 +295,7 @@ export function Navbar() {
                   : false
 
                 return link.href.startsWith("/") ? (
-                  <Link key={link.label} href={link.href} onClick={() => setMobileMenuOpen(false)}>
+                  <Link key={link.key} href={link.href} onClick={() => setMobileMenuOpen(false)}>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -303,12 +305,12 @@ export function Navbar() {
                           : "text-text-muted hover:text-text-light hover:bg-white/5"
                         }`}
                     >
-                      {link.label}
+                      {t(link.key)}
                     </motion.div>
                   </Link>
                 ) : (
                   <motion.button
-                    key={link.label}
+                    key={link.key}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -318,21 +320,21 @@ export function Navbar() {
                         : "text-text-muted hover:text-text-light hover:bg-white/5"
                       }`}
                   >
-                    {link.label}
+                    {t(link.key)}
                   </motion.button>
                 )
               })}
               <div className="border-t border-white/10 pt-3 mt-3">
-                <p className="text-text-muted text-xs font-medium mb-2 px-4">More</p>
+                <p className="text-text-muted text-xs font-medium mb-2 px-4">{t("nav.more")}</p>
                 {moreLinks.map((link, index) => (
-                  <Link key={link.label} href={link.href} onClick={() => setMobileMenuOpen(false)}>
+                  <Link key={link.key} href={link.href} onClick={() => setMobileMenuOpen(false)}>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: (navLinks.length + index) * 0.05 }}
                       className="w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all text-text-muted hover:text-text-light hover:bg-white/5 cursor-pointer"
                     >
-                      {link.label}
+                      {t(link.key)}
                     </motion.div>
                   </Link>
                 ))}
@@ -341,7 +343,7 @@ export function Navbar() {
                 <Link href="/login">
                   <Button variant="ghost" className="w-full justify-start text-text-muted hover:text-text-light">
                     <LogIn className="h-4 w-4 mr-2" />
-                    Student Login
+                    {t("nav.studentLogin")}
                   </Button>
                 </Link>
               </div>

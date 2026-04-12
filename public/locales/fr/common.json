@@ -5,6 +5,7 @@
     "testimonials": "Témoignages",
     "faq": "FAQ",
     "contact": "Contact",
+    "more": "Plus",
     "leadership": "Direction",
     "certificates": "Certificats",
     "programs": "Programmes",
@@ -16,6 +17,7 @@
     "shop": "Boutique",
     "membership": "Adhésion",
     "dashboard": "Tableau de bord",
+    "studentLogin": "Connexion Étudiant",
     "login": "Connexion",
     "join": "Rejoindre"
   },
@@ -25,6 +27,7 @@
     "subtitle": "Façonner la Prochaine Génération d'Artistes Martiaux. Élevez-vous, Dirigez et Inspirez avec Tensho International.",
     "joinElite": "Rejoignez l'Élite",
     "whoWeAre": "Qui Nous Sommes",
+    "scroll": "Défiler",
     "stats": {
       "years": "Années d'Excellence",
       "clubs": "Clubs Enregistrés",
@@ -36,16 +39,73 @@
     "login": {
       "title": "Bienvenue de Retour, Guerrier",
       "subtitle": "Rentre à nouveau dans le dojo et continue ton chemin vers la maîtrise. Ton voyage dans les arts martiaux t'attend.",
+      "portalAccess": "Accès au Portail Étudiant",
       "email": "Adresse Email",
+      "emailPlaceholder": "votre@email.com",
       "password": "Mot de Passe",
+      "passwordPlaceholder": "Entrez votre mot de passe",
       "remember": "Se souvenir de moi",
       "forgot": "Mot de passe oublié ?",
       "submit": "Entrez dans le Dojo",
-      "social": "Ou continuer avec"
+      "social": "Ou continuer avec",
+      "newToTensho": "Nouveau chez Tensho ?",
+      "createAccount": "Créez votre compte",
+      "continueJourneyTitle": "Continuez Votre Parcours",
+      "continueJourneySubtitle": "Votre chemin vers la maîtrise vous attend - accédez à toutes vos ressources d'entraînement",
+      "stats": {
+        "sessionsThisMonth": "Séances ce mois-ci",
+        "dayStreak": "Série de jours",
+        "avgRating": "Note moyenne"
+      },
+      "benefits": {
+        "trackProgress": {
+          "title": "Suivre les progrès",
+          "description": "Suivez votre progression de ceinture et le développement de vos compétences"
+        },
+        "bookClasses": {
+          "title": "Réserver des cours",
+          "description": "Réservez des places dans les prochaines séances d'entraînement"
+        },
+        "masterTechniques": {
+          "title": "Maîtriser les techniques",
+          "description": "Accédez à des entraînements avancés de kata et d'autodéfense"
+        },
+        "community": {
+          "title": "Communauté",
+          "description": "Connectez-vous avec des artistes martiaux du monde entier"
+        }
+      },
+      "quickAccess": {
+        "title": "Accès Rapide",
+        "subtitle": "Reprenez votre routine d'entraînement",
+        "dashboard": "Voir le tableau de bord",
+        "upcomingEvents": "Événements à venir",
+        "trainingGallery": "Galerie d'entraînement"
+      }
     },
     "register": {
       "title": "Commencez Votre Légende",
+      "titleHighlight": "Légende",
+      "joinEliteRanks": "Rejoignez les rangs d'élite",
       "subtitle": "Rejoignez Tensho International et entrez dans un monde où la discipline rencontre le destin. Transformez votre potentiel en maîtrise.",
+      "stats": {
+        "activeMembers": "Membres actifs",
+        "countries": "Pays",
+        "yearsExcellence": "Années d'excellence"
+      },
+      "steps": {
+        "personalInfo": "Infos personnelles",
+        "accountSetup": "Configuration du compte",
+        "experience": "Expérience",
+        "confirmation": "Confirmation"
+      },
+      "stepDescriptions": {
+        "personalInfo": "Parlez-nous de vous pour commencer",
+        "accountSetup": "Créez vos identifiants de compte sécurisés",
+        "experience": "Partagez votre parcours pour personnaliser votre expérience",
+        "confirmation": "Vérifiez et confirmez votre inscription"
+      },
+      "stepOf": "Étape {{current}} sur {{total}}",
       "firstName": "Prénom",
       "lastName": "Nom de Famille",
       "email": "Adresse Email",
@@ -53,11 +113,64 @@
       "password": "Mot de Passe",
       "confirmPassword": "Confirmer le Mot de Passe",
       "dateOfBirth": "Date de Naissance",
+      "experienceLevel": "Niveau d'expérience",
+      "selectLevel": "Sélectionner le niveau",
+      "levels": {
+        "beginner": "Débutant",
+        "intermediate": "Intermédiaire",
+        "advanced": "Avancé",
+        "blackBelt": "Ceinture noire"
+      },
+      "placeholders": {
+        "firstName": "Jean",
+        "lastName": "Dupont",
+        "email": "votre@email.com",
+        "phone": "+33 6 12 34 56 78",
+        "password": "Créez un mot de passe fort",
+        "confirmPassword": "Confirmez votre mot de passe"
+      },
+      "iAgree": "J'accepte les",
+      "termsOfService": "Conditions d'utilisation",
+      "and": "et",
+      "privacyPolicy": "Politique de confidentialité",
       "experience": "Expérience en Arts Martiaux",
       "terms": "J'accepte les Conditions d'Utilisation et la Politique de Confidentialité",
       "newsletter": "S'abonner à la newsletter",
+      "newsletterLong": "S'abonner à notre newsletter pour recevoir des conseils d'entraînement et des mises à jour d'événements",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "submitJourney": "Commencez votre parcours en arts martiaux",
       "submit": "Rejoignez les Rangées d'Élite",
-      "social": "Ou continuer avec"
+      "social": "Ou s'inscrire avec",
+      "acceptTermsWarning": "Veuillez accepter les conditions pour finaliser l'inscription",
+      "alreadyHaveAccount": "Vous avez déjà un compte ?",
+      "signInHere": "Connectez-vous ici",
+      "pathToMastery": {
+        "title": "Votre Chemin vers la Maîtrise",
+        "subtitle": "Rejoignez un héritage de combattants qui ont transformé leur vie grâce à la discipline et au dévouement"
+      },
+      "benefits": {
+        "freeTrial": {
+          "title": "Cours d'essai gratuit",
+          "description": "Découvrez un entraînement authentique en arts martiaux"
+        },
+        "personalDashboard": {
+          "title": "Tableau de bord personnel",
+          "description": "Suivez votre parcours et vos réussites"
+        },
+        "masterInstruction": {
+          "title": "Instruction de maîtres",
+          "description": "Apprenez auprès d'artistes martiaux légendaires"
+        },
+        "eventAccess": {
+          "title": "Accès aux événements",
+          "description": "Tournois et séminaires exclusifs"
+        }
+      },
+      "successStories": {
+        "title": "Histoires de réussite",
+        "subtitle": "De vraies transformations de notre communauté"
+      }
     }
   },
   "theme": {
@@ -69,5 +182,33 @@
     "english": "English",
     "french": "Français",
     "arabic": "العربية"
+  },
+  "footer": {
+    "description": "Tensho International Sports Academy. Connecter les artistes martiaux à travers le monde.",
+    "titles": {
+      "navigation": "Navigation",
+      "resources": "Ressources",
+      "contact": "Contact"
+    },
+    "navigation": {
+      "home": "Accueil",
+      "about": "À propos",
+      "affiliation": "Affiliation",
+      "clubRegistration": "Inscription du Club",
+      "events": "Événements",
+      "blogs": "Blogs"
+    },
+    "resources": {
+      "studentPortal": "Portail Étudiant",
+      "certifications": "Certifications",
+      "beltRankings": "Classements de Ceinture",
+      "membership": "Adhésion"
+    },
+    "legal": {
+      "privacy": "Politique de Confidentialité",
+      "terms": "Conditions d'Utilisation",
+      "cookie": "Politique des Cookies"
+    },
+    "copyright": "© 1997-2026 Tensho International Sports Academy. Tous droits réservés."
   }
 }

@@ -3,30 +3,33 @@
 import { motion } from "framer-motion"
 import { Swords, Facebook, Instagram, Youtube, Twitter, Mail, MapPin, Phone } from "lucide-react"
 import Link from "next/link"
+import { useTranslation } from "react-i18next"
 
 const footerLinks = {
   navigation: [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Affiliation", href: "#affiliation" },
-    { label: "Club Registration", href: "#registration" },
-    { label: "Events", href: "#events" },
-    { label: "Blogs", href: "#blogs" },
+    { key: "footer.navigation.home", href: "#home" },
+    { key: "footer.navigation.about", href: "#about" },
+    { key: "footer.navigation.affiliation", href: "#affiliation" },
+    { key: "footer.navigation.clubRegistration", href: "#registration" },
+    { key: "footer.navigation.events", href: "#events" },
+    { key: "footer.navigation.blogs", href: "#blogs" },
   ],
   resources: [
-    { label: "Student Portal", href: "#" },
-    { label: "Certifications", href: "#" },
-    { label: "Belt Rankings", href: "#" },
-    { label: "Membership", href: "#registration" },
+    { key: "footer.resources.studentPortal", href: "#" },
+    { key: "footer.resources.certifications", href: "#" },
+    { key: "footer.resources.beltRankings", href: "#" },
+    { key: "footer.resources.membership", href: "#registration" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
+    { key: "footer.legal.privacy", href: "#" },
+    { key: "footer.legal.terms", href: "#" },
+    { key: "footer.legal.cookie", href: "#" },
   ],
 }
 
 export function Footer() {
+  const { t } = useTranslation("common")
+
   const scrollToSection = (href: string) => {
     if (href.startsWith("#")) {
       const element = document.getElementById(href.replace("#", ""))
@@ -50,11 +53,11 @@ export function Footer() {
                   className="h-full w-full object-contain"
                 />
               </div>
-              <span className="font-serif text-2xl font-bold text-text-light">TENSHO</span>
-            </motion.div>
-            <p className="text-text-muted text-sm leading-relaxed mb-6">
-              Tensho International Sports Academy. Connecting Martial Artists Across the Globe.
-            </p>
+            <span className="font-serif text-2xl font-bold text-text-light">TENSHO</span>
+          </motion.div>
+          <p className="text-text-muted text-sm leading-relaxed mb-6">
+            {t("footer.description")}
+          </p>
             <div className="flex gap-3">
               {[
                 { icon: Facebook, href: "#", label: "Facebook" },
@@ -106,15 +109,15 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div>
-            <h4 className="font-serif font-semibold text-text-light mb-4">Navigation</h4>
+            <h4 className="font-serif font-semibold text-text-light mb-4">{t("footer.titles.navigation")}</h4>
             <ul className="space-y-3">
               {footerLinks.navigation.map((link) => (
-                <li key={link.label}>
+                <li key={link.key}>
                   <button
                     onClick={() => scrollToSection(link.href)}
                     className="text-text-muted hover:text-brand-red transition-colors text-sm"
                   >
-                    {link.label}
+                    {t(link.key)}
                   </button>
                 </li>
               ))}
@@ -123,15 +126,15 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="font-serif font-semibold text-text-light mb-4">Resources</h4>
+            <h4 className="font-serif font-semibold text-text-light mb-4">{t("footer.titles.resources")}</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
-                <li key={link.label}>
+                <li key={link.key}>
                   <button
                     onClick={() => scrollToSection(link.href)}
                     className="text-text-muted hover:text-brand-red transition-colors text-sm"
                   >
-                    {link.label}
+                    {t(link.key)}
                   </button>
                 </li>
               ))}
@@ -140,7 +143,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-serif font-semibold text-text-light mb-4">Contact</h4>
+            <h4 className="font-serif font-semibold text-text-light mb-4">{t("footer.titles.contact")}</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-text-muted text-sm">
                 <Mail className="w-4 h-4 text-brand-red flex-shrink-0" />
@@ -161,16 +164,16 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-text-muted text-sm">
-            © 1997-2026 Tensho International Sports Academy. All rights reserved.
+            {t("footer.copyright")}
           </p>
           <div className="flex items-center gap-4">
             {footerLinks.legal.map((link) => (
               <Link
-                key={link.label}
+                key={link.key}
                 href={link.href}
                 className="text-text-muted hover:text-brand-red text-xs transition-colors"
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
           </div>

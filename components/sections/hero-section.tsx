@@ -171,7 +171,7 @@ export function HeroSection() {
                   animate={{ boxShadow: ["0 0 10px rgba(212, 175, 55, 0.5)", "0 0 20px rgba(208, 28, 28, 0.3)", "0 0 10px rgba(212, 175, 55, 0.5)"] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 />
-                The World's Premier Martial Arts Excellence Network
+                {t('hero.badge')}
               </span>
             </motion.div>
           </div>
@@ -187,7 +187,7 @@ export function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Dominance Through Dedication
+            {t('hero.title')}
           </motion.span>
         </motion.h1>
 
@@ -196,7 +196,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="mt-6 text-lg sm:text-xl text-text-muted max-w-2xl mx-auto text-pretty"
         >
-          Shaping the Next Generation of Martial Artists. Rise, Lead, and Inspire with Tensho International.
+          {t('hero.subtitle')}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -225,10 +225,10 @@ export function HeroSection() {
           className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl mx-auto"
         >
           {[
-            { value: "28+", label: "Years of Excellence" },
-            { value: "60+", label: "Registered Clubs" },
-            { value: "50+", label: "Countries" },
-            { value: "10K+", label: "Trained Students" },
+            { value: "28+", label: t('hero.stats.years') },
+            { value: "60+", label: t('hero.stats.clubs') },
+            { value: "50+", label: t('hero.stats.countries') },
+            { value: "10K+", label: t('hero.stats.students') },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -285,7 +285,7 @@ export function HeroSection() {
           transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
           className="flex flex-col items-center gap-2 text-text-muted hover:text-text-light transition-colors"
         >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
+          <span className="text-xs uppercase tracking-widest">{t('hero.scroll')}</span>
           <ChevronDown className="w-5 h-5" />
         </motion.button>
       </motion.div>

@@ -4,7 +4,7 @@ import { useRef } from "react"
 import Link from "next/link"
 import { motion, useInView } from "framer-motion"
 import { Medal, Instagram, Facebook } from "lucide-react"
-import { TiltCard } from "@/components/tilt-card"
+import { TiltCard } from "@/components/animations/tilt-card"
 
 const masters = [
   {

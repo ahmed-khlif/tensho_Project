@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
@@ -12,14 +13,8 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Swords, Eye, EyeOff, Mail, Lock, User, Phone, Calendar, Trophy, ChevronLeft, ChevronRight, Check } from "lucide-react"
 
-const steps = [
-  { id: 1, title: "Personal Info", icon: User },
-  { id: 2, title: "Account Setup", icon: Lock },
-  { id: 3, title: "Experience", icon: Trophy },
-  { id: 4, title: "Confirmation", icon: Check }
-]
-
 export default function RegisterPage() {
+  const { t } = useTranslation("common")
   const [currentStep, setCurrentStep] = useState(1)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -61,8 +56,17 @@ export default function RegisterPage() {
     console.log("Registration attempt:", formData)
   }
 
+  const steps = [
+    { id: 1, title: t("auth.register.steps.personalInfo"), icon: User },
+    { id: 2, title: t("auth.register.steps.accountSetup"), icon: Lock },
+    { id: 3, title: t("auth.register.steps.experience"), icon: Trophy },
+    { id: 4, title: t("auth.register.steps.confirmation"), icon: Check }
+  ]
+
+  const stepProgress = (currentStep / steps.length) * 100
+
   return (
-    <main className="min-h-screen bg-brand-black relative overflow-hidden">
+    <main className="min-h-screen bg-background relative overflow-hidden">
       <Navbar />
 
       {/* Background Elements */}
@@ -111,7 +115,7 @@ export default function RegisterPage() {
             </div>
             <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-brand-red/20 to-brand-gold/20 border border-brand-gold/30 text-brand-gold text-sm font-medium shadow-lg">
               <Swords className="w-5 h-5" />
-              Join the Elite Ranks
+              {t("auth.register.joinEliteRanks")}
             </span>
           </motion.div>
           <motion.h1
@@ -120,7 +124,7 @@ export default function RegisterPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6 leading-tight"
           >
-            Begin Your <span className="text-brand-red">Legend</span>
+            {t("auth.register.title")} <span className="text-brand-red">{t("auth.register.titleHighlight")}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -128,7 +132,7 @@ export default function RegisterPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-text-muted text-lg max-w-2xl mx-auto"
           >
-            Join Tensho International and step into a world where discipline meets destiny. Transform your potential into mastery.
+            {t("auth.register.subtitle")}
           </motion.p>
 
           {/* Stats */}
@@ -139,9 +143,9 @@ export default function RegisterPage() {
             className="flex justify-center gap-8 mt-12"
           >
             {[
-              { value: "10K+", label: "Active Members" },
-              { value: "50+", label: "Countries" },
-              { value: "28+", label: "Years Excellence" },
+              { value: "10K+", label: t("auth.register.stats.activeMembers") },
+              { value: "50+", label: t("auth.register.stats.countries") },
+              { value: "28+", label: t("auth.register.stats.yearsExcellence") },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -158,21 +162,32 @@ export default function RegisterPage() {
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-4 py-16">
+      <div className="max-w-5xl mx-auto px-4 py-10 sm:py-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="relative bg-gradient-to-br from-brand-dark-grey/90 to-brand-black/90 rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-sm shadow-2xl"
+          className="relative bg-gradient-to-br from-brand-dark-grey/90 to-brand-black/90 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border border-white/10 backdrop-blur-sm shadow-2xl"
         >
           {/* Decorative Border */}
           <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-brand-red/20 via-transparent to-brand-gold/20 opacity-50" />
           <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-br from-brand-black to-brand-dark-grey" />
 
           <div className="relative z-10">
+            <div className="mb-6 sm:mb-8">
+              <div className="h-2 rounded-full bg-white/10 overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-brand-gold to-brand-red"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${stepProgress}%` }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                />
+              </div>
+            </div>
+
             {/* Stepper Header */}
             <div className="mb-8">
-              <div className="flex items-center justify-center mb-8">
+              <div className="hidden md:flex items-center justify-center mb-8">
                 {steps.map((step, index) => {
                   const Icon = step.icon
                   const isCompleted = currentStep > step.id
@@ -219,12 +234,20 @@ export default function RegisterPage() {
                   )
                 })}
               </div>
+
+              <div className="md:hidden flex items-center justify-between mb-6">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-sm font-semibold">
+                  {steps.find((s) => s.id === currentStep)?.title}
+                </div>
+                <span className="text-xs text-text-muted">{currentStep}/{steps.length}</span>
+              </div>
+
               <div className="text-center">
                 <h2 className="text-xl font-bold text-text-light mb-2">
                   {steps.find(s => s.id === currentStep)?.title}
                 </h2>
                 <p className="text-text-muted">
-                  Step {currentStep} of {steps.length}
+                  {t("auth.register.stepOf", { current: currentStep, total: steps.length })}
                 </p>
               </div>
             </div>
@@ -245,21 +268,21 @@ export default function RegisterPage() {
                     <div className="space-y-6">
                       <div className="text-center mb-6">
                         <User className="w-12 h-12 text-brand-gold mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-text-light mb-2">Personal Information</h3>
-                        <p className="text-text-muted">Tell us about yourself to get started</p>
+                        <h3 className="text-lg font-semibold text-text-light mb-2">{t("auth.register.steps.personalInfo")}</h3>
+                        <p className="text-text-muted">{t("auth.register.stepDescriptions.personalInfo")}</p>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <Label htmlFor="firstName" className="text-text-light font-medium">
-                            First Name
+                            {t("auth.register.firstName")}
                           </Label>
                           <div className="relative">
                             <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                             <Input
                               id="firstName"
                               type="text"
-                              placeholder="John"
+                              placeholder={t("auth.register.placeholders.firstName")}
                               value={formData.firstName}
                               onChange={(e) => handleInputChange("firstName", e.target.value)}
                               className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
@@ -269,14 +292,14 @@ export default function RegisterPage() {
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="lastName" className="text-text-light font-medium">
-                            Last Name
+                            {t("auth.register.lastName")}
                           </Label>
                           <div className="relative">
                             <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                             <Input
                               id="lastName"
                               type="text"
-                              placeholder="Doe"
+                              placeholder={t("auth.register.placeholders.lastName")}
                               value={formData.lastName}
                               onChange={(e) => handleInputChange("lastName", e.target.value)}
                               className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
@@ -288,14 +311,14 @@ export default function RegisterPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-text-light font-medium">
-                          Email Address
+                          {t("auth.register.email")}
                         </Label>
                         <div className="relative">
                           <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                           <Input
                             id="email"
                             type="email"
-                            placeholder="your@email.com"
+                            placeholder={t("auth.register.placeholders.email")}
                             value={formData.email}
                             onChange={(e) => handleInputChange("email", e.target.value)}
                             className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
@@ -306,14 +329,14 @@ export default function RegisterPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-text-light font-medium">
-                          Phone Number
+                          {t("auth.register.phone")}
                         </Label>
                         <div className="relative">
                           <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                           <Input
                             id="phone"
                             type="tel"
-                            placeholder="+1 (555) 123-4567"
+                            placeholder={t("auth.register.placeholders.phone")}
                             value={formData.phone}
                             onChange={(e) => handleInputChange("phone", e.target.value)}
                             className="pl-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
@@ -328,20 +351,20 @@ export default function RegisterPage() {
                     <div className="space-y-6">
                       <div className="text-center mb-6">
                         <Lock className="w-12 h-12 text-brand-gold mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-text-light mb-2">Account Setup</h3>
-                        <p className="text-text-muted">Create your secure account credentials</p>
+                        <h3 className="text-lg font-semibold text-text-light mb-2">{t("auth.register.steps.accountSetup")}</h3>
+                        <p className="text-text-muted">{t("auth.register.stepDescriptions.accountSetup")}</p>
                       </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="password" className="text-text-light font-medium">
-                          Password
+                          {t("auth.register.password")}
                         </Label>
                         <div className="relative">
                           <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                           <Input
                             id="password"
                             type={showPassword ? "text" : "password"}
-                            placeholder="Create a strong password"
+                            placeholder={t("auth.register.placeholders.password")}
                             value={formData.password}
                             onChange={(e) => handleInputChange("password", e.target.value)}
                             className="pl-12 pr-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
@@ -359,14 +382,14 @@ export default function RegisterPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="confirmPassword" className="text-text-light font-medium">
-                          Confirm Password
+                          {t("auth.register.confirmPassword")}
                         </Label>
                         <div className="relative">
                           <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                           <Input
                             id="confirmPassword"
                             type={showConfirmPassword ? "text" : "password"}
-                            placeholder="Confirm your password"
+                            placeholder={t("auth.register.placeholders.confirmPassword")}
                             value={formData.confirmPassword}
                             onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
                             className="pl-12 pr-12 bg-brand-black/50 border-white/10 text-text-light placeholder:text-text-muted focus:border-brand-gold h-12"
@@ -389,14 +412,14 @@ export default function RegisterPage() {
                     <div className="space-y-6">
                       <div className="text-center mb-6">
                         <Trophy className="w-12 h-12 text-brand-gold mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-text-light mb-2">Martial Arts Experience</h3>
-                        <p className="text-text-muted">Share your background to personalize your journey</p>
+                        <h3 className="text-lg font-semibold text-text-light mb-2">{t("auth.register.steps.experience")}</h3>
+                        <p className="text-text-muted">{t("auth.register.stepDescriptions.experience")}</p>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <Label htmlFor="dateOfBirth" className="text-text-light font-medium">
-                            Date of Birth
+                            {t("auth.register.dateOfBirth")}
                           </Label>
                           <div className="relative">
                             <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
@@ -411,7 +434,7 @@ export default function RegisterPage() {
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="experience" className="text-text-light font-medium">
-                            Experience Level
+                            {t("auth.register.experienceLevel")}
                           </Label>
                           <div className="relative">
                             <Trophy className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
@@ -421,11 +444,11 @@ export default function RegisterPage() {
                               onChange={(e) => handleInputChange("experience", e.target.value)}
                               className="w-full pl-12 pr-4 py-3 bg-brand-black/50 border border-white/10 rounded-md text-text-light focus:border-brand-gold focus:outline-none h-12"
                             >
-                              <option value="">Select level</option>
-                              <option value="beginner">Beginner</option>
-                              <option value="intermediate">Intermediate</option>
-                              <option value="advanced">Advanced</option>
-                              <option value="black-belt">Black Belt</option>
+                              <option value="">{t("auth.register.selectLevel")}</option>
+                              <option value="beginner">{t("auth.register.levels.beginner")}</option>
+                              <option value="intermediate">{t("auth.register.levels.intermediate")}</option>
+                              <option value="advanced">{t("auth.register.levels.advanced")}</option>
+                              <option value="black-belt">{t("auth.register.levels.blackBelt")}</option>
                             </select>
                           </div>
                         </div>
@@ -438,8 +461,8 @@ export default function RegisterPage() {
                     <div className="space-y-6">
                       <div className="text-center mb-6">
                         <Check className="w-12 h-12 text-brand-gold mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-text-light mb-2">Final Confirmation</h3>
-                        <p className="text-text-muted">Review and confirm your registration</p>
+                        <h3 className="text-lg font-semibold text-text-light mb-2">{t("auth.register.steps.confirmation")}</h3>
+                        <p className="text-text-muted">{t("auth.register.stepDescriptions.confirmation")}</p>
                       </div>
 
                       <div className="space-y-4">
@@ -451,13 +474,13 @@ export default function RegisterPage() {
                             className="mt-1 border-white/10 data-[state=checked]:bg-brand-gold data-[state=checked]:border-brand-gold"
                           />
                           <Label htmlFor="terms" className="text-sm text-text-muted leading-relaxed">
-                            I agree to the{" "}
+                            {t("auth.register.iAgree")}{" "}
                             <Link href="#" className="text-brand-gold hover:text-brand-gold/80">
-                              Terms of Service
+                              {t("auth.register.termsOfService")}
                             </Link>{" "}
-                            and{" "}
+                            {t("auth.register.and")}{" "}
                             <Link href="#" className="text-brand-gold hover:text-brand-gold/80">
-                              Privacy Policy
+                              {t("auth.register.privacyPolicy")}
                             </Link>
                           </Label>
                         </div>
@@ -470,7 +493,7 @@ export default function RegisterPage() {
                             className="mt-1 border-white/10 data-[state=checked]:bg-brand-gold data-[state=checked]:border-brand-gold"
                           />
                           <Label htmlFor="newsletter" className="text-sm text-text-muted">
-                            Subscribe to our newsletter for training tips and event updates
+                            {t("auth.register.newsletterLong")}
                           </Label>
                         </div>
                       </div>
@@ -480,19 +503,19 @@ export default function RegisterPage() {
               </AnimatePresence>
 
               {/* Navigation Buttons */}
-              <div className="flex justify-between items-center mt-8 pt-6 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0 sm:items-center mt-8 pt-6 border-t border-white/10">
                 <Button
                   type="button"
                   onClick={prevStep}
                   disabled={currentStep === 1}
                   variant="outline"
-                  className="border-white/10 text-text-muted hover:text-text-light hover:bg-white/5 disabled:opacity-50"
+                  className="w-full sm:w-auto border-white/10 text-text-muted hover:text-text-light hover:bg-white/5 disabled:opacity-50"
                 >
                   <ChevronLeft className="w-4 h-4 mr-2" />
-                  Previous
+                  {t("auth.register.previous")}
                 </Button>
 
-                <div className="flex space-x-2">
+                <div className="flex justify-center space-x-2 order-first sm:order-none">
                   {steps.map((step) => (
                     <motion.div
                       key={step.id}
@@ -508,20 +531,20 @@ export default function RegisterPage() {
                   <Button
                     type="button"
                     onClick={nextStep}
-                    className="bg-brand-gold hover:bg-brand-gold/90 text-brand-black"
+                    className="w-full sm:w-auto bg-brand-gold hover:bg-brand-gold/90 text-brand-black"
                   >
-                    Next
+                    {t("auth.register.next")}
                     <ChevronRight className="w-4 h-4 ml-2" />
                   </Button>
                 ) : (
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button
                       type="submit"
-                      className="bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red/70 text-text-light font-bold px-8 py-3 shadow-lg shadow-brand-red/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full sm:w-auto bg-gradient-to-r from-brand-red to-brand-red/80 hover:from-brand-red/90 hover:to-brand-red/70 text-text-light font-bold px-8 py-3 shadow-lg shadow-brand-red/25 disabled:opacity-50 disabled:cursor-not-allowed"
                       disabled={!formData.agreeToTerms}
                     >
                       <Swords className="w-5 h-5 mr-2" />
-                      Begin Your Martial Arts Journey
+                      {t("auth.register.submitJourney")}
                     </Button>
                   </motion.div>
                 )}
@@ -529,7 +552,7 @@ export default function RegisterPage() {
 
               {currentStep === steps.length && !formData.agreeToTerms && (
                 <p className="text-sm text-brand-gold text-center mt-4">
-                  Please accept the terms to complete registration
+                  {t("auth.register.acceptTermsWarning")}
                 </p>
               )}
             </form>
@@ -548,7 +571,7 @@ export default function RegisterPage() {
               <div className="w-full bg-white/10" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-brand-dark-grey px-2 text-text-muted">Or register with</span>
+              <span className="bg-brand-dark-grey px-2 text-text-muted">{t("auth.register.social")}</span>
             </div>
           </div>
 
@@ -592,12 +615,12 @@ export default function RegisterPage() {
         {/* Sign In Link */}
         <div className="mt-8 text-center">
           <p className="text-text-muted">
-            Already have an account?{" "}
+            {t("auth.register.alreadyHaveAccount")}{" "}
             <Link
               href="/login"
               className="text-brand-gold hover:text-brand-gold/80 font-medium transition-colors"
             >
-              Sign in here
+              {t("auth.register.signInHere")}
             </Link>
           </p>
         </div>
@@ -610,37 +633,37 @@ export default function RegisterPage() {
           className="mt-16"
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-text-light mb-4">Your Path to Mastery</h3>
-            <p className="text-text-muted">Join a legacy of warriors who transformed their lives through discipline and dedication</p>
+            <h3 className="text-2xl font-bold text-text-light mb-4">{t("auth.register.pathToMastery.title")}</h3>
+            <p className="text-text-muted">{t("auth.register.pathToMastery.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Trophy,
-                title: "Free Trial Class",
-                description: "Experience authentic martial arts training",
+                title: t("auth.register.benefits.freeTrial.title"),
+                description: t("auth.register.benefits.freeTrial.description"),
                 color: "from-yellow-500 to-yellow-600",
                 bgColor: "bg-yellow-500/10"
               },
               {
                 icon: User,
-                title: "Personal Dashboard",
-                description: "Track your journey and achievements",
+                title: t("auth.register.benefits.personalDashboard.title"),
+                description: t("auth.register.benefits.personalDashboard.description"),
                 color: "from-blue-500 to-blue-600",
                 bgColor: "bg-blue-500/10"
               },
               {
                 icon: Swords,
-                title: "Master Instruction",
-                description: "Learn from legendary martial artists",
+                title: t("auth.register.benefits.masterInstruction.title"),
+                description: t("auth.register.benefits.masterInstruction.description"),
                 color: "from-red-500 to-red-600",
                 bgColor: "bg-red-500/10"
               },
               {
                 icon: Calendar,
-                title: "Event Access",
-                description: "Exclusive tournaments and seminars",
+                title: t("auth.register.benefits.eventAccess.title"),
+                description: t("auth.register.benefits.eventAccess.description"),
                 color: "from-purple-500 to-purple-600",
                 bgColor: "bg-purple-500/10"
               }
@@ -675,8 +698,8 @@ export default function RegisterPage() {
             className="mt-12 bg-gradient-to-r from-brand-black/50 to-brand-dark-grey/50 rounded-3xl p-8 border border-white/5"
           >
             <div className="text-center mb-6">
-              <h4 className="text-xl font-bold text-text-light mb-2">Success Stories</h4>
-              <p className="text-text-muted">Real transformations from our community</p>
+              <h4 className="text-xl font-bold text-text-light mb-2">{t("auth.register.successStories.title")}</h4>
+              <p className="text-text-muted">{t("auth.register.successStories.subtitle")}</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[

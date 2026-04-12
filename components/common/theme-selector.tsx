@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
@@ -34,8 +35,18 @@ const themes = [
 
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  const currentTheme = themes.find(t => t.id === theme) || themes[0]
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const currentTheme = useMemo(() => {
+    if (!mounted) {
+      return themes[2]
+    }
+    return themes.find(t => t.id === theme) || themes[2]
+  }, [mounted, theme])
 
   return (
     <DropdownMenu>
