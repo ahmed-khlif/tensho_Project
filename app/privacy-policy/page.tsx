@@ -5,7 +5,12 @@ import { Footer } from "@/components/layout/footer"
 import { useTranslation } from 'react-i18next'
 
 export default function PrivacyPolicy() {
-  const { t } = useTranslation('common')
+  const { t, i18n } = useTranslation('common')
+
+  // Debug logging
+  console.log('Current language:', i18n.language)
+  console.log('Privacy title:', t('privacy.title'))
+  console.log('Available languages:', i18n.languages)
 
   return (
     <div className="min-h-screen bg-background">
