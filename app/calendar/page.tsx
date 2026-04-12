@@ -24,11 +24,11 @@ import {
 } from "lucide-react"
 
 const eventTypeConfig = [
-  { id: "all", labelKey: "pages.calendar.filters.all", color: "bg-gray-500", icon: CalendarIcon },
-  { id: "training", labelKey: "pages.calendar.filters.training", color: "bg-blue-500", icon: Users },
-  { id: "competition", labelKey: "pages.calendar.filters.competition", color: "bg-red-500", icon: Trophy },
-  { id: "graduation", labelKey: "pages.calendar.filters.graduation", color: "bg-green-500", icon: GraduationCap },
-  { id: "seminar", labelKey: "pages.calendar.filters.seminar", color: "bg-purple-500", icon: Camera },
+  { id: "all", labelKey: "pages.calendar.filters.all", color: "bg-brand-dark-grey", icon: CalendarIcon },
+  { id: "training", labelKey: "pages.calendar.filters.training", color: "bg-brand-blue", icon: Users },
+  { id: "competition", labelKey: "pages.calendar.filters.competition", color: "bg-brand-red", icon: Trophy },
+  { id: "graduation", labelKey: "pages.calendar.filters.graduation", color: "bg-brand-gold", icon: GraduationCap },
+  { id: "seminar", labelKey: "pages.calendar.filters.seminar", color: "bg-brand-red", icon: Camera },
 ]
 
 const calendarEvents = [
