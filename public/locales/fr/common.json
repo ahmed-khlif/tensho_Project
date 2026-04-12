@@ -312,6 +312,59 @@
       "goHome": "Accueil",
       "tryAgain": "Réessayer"
     },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "lastUpdated": "Dernière mise à jour: {{date}}",
+      "introduction": {
+        "title": "Introduction",
+        "content": "Tensho International Sports Academy (« nous », « notre » ou « nos ») respecte votre vie privée et s'engage à protéger vos informations personnelles. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous visitez notre site web ou utilisez nos services."
+      },
+      "collection": {
+        "title": "Informations que nous collectons",
+        "personal": {
+          "title": "Informations Personnelles",
+          "content": "Nous pouvons collecter des informations personnelles que vous nous fournissez directement, telles que votre nom, adresse e-mail, numéro de téléphone, et toute autre information que vous choisissez de fournir lors de l'inscription à nos services ou de nous contacter."
+        },
+        "automatic": {
+          "title": "Informations collectées automatiquement",
+          "content": "Nous collectons automatiquement certaines informations lorsque vous visitez notre site web, y compris votre adresse IP, type de navigateur, système d'exploitation, URL de référence, et comportement de navigation. Nous utilisons des cookies et des technologies similaires pour améliorer votre expérience."
+        }
+      },
+      "use": {
+        "title": "Comment nous utilisons vos informations",
+        "1": "Fournir et maintenir nos services",
+        "2": "Communiquer avec vous au sujet de nos services",
+        "3": "Améliorer notre site web et nos services",
+        "4": "Se conformer aux obligations légales",
+        "5": "Protéger nos droits et prévenir la fraude"
+      },
+      "sharing": {
+        "title": "Partage d'informations",
+        "content": "Nous ne vendons, n'échangeons ni ne transférons autrement vos informations personnelles à des tiers sans votre consentement, sauf comme décrit dans cette politique ou comme requis par la loi."
+      },
+      "security": {
+        "title": "Sécurité des données",
+        "content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles contre l'accès, l'altération, la divulgation ou la destruction non autorisés."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Nous utilisons des cookies pour améliorer votre expérience de navigation. Vous pouvez contrôler les paramètres des cookies via les préférences de votre navigateur."
+      },
+      "rights": {
+        "title": "Vos droits",
+        "content": "Selon votre localisation, vous pouvez avoir certains droits concernant vos informations personnelles, y compris:",
+        "1": "Accès à vos informations personnelles",
+        "2": "Correction d'informations inexactes",
+        "3": "Suppression de vos informations personnelles",
+        "4": "Restriction du traitement",
+        "5": "Portabilité des données",
+        "6": "Objection au traitement"
+      },
+      "contact": {
+        "title": "Contactez-nous",
+        "content": "Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter à privacy@tenshoacademy.com."
+      }
+    },
     "contact": {
       "whatsapp": "Contacter via WhatsApp"
     },
