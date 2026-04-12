@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
@@ -27,12 +28,12 @@ import {
   X
 } from "lucide-react"
 
-const productCategories = [
-  { id: "all", label: "All Products", icon: ShoppingCart },
-  { id: "apparel", label: "Apparel", icon: Shirt },
-  { id: "equipment", label: "Equipment", icon: Dumbbell },
-  { id: "accessories", label: "Accessories", icon: Shield },
-  { id: "memorabilia", label: "Memorabilia", icon: Award },
+const productCategoryConfig = [
+  { id: "all", labelKey: "pages.shop.categories.all", icon: ShoppingCart },
+  { id: "apparel", labelKey: "pages.shop.categories.apparel", icon: Shirt },
+  { id: "equipment", labelKey: "pages.shop.categories.equipment", icon: Dumbbell },
+  { id: "accessories", labelKey: "pages.shop.categories.accessories", icon: Shield },
+  { id: "memorabilia", labelKey: "pages.shop.categories.memorabilia", icon: Award },
 ]
 
 const products = [
@@ -172,9 +173,15 @@ const products = [
 ]
 
 export default function ShopPage() {
+  const { t } = useTranslation("common")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null)
+
+  const productCategories = productCategoryConfig.map((category) => ({
+    ...category,
+    label: t(category.labelKey),
+  }))
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
@@ -199,7 +206,7 @@ export default function ShopPage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-sm font-medium mb-6"
             >
               <ShoppingCart className="w-4 h-4" />
-              Official Store
+              {t("pages.shop.badge")}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -207,7 +214,7 @@ export default function ShopPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
             >
-              Tensho <span className="text-brand-red">Store</span>
+              {t("pages.shop.title")} <span className="text-brand-red">{t("pages.shop.titleHighlight")}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -215,7 +222,7 @@ export default function ShopPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-muted text-lg max-w-2xl mx-auto"
             >
-              Equip yourself with premium martial arts gear, apparel, and memorabilia. Support your journey with official Tensho products.
+              {t("pages.shop.subtitle")}
             </motion.p>
           </div>
         </div>
@@ -233,15 +240,15 @@ export default function ShopPage() {
           <div className="relative z-10 text-center">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Sparkles className="w-8 h-8 text-brand-gold" />
-              <h2 className="text-2xl font-bold text-text-light">Member Exclusive</h2>
+              <h2 className="text-2xl font-bold text-text-light">{t("pages.shop.banner.title")}</h2>
               <Sparkles className="w-8 h-8 text-brand-gold" />
             </div>
-            <p className="text-text-muted mb-4">15% off all products for Tensho members</p>
+            <p className="text-text-muted mb-4">{t("pages.shop.banner.subtitle")}</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <span className="text-3xl font-bold text-brand-gold">Use code: TENSHO15</span>
+              <span className="text-3xl font-bold text-brand-gold">{t("pages.shop.banner.code")}</span>
               <Link href="/membership">
                 <Button className="bg-brand-gold hover:bg-brand-gold/90 text-brand-black font-bold">
-                  Join Now
+                  {t("pages.shop.banner.cta")}
                 </Button>
               </Link>
             </div>
@@ -261,7 +268,7 @@ export default function ShopPage() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder={t("pages.shop.searchPlaceholder")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-12 pr-4 py-4 bg-brand-black/50 border border-white/10 rounded-xl text-text-light placeholder:text-text-muted focus:border-brand-gold focus:outline-none text-lg"
@@ -424,15 +431,15 @@ export default function ShopPage() {
             animate={{ opacity: 1 }}
             className="flex items-center justify-between mb-8 text-text-muted"
           >
-            <span>Showing {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''}</span>
+            <span>{t("pages.shop.showingProducts", { count: filteredProducts.length })}</span>
             <div className="flex items-center gap-4">
-              <span className="text-sm">Sort by:</span>
+              <span className="text-sm">{t("pages.shop.sortBy")}</span>
               <select className="bg-brand-dark-grey/50 border border-white/10 rounded-lg px-3 py-1 text-text-light text-sm focus:border-brand-gold focus:outline-none">
-                <option>Featured</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-                <option>Rating</option>
-                <option>Newest</option>
+                <option>{t("pages.shop.sort.featured")}</option>
+                <option>{t("pages.shop.sort.priceLowToHigh")}</option>
+                <option>{t("pages.shop.sort.priceHighToLow")}</option>
+                <option>{t("pages.shop.sort.rating")}</option>
+                <option>{t("pages.shop.sort.newest")}</option>
               </select>
             </div>
           </motion.div>
@@ -448,9 +455,9 @@ export default function ShopPage() {
             <div className="w-24 h-24 bg-brand-dark-grey/50 rounded-full flex items-center justify-center mx-auto mb-6">
               <ShoppingCart className="w-12 h-12 text-text-muted" />
             </div>
-            <h3 className="text-2xl font-bold text-text-light mb-3">No products found</h3>
+            <h3 className="text-2xl font-bold text-text-light mb-3">{t("pages.shop.emptyTitle")}</h3>
             <p className="text-text-muted mb-6 max-w-md mx-auto">
-              We couldn't find any products matching your search. Try adjusting your filters or search terms.
+              {t("pages.shop.emptyDescription")}
             </p>
             <Button
               onClick={() => {
@@ -459,7 +466,7 @@ export default function ShopPage() {
               }}
               className="bg-brand-red hover:bg-brand-red/90"
             >
-              Clear Filters
+              {t("pages.shop.clearFilters")}
             </Button>
           </motion.div>
         )}
@@ -472,18 +479,18 @@ export default function ShopPage() {
           className="mt-20 bg-gradient-to-r from-brand-red/20 to-brand-gold/20 rounded-3xl p-8 border border-white/5 text-center"
         >
           <Crown className="w-12 h-12 text-brand-gold mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-text-light mb-4">Exclusive Member Pricing</h3>
+          <h3 className="text-2xl font-bold text-text-light mb-4">{t("pages.shop.newsletter.title")}</h3>
           <p className="text-text-muted mb-6 max-w-2xl mx-auto">
-            Join Tensho today and get 15% off all merchandise, plus access to member-exclusive products and early access to new releases.
+            {t("pages.shop.newsletter.subtitle")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/membership">
               <Button className="bg-brand-gold hover:bg-brand-gold/90 text-brand-black font-bold px-8 py-3">
-                Become a Member
+                {t("pages.shop.newsletter.becomeMember")}
               </Button>
             </Link>
             <Button variant="outline" className="border-white/10 text-text-light hover:bg-white/5 px-8 py-3">
-              Learn More
+              {t("pages.shop.newsletter.learnMore")}
             </Button>
           </div>
         </motion.div>

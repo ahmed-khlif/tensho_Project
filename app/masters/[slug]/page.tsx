@@ -4,6 +4,7 @@ import { useParams } from "next/navigation"
 import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
@@ -57,6 +58,7 @@ const masterDetails = {
 }
 
 export default function MasterProfilePage() {
+  const { t } = useTranslation("common")
   const params = useParams()
   const slug = params.slug as string
   const master = masterDetails[slug as keyof typeof masterDetails]
@@ -67,9 +69,9 @@ export default function MasterProfilePage() {
       <main className="min-h-screen bg-brand-black">
         <Navbar />
         <div className="pt-32 pb-16 px-4 text-center">
-          <h1 className="text-4xl font-bold text-text-light mb-4">Master Not Found</h1>
+          <h1 className="text-4xl font-bold text-text-light mb-4">{t("pages.master.notFoundTitle")}</h1>
           <Link href="/">
-            <Button>Return Home</Button>
+            <Button>{t("pages.master.returnHome")}</Button>
           </Link>
         </div>
         <Footer />
@@ -93,7 +95,7 @@ export default function MasterProfilePage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red/10 border border-brand-red/20 text-brand-red text-sm font-medium mb-6"
             >
               <Shield className="w-4 h-4" />
-              Verified Master Profile
+              {t("pages.master.badge")}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -119,15 +121,15 @@ export default function MasterProfilePage() {
             >
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
-                <span>{master.experience} Experience</span>
+                <span>{master.experience} {t("pages.master.experience")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="w-5 h-5" />
-                <span>1000+ Students</span>
+                <span>1000+ {t("pages.master.students")}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5" />
-                <span>5.0 Rating</span>
+                <span>5.0 {t("pages.master.rating")}</span>
               </div>
             </motion.div>
           </div>
@@ -153,28 +155,28 @@ export default function MasterProfilePage() {
                   />
                 </div>
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-brand-red text-text-light px-6 py-2 rounded-full text-sm font-bold whitespace-nowrap shadow-lg">
-                  {master.experience} Experience
+                  {master.experience} {t("pages.master.experience")}
                 </div>
               </div>
 
               {/* Quick Stats */}
               <div className="bg-brand-dark-grey/50 rounded-2xl p-6 border border-white/5 backdrop-blur-sm">
-                <h3 className="text-text-light font-semibold mb-4">Quick Stats</h3>
+                <h3 className="text-text-light font-semibold mb-4">{t("pages.master.quickStats")}</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-text-muted">Dan Level</span>
+                    <span className="text-text-muted">{t("pages.master.danLevel")}</span>
                     <span className="text-brand-gold font-bold">{master.title.split(' ')[0]}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-text-muted">Students</span>
+                    <span className="text-text-muted">{t("pages.master.students")}</span>
                     <span className="text-brand-red font-bold">1000+</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-text-muted">Rating</span>
+                    <span className="text-text-muted">{t("pages.master.rating")}</span>
                     <span className="text-yellow-500 font-bold">5.0</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-text-muted">Experience</span>
+                    <span className="text-text-muted">{t("pages.master.experience")}</span>
                     <span className="text-text-light font-bold">{master.experience}</span>
                   </div>
                 </div>
@@ -183,7 +185,7 @@ export default function MasterProfilePage() {
               {/* Contact Button */}
               <div className="mt-6">
                 <Button className="w-full bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold py-3">
-                  Request Training Session
+                  {t("pages.master.requestTraining")}
                 </Button>
               </div>
             </motion.div>
@@ -198,7 +200,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Biography</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.biography")}</h2>
               <p className="text-text-muted leading-relaxed mb-6">{master.bio}</p>
               <blockquote className="border-l-4 border-brand-gold pl-6 italic text-text-light text-lg">
                 "{master.quote}"
@@ -212,7 +214,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.35 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Certifications</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.certifications")}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Dialog>
                   <DialogTrigger asChild>
@@ -224,7 +226,7 @@ export default function MasterProfilePage() {
                       />
                       <div className="absolute inset-0 bg-brand-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
                         <button className="px-4 py-2 bg-brand-red text-text-light rounded-full text-sm font-medium hover:bg-brand-red/90 transition-colors">
-                          View Certificate
+                          {t("pages.master.viewCertificate")}
                         </button>
                       </div>
                     </div>
@@ -249,7 +251,7 @@ export default function MasterProfilePage() {
                           }}
                         >
                           <Download className="w-4 h-4 mr-2" />
-                          Download PDF
+                          {t("pages.master.downloadPdf")}
                         </Button>
                       </div>
                     </div>
@@ -266,7 +268,7 @@ export default function MasterProfilePage() {
                       />
                       <div className="absolute inset-0 bg-brand-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
                         <button className="px-4 py-2 bg-brand-red text-text-light rounded-full text-sm font-medium hover:bg-brand-red/90 transition-colors">
-                          View Certificate
+                          {t("pages.master.viewCertificate")}
                         </button>
                       </div>
                     </div>
@@ -291,7 +293,7 @@ export default function MasterProfilePage() {
                           }}
                         >
                           <Download className="w-4 h-4 mr-2" />
-                          Download PDF
+                          {t("pages.master.downloadPdf")}
                         </Button>
                       </div>
                     </div>
@@ -299,7 +301,7 @@ export default function MasterProfilePage() {
                 </Dialog>
               </div>
               <p className="text-text-muted text-sm mt-4">
-                Official certificates and credentials of {master.name}.
+                {t("pages.master.certificatesDescription", { name: master.name })}
               </p>
             </motion.div>
 
@@ -310,7 +312,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Certification Ceremony</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.ceremony")}</h2>
               <div className="aspect-video rounded-xl overflow-hidden bg-brand-black">
                 <iframe
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -321,7 +323,7 @@ export default function MasterProfilePage() {
                 ></iframe>
               </div>
               <p className="text-text-muted text-sm mt-4">
-                Watch {master.name}'s official certification ceremony and demonstration.
+                {t("pages.master.ceremonyDescription", { name: master.name })}
               </p>
             </motion.div>
 
@@ -332,7 +334,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Philosophy</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.philosophy")}</h2>
               <p className="text-text-muted leading-relaxed">{master.philosophy}</p>
             </motion.div>
 
@@ -343,7 +345,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Specialties</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.specialties")}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {master.specialties.map((specialty, index) => (
                   <div key={index} className="flex items-center gap-3 text-text-muted">
@@ -361,7 +363,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Key Achievements</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.keyAchievements")}</h2>
               <div className="space-y-3">
                 {master.achievements.map((achievement, index) => (
                   <div key={index} className="flex items-center gap-3 text-text-muted">
@@ -379,7 +381,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Certifications</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.certifications")}</h2>
               <div className="space-y-3">
                 {master.certifications.map((cert, index) => (
                   <div key={index} className="flex items-center gap-3 text-text-muted">
@@ -397,7 +399,7 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Notable Students</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.notableStudents")}</h2>
               <div className="space-y-3">
                 {master.notableStudents.map((student, index) => (
                   <div key={index} className="flex items-center gap-3 text-text-muted">
@@ -416,7 +418,7 @@ export default function MasterProfilePage() {
                 transition={{ duration: 0.6, delay: 0.9 }}
                 className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
               >
-                <h2 className="text-2xl font-bold text-text-light mb-4">Publications</h2>
+                <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.publications")}</h2>
                 <div className="space-y-3">
                   {master.publications.map((pub, index) => (
                     <div key={index} className="flex items-center gap-3 text-text-muted">
@@ -435,11 +437,11 @@ export default function MasterProfilePage() {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5 backdrop-blur-sm"
             >
-              <h2 className="text-2xl font-bold text-text-light mb-4">Training Availability</h2>
+              <h2 className="text-2xl font-bold text-text-light mb-4">{t("pages.master.trainingAvailability")}</h2>
               <p className="text-text-muted mb-6">{master.contact}</p>
               <div className="flex gap-4">
                 <Button className="bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold">
-                  Schedule Session
+                  {t("pages.master.scheduleSession")}
                 </Button>
               </div>
             </motion.div>

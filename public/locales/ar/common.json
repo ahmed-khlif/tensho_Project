@@ -210,5 +210,363 @@
       "cookie": "سياسة ملفات تعريف الارتباط"
     },
     "copyright": "© 1997-2026 أكاديمية تنشو الدولية الرياضية. جميع الحقوق محفوظة."
+  },
+  "breadcrumb": {
+    "aria": "مسار التنقل",
+    "home": "الرئيسية",
+    "about": "حولنا",
+    "testimonials": "الشهادات",
+    "faq": "الأسئلة الشائعة",
+    "contact": "اتصل بنا",
+    "leadership": "القيادة",
+    "certificates": "الشهادات",
+    "programs": "البرامج",
+    "events": "الفعاليات",
+    "blogs": "المدونة",
+    "gallery": "المعرض",
+    "calendar": "التقويم",
+    "resources": "الموارد",
+    "shop": "المتجر",
+    "membership": "العضوية",
+    "dashboard": "لوحة التحكم",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "masters": "الأساتذة"
+  },
+  "pages": {
+    "blogs": {
+      "title": "مدونة الفنون",
+      "titleHighlight": "القتالية",
+      "subtitle": "رؤى وتقنيات وقصص من عالم الفنون القتالية. ابقَ مطلعاً وملهمًا في رحلتك."
+    },
+    "events": {
+      "title": "الفعاليات",
+      "titleHighlight": "القادمة",
+      "subtitle": "انضم إلينا في البطولات والندوات والجلسات الخاصة التي تجمع مجتمع الفنون القتالية."
+    },
+    "leadership": {
+      "title": "فريق",
+      "titleHighlight": "القيادة",
+      "subtitle": "تعرّف على القادة أصحاب الرؤية الذين يقودون أكاديمية تنشو الدولية الرياضية نحو التميز في تعليم الفنون القتالية والشهادات حول العالم."
+    },
+    "programs": {
+      "title": "برامج",
+      "titleHighlight": "التدريب",
+      "subtitle": "اكتشف برامج تدريب شاملة مصممة لتطوير المهارات والانضباط والشخصية عبر تقنيات تقليدية وحديثة."
+    },
+    "certificates": {
+      "title": "معرض",
+      "titleHighlight": "الشهادات",
+      "subtitle": "استكشف مجموعتنا المرموقة من الشهادات والإنجازات التي تمثل التميز والتفاني في فن تنشو."
+    },
+    "calendar": {
+      "badge": "تقويم الفعاليات",
+      "title": "الفعاليات",
+      "titleHighlight": "القادمة",
+      "subtitle": "ابقَ على اتصال مع مجتمع الفنون القتالية. اطّلع على التدريبات والبطولات والندوات والفعاليات الخاصة القادمة.",
+      "filters": {
+        "all": "كل الفعاليات",
+        "training": "تدريب",
+        "competition": "منافسة",
+        "graduation": "تخرج",
+        "seminar": "ندوة"
+      },
+      "registered": "مسجل",
+      "instructor": "المدرب",
+      "registerNow": "سجل الآن",
+      "addToCalendar": "أضف إلى التقويم",
+      "moreEvents": "+{{count}} المزيد",
+      "upcomingEvents": "الفعاليات القادمة",
+      "register": "تسجيل"
+    },
+    "gallery": {
+      "badge": "رحلة بصرية",
+      "title": "",
+      "titleHighlight": "المعرض",
+      "subtitle": "شاهد الروح والانضباط والتميز الذي يميز تنشو إنترناشونال. من جلسات التدريب إلى انتصارات البطولات، استكشف إرثنا البصري.",
+      "categories": {
+        "all": "كل الصور",
+        "training": "جلسات التدريب",
+        "competitions": "المنافسات",
+        "graduations": "حفلات التخرج",
+        "events": "الفعاليات"
+      },
+      "stats": {
+        "photosCaptured": "صور ملتقطة",
+        "eventsDocumented": "فعاليات موثقة",
+        "categories": "فئات",
+        "access": "الوصول"
+      }
+    },
+    "shop": {
+      "badge": "المتجر الرسمي",
+      "title": "متجر",
+      "titleHighlight": "تنشو",
+      "subtitle": "تجهّز بأفضل معدات الفنون القتالية والملابس والتذكارات. ادعم رحلتك بمنتجات تنشو الرسمية.",
+      "searchPlaceholder": "ابحث عن المنتجات...",
+      "showingProducts_one": "عرض {{count}} منتج",
+      "showingProducts_other": "عرض {{count}} منتجات",
+      "sortBy": "الترتيب حسب:",
+      "sort": {
+        "featured": "المميزة",
+        "priceLowToHigh": "السعر: من الأقل إلى الأعلى",
+        "priceHighToLow": "السعر: من الأعلى إلى الأقل",
+        "rating": "التقييم",
+        "newest": "الأحدث"
+      },
+      "emptyTitle": "لا توجد منتجات",
+      "emptyDescription": "لم نجد منتجات تطابق بحثك. جرّب تعديل الفلاتر أو كلمات البحث.",
+      "clearFilters": "مسح الفلاتر",
+      "categories": {
+        "all": "كل المنتجات",
+        "apparel": "الملابس",
+        "equipment": "المعدات",
+        "accessories": "الإكسسوارات",
+        "memorabilia": "التذكارات"
+      },
+      "newsletter": {
+        "title": "أسعار حصرية للأعضاء",
+        "subtitle": "انضم إلى تنشو اليوم واحصل على خصم 15٪ على جميع المنتجات، مع وصول إلى منتجات حصرية للأعضاء ووصول مبكر للإصدارات الجديدة.",
+        "becomeMember": "كن عضواً",
+        "learnMore": "اعرف المزيد"
+      },
+      "banner": {
+        "title": "حصري للأعضاء",
+        "subtitle": "خصم 15٪ على كل المنتجات لأعضاء تنشو",
+        "code": "استخدم الكود: TENSHO15",
+        "cta": "انضم الآن"
+      }
+    },
+    "master": {
+      "notFoundTitle": "الأستاذ غير موجود",
+      "returnHome": "العودة للرئيسية",
+      "badge": "ملف أستاذ موثّق",
+      "experience": "خبرة",
+      "students": "طلاب",
+      "rating": "تقييم",
+      "quickStats": "إحصائيات سريعة",
+      "danLevel": "مستوى دان",
+      "requestTraining": "طلب جلسة تدريب",
+      "biography": "السيرة الذاتية",
+      "certifications": "الشهادات",
+      "viewCertificate": "عرض الشهادة",
+      "downloadPdf": "تنزيل PDF",
+      "certificatesDescription": "الشهادات والاعتمادات الرسمية الخاصة بـ {{name}}.",
+      "ceremony": "حفل الشهادات",
+      "ceremonyDescription": "شاهد حفل الشهادة الرسمي وعرض {{name}}.",
+      "philosophy": "الفلسفة",
+      "specialties": "التخصصات",
+      "keyAchievements": "أبرز الإنجازات",
+      "notableStudents": "طلاب مميزون",
+      "publications": "المنشورات",
+      "trainingAvailability": "توفر التدريب",
+      "scheduleSession": "جدولة جلسة"
+    },
+    "dashboard": {
+      "badge": "لوحة تحكم الطالب",
+      "title": "مرحباً بعودتك،",
+      "joined": "انضم في {{date}}",
+      "rank": "#{{rank}} من {{total}}",
+      "tabs": {
+        "overview": "نظرة عامة",
+        "progress": "التقدم",
+        "schedule": "الجدول",
+        "achievements": "الإنجازات"
+      },
+      "stats": {
+        "totalSessions": "إجمالي الجلسات",
+        "currentStreak": "السلسلة الحالية",
+        "nextBeltProgress": "التقدم نحو الحزام التالي",
+        "globalRank": "الترتيب العام",
+        "dayStreak": "سلسلة الأيام",
+        "attendance": "نسبة الحضور",
+        "avgRating": "متوسط التقييم"
+      },
+      "days_one": "{{count}} يوم",
+      "days_other": "{{count}} أيام",
+      "progressTo": "التقدم نحو {{belt}}",
+      "progressHint": "استمر في الأداء الرائع! يتبقى لك {{percent}}% للوصول إلى ترقية الحزام التالية.",
+      "upcomingSessions": "الجلسات القادمة",
+      "withInstructor": "مع {{name}}",
+      "join": "انضم",
+      "skillDevelopment": "تطوير المهارات",
+      "trainingStatistics": "إحصائيات التدريب",
+      "weeklySchedule": "الجدول الأسبوعي",
+      "bjjFundamentals": "أساسيات BJJ",
+      "levels": {
+        "advanced": "متقدم",
+        "intermediate": "متوسط",
+        "expert": "خبير"
+      },
+      "skills": {
+        "grappling": "المصارعة",
+        "striking": "الضرب",
+        "kata": "كاتا",
+        "selfDefense": "الدفاع عن النفس",
+        "fitness": "اللياقة"
+      },
+      "achievementItems": {
+        "firstStripe": {
+          "title": "الخط الأول",
+          "description": "حصلت على أول خط في الحزام"
+        },
+        "perfectAttendance": {
+          "title": "حضور مثالي",
+          "description": "30 حصة متتالية"
+        },
+        "competitionWinner": {
+          "title": "فائز بالبطولة",
+          "description": "المركز الأول في بطولة محلية"
+        },
+        "helperAward": {
+          "title": "جائزة المساعد",
+          "description": "ساعد في حصة الناشئين"
+        },
+        "techniqueMaster": {
+          "title": "إتقان التقنيات",
+          "description": "أتقن 10 تقنيات متقدمة"
+        },
+        "leadership": {
+          "title": "القيادة",
+          "description": "قاد جلسة الإحماء"
+        }
+      }
+    },
+    "membership": {
+      "badge": "خطط العضوية",
+      "title": "اختر",
+      "titleHighlight": "مسارك",
+      "subtitle": "انضم إلى تنشو إنترناشونال واطلق إمكاناتك. اختر العضوية التي تناسب رحلتك والتزامك بالتميز.",
+      "mostPopular": "الأكثر شيوعاً",
+      "period": {
+        "month": "شهر"
+      },
+      "plans": {
+        "warrior": "محارب",
+        "champion": "بطل",
+        "master": "أستاذ"
+      },
+      "features": {
+        "basic": {
+          "unlimitedClassAccess": "وصول غير محدود للحصص",
+          "basicEquipmentUsage": "استخدام المعدات الأساسية",
+          "memberOnlyEvents": "فعاليات خاصة بالأعضاء",
+          "onlineTrainingResources": "موارد تدريب عبر الإنترنت",
+          "communityForumAccess": "الوصول إلى منتدى المجتمع",
+          "monthlyProgressTracking": "تتبع التقدم الشهري"
+        },
+        "premium": {
+          "everythingInWarrior": "كل ما في خطة المحارب",
+          "privateLessonMonthly": "درس خاص (1/شهر)",
+          "priorityEventRegistration": "تسجيل أولوية للفعاليات",
+          "advancedTrainingPrograms": "برامج تدريب متقدمة",
+          "nutritionAndFitnessGuidance": "إرشاد التغذية واللياقة",
+          "guestPassesMonthly": "تذاكر ضيوف (2/شهر)",
+          "exclusiveMerchandiseDiscounts": "خصومات حصرية على المنتجات"
+        },
+        "elite": {
+          "everythingInChampion": "كل ما في خطة البطل",
+          "privateLessonsFourPerMonth": "دروس خاصة (4/شهر)",
+          "masterClassWorkshops": "ورش ماستر كلاس",
+          "personalTrainingAssessment": "تقييم تدريب شخصي",
+          "vipEventAccess": "وصول VIP للفعاليات",
+          "customTrainingPlans": "خطط تدريب مخصصة",
+          "familyMemberDiscounts": "خصومات لأفراد العائلة",
+          "prioritySupport": "دعم ذو أولوية"
+        }
+      },
+      "choosePlan": "اختر {{plan}}",
+      "membershipTitle": "عضوية {{plan}}",
+      "modalSubtitle": "${{price}}/{{period}} - مثالية لرحلتك في الفنون القتالية",
+      "subtotal": "المجموع الفرعي",
+      "firstMonthFree": "الشهر الأول مجاناً",
+      "today": "اليوم",
+      "startFreeTrial": "ابدأ التجربة المجانية",
+      "trialHint": "يمكن الإلغاء في أي وقت. بدون رسوم إعداد. ضمان استرجاع 30 يوماً.",
+      "benefitsTitle": "لماذا تختار تنشو؟",
+      "benefitsSubtitle": "أكثر من مجرد تدريب - انضم لإرث من التميز والتحول",
+      "benefits": {
+        "expertInstruction": {
+          "title": "تدريب احترافي",
+          "description": "تعلّم على يد أساتذة عالميين بخبرة تمتد لعقود."
+        },
+        "competitiveEdge": {
+          "title": "ميزة تنافسية",
+          "description": "استعد للبطولات بتدريب متخصص وإشراف تنافسي."
+        },
+        "communitySupport": {
+          "title": "دعم المجتمع",
+          "description": "انضم إلى مجتمع داعم من أشخاص يشاركونك نفس الرحلة."
+        },
+        "personalGrowth": {
+          "title": "نمو شخصي",
+          "description": "طوّر الانضباط والثقة ومهارات الحياة خارج التدريب البدني."
+        },
+        "selfDefenseSkills": {
+          "title": "مهارات الدفاع عن النفس",
+          "description": "أتقن تقنيات دفاع عملي لمواقف الحياة الواقعية."
+        },
+        "achievementRecognition": {
+          "title": "تقدير الإنجاز",
+          "description": "احصل على أحزمة وشهادات وتقدير مقابل التزامك وتقدمك."
+        }
+      },
+      "faq": {
+        "title": "الأسئلة الشائعة",
+        "items": {
+          "freeze": {
+            "question": "هل يمكنني تجميد العضوية؟",
+            "answer": "نعم، يمكنك تجميد العضوية حتى 3 أشهر سنوياً لأسباب طبية أو سفر."
+          },
+          "signupFees": {
+            "question": "هل توجد رسوم تسجيل؟",
+            "answer": "لا توجد رسوم تسجيل للعضويات القياسية. عضوية النخبة تشمل رسوم بدء لمرة واحدة."
+          },
+          "guests": {
+            "question": "هل يمكنني إحضار ضيوف؟",
+            "answer": "يحصل أعضاء Premium وElite على تذاكر ضيوف. يمكن لأعضاء Basic شراء تذاكر يومية للضيوف."
+          },
+          "cancellation": {
+            "question": "ما سياسة الإلغاء؟",
+            "answer": "يمكنك الإلغاء في أي وقت. تبقى عضويتك فعالة حتى نهاية دورة الفوترة."
+          }
+        }
+      },
+      "cta": {
+        "title": "جاهز لبدء رحلتك؟",
+        "subtitle": "ابدأ رحلتك في الفنون القتالية اليوم مع تجربة مجانية لمدة 30 يوماً. بدون التزام وبدون رسوم إعداد.",
+        "startFreeTrial": "ابدأ التجربة المجانية",
+        "scheduleVisit": "جدولة زيارة"
+      }
+    },
+    "resources": {
+      "badge": "موارد الطالب",
+      "title": "موارد",
+      "titleHighlight": "التدريب",
+      "subtitle": "الوصول إلى النماذج والأدلة والفيديوهات ومتطلبات الأحزمة لدعم رحلتك. كل ما تحتاجه للتدريب والتطور.",
+      "tabs": {
+        "forms": "النماذج",
+        "guides": "الأدلة",
+        "videos": "الفيديوهات",
+        "belts": "متطلبات الأحزمة"
+      },
+      "download": "تحميل",
+      "watchVideo": "مشاهدة الفيديو",
+      "beltRankingTitle": "نظام ترتيب الأحزمة",
+      "beltRankingSubtitle": "يضمن نظام الأحزمة الشامل لدينا تطور المهارات بشكل تدريجي. كل حزام يمثل إتقان تقنيات ومعرفة وتطوير شخصية.",
+      "stripeCount_one": "{{count}} شارة",
+      "stripeCount_other": "{{count}} شارات",
+      "testingInfo": {
+        "title": "معلومات اختبار الحزام",
+        "subtitle": "جاهز لاختبار الحزام التالي؟ إليك ما تحتاج معرفته.",
+        "scheduleTitle": "جدول الاختبارات",
+        "scheduleValue": "آخر سبت من كل شهر",
+        "requirementsTitle": "المتطلبات",
+        "requirementsValue": "إكمال جميع متطلبات الحزام",
+        "preparationTitle": "التحضير",
+        "preparationValue": "تدريب وممارسة مستمران",
+        "scheduleButton": "جدولة اختبار الحزام"
+      }
+    }
   }
 }

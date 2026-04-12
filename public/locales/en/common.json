@@ -210,5 +210,363 @@
       "cookie": "Cookie Policy"
     },
     "copyright": "© 1997-2026 Tensho International Sports Academy. All rights reserved."
+  },
+  "breadcrumb": {
+    "aria": "Breadcrumb",
+    "home": "Home",
+    "about": "About",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "leadership": "Leadership",
+    "certificates": "Certificates",
+    "programs": "Programs",
+    "events": "Events",
+    "blogs": "Blogs",
+    "gallery": "Gallery",
+    "calendar": "Calendar",
+    "resources": "Resources",
+    "shop": "Shop",
+    "membership": "Membership",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "register": "Register",
+    "masters": "Masters"
+  },
+  "pages": {
+    "blogs": {
+      "title": "Martial Arts",
+      "titleHighlight": "Blog",
+      "subtitle": "Insights, techniques, and stories from the world of martial arts. Stay informed and inspired on your journey."
+    },
+    "events": {
+      "title": "Upcoming",
+      "titleHighlight": "Events",
+      "subtitle": "Join us for tournaments, seminars, and special training sessions that bring the martial arts community together."
+    },
+    "leadership": {
+      "title": "Leadership",
+      "titleHighlight": "Team",
+      "subtitle": "Meet the visionary leaders guiding Tensho International Sports Academy toward excellence in martial arts education and certification worldwide."
+    },
+    "programs": {
+      "title": "Training",
+      "titleHighlight": "Programs",
+      "subtitle": "Discover comprehensive martial arts training programs designed to develop skills, discipline, and character through traditional and modern techniques."
+    },
+    "certificates": {
+      "title": "Certification",
+      "titleHighlight": "Gallery",
+      "subtitle": "Explore our prestigious collection of martial arts certificates and achievements that represent excellence and dedication in the art of Tensho."
+    },
+    "calendar": {
+      "badge": "Event Calendar",
+      "title": "Upcoming",
+      "titleHighlight": "Events",
+      "subtitle": "Stay connected with our martial arts community. View upcoming training sessions, competitions, seminars, and special events.",
+      "filters": {
+        "all": "All Events",
+        "training": "Training",
+        "competition": "Competition",
+        "graduation": "Graduation",
+        "seminar": "Seminar"
+      },
+      "registered": "registered",
+      "instructor": "Instructor",
+      "registerNow": "Register Now",
+      "addToCalendar": "Add to Calendar",
+      "moreEvents": "+{{count}} more",
+      "upcomingEvents": "Upcoming Events",
+      "register": "Register"
+    },
+    "gallery": {
+      "badge": "Visual Journey",
+      "title": "Our",
+      "titleHighlight": "Gallery",
+      "subtitle": "Witness the spirit, dedication, and excellence that defines Tensho International. From training sessions to championship victories, explore our visual legacy.",
+      "categories": {
+        "all": "All Photos",
+        "training": "Training Sessions",
+        "competitions": "Competitions",
+        "graduations": "Graduations",
+        "events": "Events"
+      },
+      "stats": {
+        "photosCaptured": "Photos Captured",
+        "eventsDocumented": "Events Documented",
+        "categories": "Categories",
+        "access": "Access"
+      }
+    },
+    "shop": {
+      "badge": "Official Store",
+      "title": "Tensho",
+      "titleHighlight": "Store",
+      "subtitle": "Equip yourself with premium martial arts gear, apparel, and memorabilia. Support your journey with official Tensho products.",
+      "searchPlaceholder": "Search products...",
+      "showingProducts_one": "Showing {{count}} product",
+      "showingProducts_other": "Showing {{count}} products",
+      "sortBy": "Sort by:",
+      "sort": {
+        "featured": "Featured",
+        "priceLowToHigh": "Price: Low to High",
+        "priceHighToLow": "Price: High to Low",
+        "rating": "Rating",
+        "newest": "Newest"
+      },
+      "emptyTitle": "No products found",
+      "emptyDescription": "We couldn't find any products matching your search. Try adjusting your filters or search terms.",
+      "clearFilters": "Clear Filters",
+      "categories": {
+        "all": "All Products",
+        "apparel": "Apparel",
+        "equipment": "Equipment",
+        "accessories": "Accessories",
+        "memorabilia": "Memorabilia"
+      },
+      "newsletter": {
+        "title": "Exclusive Member Pricing",
+        "subtitle": "Join Tensho today and get 15% off all merchandise, plus access to member-exclusive products and early access to new releases.",
+        "becomeMember": "Become a Member",
+        "learnMore": "Learn More"
+      },
+      "banner": {
+        "title": "Member Exclusive",
+        "subtitle": "15% off all products for Tensho members",
+        "code": "Use code: TENSHO15",
+        "cta": "Join Now"
+      }
+    },
+    "master": {
+      "notFoundTitle": "Master Not Found",
+      "returnHome": "Return Home",
+      "badge": "Verified Master Profile",
+      "experience": "Experience",
+      "students": "Students",
+      "rating": "Rating",
+      "quickStats": "Quick Stats",
+      "danLevel": "Dan Level",
+      "requestTraining": "Request Training Session",
+      "biography": "Biography",
+      "certifications": "Certifications",
+      "viewCertificate": "View Certificate",
+      "downloadPdf": "Download PDF",
+      "certificatesDescription": "Official certificates and credentials of {{name}}.",
+      "ceremony": "Certification Ceremony",
+      "ceremonyDescription": "Watch {{name}}'s official certification ceremony and demonstration.",
+      "philosophy": "Philosophy",
+      "specialties": "Specialties",
+      "keyAchievements": "Key Achievements",
+      "notableStudents": "Notable Students",
+      "publications": "Publications",
+      "trainingAvailability": "Training Availability",
+      "scheduleSession": "Schedule Session"
+    },
+    "dashboard": {
+      "badge": "Student Dashboard",
+      "title": "Welcome Back,",
+      "joined": "Joined {{date}}",
+      "rank": "#{{rank}} of {{total}}",
+      "tabs": {
+        "overview": "Overview",
+        "progress": "Progress",
+        "schedule": "Schedule",
+        "achievements": "Achievements"
+      },
+      "stats": {
+        "totalSessions": "Total Sessions",
+        "currentStreak": "Current Streak",
+        "nextBeltProgress": "Next Belt Progress",
+        "globalRank": "Global Rank",
+        "dayStreak": "Day Streak",
+        "attendance": "Attendance",
+        "avgRating": "Avg Rating"
+      },
+      "days_one": "{{count}} day",
+      "days_other": "{{count}} days",
+      "progressTo": "Progress to {{belt}}",
+      "progressHint": "Keep up the great work! You're {{percent}}% away from your next belt promotion.",
+      "upcomingSessions": "Upcoming Sessions",
+      "withInstructor": "with {{name}}",
+      "join": "Join",
+      "skillDevelopment": "Skill Development",
+      "trainingStatistics": "Training Statistics",
+      "weeklySchedule": "Weekly Schedule",
+      "bjjFundamentals": "BJJ Fundamentals",
+      "levels": {
+        "advanced": "Advanced",
+        "intermediate": "Intermediate",
+        "expert": "Expert"
+      },
+      "skills": {
+        "grappling": "Grappling",
+        "striking": "Striking",
+        "kata": "Kata",
+        "selfDefense": "Self-Defense",
+        "fitness": "Fitness"
+      },
+      "achievementItems": {
+        "firstStripe": {
+          "title": "First Stripe",
+          "description": "Earned your first belt stripe"
+        },
+        "perfectAttendance": {
+          "title": "Perfect Attendance",
+          "description": "30 consecutive classes"
+        },
+        "competitionWinner": {
+          "title": "Competition Winner",
+          "description": "1st place in local tournament"
+        },
+        "helperAward": {
+          "title": "Helper Award",
+          "description": "Assisted in youth class"
+        },
+        "techniqueMaster": {
+          "title": "Technique Master",
+          "description": "Mastered 10 advanced techniques"
+        },
+        "leadership": {
+          "title": "Leadership",
+          "description": "Led warm-up session"
+        }
+      }
+    },
+    "membership": {
+      "badge": "Membership Plans",
+      "title": "Choose Your",
+      "titleHighlight": "Path",
+      "subtitle": "Join Tensho International and unlock your potential. Choose the membership that fits your journey and commitment to martial arts excellence.",
+      "mostPopular": "Most Popular",
+      "period": {
+        "month": "month"
+      },
+      "plans": {
+        "warrior": "Warrior",
+        "champion": "Champion",
+        "master": "Master"
+      },
+      "features": {
+        "basic": {
+          "unlimitedClassAccess": "Unlimited class access",
+          "basicEquipmentUsage": "Basic equipment usage",
+          "memberOnlyEvents": "Member-only events",
+          "onlineTrainingResources": "Online training resources",
+          "communityForumAccess": "Community forum access",
+          "monthlyProgressTracking": "Monthly progress tracking"
+        },
+        "premium": {
+          "everythingInWarrior": "Everything in Warrior",
+          "privateLessonMonthly": "Private lesson (1/month)",
+          "priorityEventRegistration": "Priority event registration",
+          "advancedTrainingPrograms": "Advanced training programs",
+          "nutritionAndFitnessGuidance": "Nutrition & fitness guidance",
+          "guestPassesMonthly": "Guest passes (2/month)",
+          "exclusiveMerchandiseDiscounts": "Exclusive merchandise discounts"
+        },
+        "elite": {
+          "everythingInChampion": "Everything in Champion",
+          "privateLessonsFourPerMonth": "Private lessons (4/month)",
+          "masterClassWorkshops": "Master class workshops",
+          "personalTrainingAssessment": "Personal training assessment",
+          "vipEventAccess": "VIP event access",
+          "customTrainingPlans": "Custom training plans",
+          "familyMemberDiscounts": "Family member discounts",
+          "prioritySupport": "Priority support"
+        }
+      },
+      "choosePlan": "Choose {{plan}}",
+      "membershipTitle": "{{plan}} Membership",
+      "modalSubtitle": "${{price}}/{{period}} - Perfect for your martial arts journey",
+      "subtotal": "Subtotal",
+      "firstMonthFree": "First month free",
+      "today": "Today",
+      "startFreeTrial": "Start Free Trial",
+      "trialHint": "Cancel anytime. No setup fees. 30-day money-back guarantee.",
+      "benefitsTitle": "Why Choose Tensho?",
+      "benefitsSubtitle": "More than just training - join a legacy of excellence and transformation",
+      "benefits": {
+        "expertInstruction": {
+          "title": "Expert Instruction",
+          "description": "Learn from world-class martial arts masters with decades of experience."
+        },
+        "competitiveEdge": {
+          "title": "Competitive Edge",
+          "description": "Prepare for tournaments with specialized training and competition coaching."
+        },
+        "communitySupport": {
+          "title": "Community Support",
+          "description": "Join a supportive community of like-minded individuals on the same journey."
+        },
+        "personalGrowth": {
+          "title": "Personal Growth",
+          "description": "Develop discipline, confidence, and life skills beyond physical training."
+        },
+        "selfDefenseSkills": {
+          "title": "Self-Defense Skills",
+          "description": "Master practical self-defense techniques for real-world situations."
+        },
+        "achievementRecognition": {
+          "title": "Achievement Recognition",
+          "description": "Earn belts, certificates, and recognition for your dedication and progress."
+        }
+      },
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+          "freeze": {
+            "question": "Can I freeze my membership?",
+            "answer": "Yes, you can freeze your membership for up to 3 months per year for medical or travel reasons."
+          },
+          "signupFees": {
+            "question": "Are there any signup fees?",
+            "answer": "No signup fees for our standard memberships. Elite memberships include a one-time initiation fee."
+          },
+          "guests": {
+            "question": "Can I bring guests?",
+            "answer": "Premium and Elite members receive guest passes. Basic members can purchase day passes for guests."
+          },
+          "cancellation": {
+            "question": "What's the cancellation policy?",
+            "answer": "You can cancel anytime. Your membership remains active until the end of your billing period."
+          }
+        }
+      },
+      "cta": {
+        "title": "Ready to Begin Your Journey?",
+        "subtitle": "Start your martial arts journey today with our 30-day free trial. No commitment, no setup fees, just pure dedication to excellence.",
+        "startFreeTrial": "Start Free Trial",
+        "scheduleVisit": "Schedule Visit"
+      }
+    },
+    "resources": {
+      "badge": "Student Resources",
+      "title": "Your Training",
+      "titleHighlight": "Resources",
+      "subtitle": "Access forms, guides, videos, and belt requirements to support your martial arts journey. Everything you need to train effectively and advance in rank.",
+      "tabs": {
+        "forms": "Forms",
+        "guides": "Guides",
+        "videos": "Videos",
+        "belts": "Belt Requirements"
+      },
+      "download": "Download",
+      "watchVideo": "Watch Video",
+      "beltRankingTitle": "Belt Ranking System",
+      "beltRankingSubtitle": "Our comprehensive belt system ensures progressive skill development. Each belt represents mastery of specific techniques, knowledge, and character development.",
+      "stripeCount_one": "{{count}} stripe",
+      "stripeCount_other": "{{count}} stripes",
+      "testingInfo": {
+        "title": "Belt Testing Information",
+        "subtitle": "Ready to test for your next belt? Here's what you need to know.",
+        "scheduleTitle": "Testing Schedule",
+        "scheduleValue": "Last Saturday of each month",
+        "requirementsTitle": "Requirements",
+        "requirementsValue": "Complete all belt requirements",
+        "preparationTitle": "Preparation",
+        "preparationValue": "Consistent training and practice",
+        "scheduleButton": "Schedule Belt Test"
+      }
+    }
   }
 }

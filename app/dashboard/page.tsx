@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
@@ -70,24 +71,70 @@ const upcomingSessions = [
 ]
 
 const achievements = [
-  { id: 1, title: "First Stripe", description: "Earned your first belt stripe", date: "2023-06-15", icon: "🎯" },
-  { id: 2, title: "Perfect Attendance", description: "30 consecutive classes", date: "2023-08-20", icon: "📅" },
-  { id: 3, title: "Competition Winner", description: "1st place in local tournament", date: "2023-09-10", icon: "🏆" },
-  { id: 4, title: "Helper Award", description: "Assisted in youth class", date: "2023-11-05", icon: "🤝" },
-  { id: 5, title: "Technique Master", description: "Mastered 10 advanced techniques", date: "2023-12-01", icon: "⭐" },
-  { id: 6, title: "Leadership", description: "Led warm-up session", date: "2024-01-08", icon: "👑" }
+  {
+    id: 1,
+    titleKey: "pages.dashboard.achievementItems.firstStripe.title",
+    descriptionKey: "pages.dashboard.achievementItems.firstStripe.description",
+    date: "2023-06-15",
+    icon: "🎯",
+  },
+  {
+    id: 2,
+    titleKey: "pages.dashboard.achievementItems.perfectAttendance.title",
+    descriptionKey: "pages.dashboard.achievementItems.perfectAttendance.description",
+    date: "2023-08-20",
+    icon: "📅",
+  },
+  {
+    id: 3,
+    titleKey: "pages.dashboard.achievementItems.competitionWinner.title",
+    descriptionKey: "pages.dashboard.achievementItems.competitionWinner.description",
+    date: "2023-09-10",
+    icon: "🏆",
+  },
+  {
+    id: 4,
+    titleKey: "pages.dashboard.achievementItems.helperAward.title",
+    descriptionKey: "pages.dashboard.achievementItems.helperAward.description",
+    date: "2023-11-05",
+    icon: "🤝",
+  },
+  {
+    id: 5,
+    titleKey: "pages.dashboard.achievementItems.techniqueMaster.title",
+    descriptionKey: "pages.dashboard.achievementItems.techniqueMaster.description",
+    date: "2023-12-01",
+    icon: "⭐",
+  },
+  {
+    id: 6,
+    titleKey: "pages.dashboard.achievementItems.leadership.title",
+    descriptionKey: "pages.dashboard.achievementItems.leadership.description",
+    date: "2024-01-08",
+    icon: "👑",
+  },
 ]
 
 const skillProgress = [
-  { skill: "Grappling", progress: 85, level: "Advanced" },
-  { skill: "Striking", progress: 70, level: "Intermediate" },
-  { skill: "Kata", progress: 90, level: "Expert" },
-  { skill: "Self-Defense", progress: 65, level: "Intermediate" },
-  { skill: "Fitness", progress: 80, level: "Advanced" }
+  { skillKey: "pages.dashboard.skills.grappling", progress: 85, levelKey: "pages.dashboard.levels.advanced" },
+  { skillKey: "pages.dashboard.skills.striking", progress: 70, levelKey: "pages.dashboard.levels.intermediate" },
+  { skillKey: "pages.dashboard.skills.kata", progress: 90, levelKey: "pages.dashboard.levels.expert" },
+  {
+    skillKey: "pages.dashboard.skills.selfDefense",
+    progress: 65,
+    levelKey: "pages.dashboard.levels.intermediate",
+  },
+  { skillKey: "pages.dashboard.skills.fitness", progress: 80, levelKey: "pages.dashboard.levels.advanced" },
 ]
 
 export default function DashboardPage() {
+  const { t, i18n } = useTranslation("common")
   const [activeTab, setActiveTab] = useState("overview")
+  const joinDate = new Date(studentData.joinDate).toLocaleDateString(i18n.language || "en")
+
+  const scheduleDays = Array.from({ length: 6 }, (_, i) =>
+    new Date(2024, 0, i + 1).toLocaleDateString(i18n.language || "en", { weekday: "long" }),
+  )
 
   return (
     <main className="min-h-screen bg-brand-black">
@@ -105,7 +152,7 @@ export default function DashboardPage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-sm font-medium mb-6"
             >
               <User className="w-4 h-4" />
-              Student Dashboard
+              {t("pages.dashboard.badge")}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -113,7 +160,7 @@ export default function DashboardPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
             >
-              Welcome Back, <span className="text-brand-red">{studentData.name}</span>
+              {t("pages.dashboard.title")} <span className="text-brand-red">{studentData.name}</span>
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -127,11 +174,11 @@ export default function DashboardPage() {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-brand-gold" />
-                <span>Joined {new Date(studentData.joinDate).toLocaleDateString()}</span>
+                <span>{t("pages.dashboard.joined", { date: joinDate })}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Target className="w-5 h-5 text-brand-gold" />
-                <span>#{studentData.rank} of {studentData.totalStudents}</span>
+                <span>{t("pages.dashboard.rank", { rank: studentData.rank, total: studentData.totalStudents })}</span>
               </div>
             </motion.div>
           </div>
@@ -141,10 +188,18 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 py-16">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-4 bg-brand-dark-grey/50 border border-white/5">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">Overview</TabsTrigger>
-            <TabsTrigger value="progress" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">Progress</TabsTrigger>
-            <TabsTrigger value="schedule" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">Schedule</TabsTrigger>
-            <TabsTrigger value="achievements" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">Achievements</TabsTrigger>
+            <TabsTrigger value="overview" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
+              {t("pages.dashboard.tabs.overview")}
+            </TabsTrigger>
+            <TabsTrigger value="progress" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
+              {t("pages.dashboard.tabs.progress")}
+            </TabsTrigger>
+            <TabsTrigger value="schedule" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
+              {t("pages.dashboard.tabs.schedule")}
+            </TabsTrigger>
+            <TabsTrigger value="achievements" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
+              {t("pages.dashboard.tabs.achievements")}
+            </TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
@@ -158,25 +213,25 @@ export default function DashboardPage() {
             >
               {[
                 {
-                  title: "Total Sessions",
+                  title: t("pages.dashboard.stats.totalSessions"),
                   value: studentData.totalSessions,
                   icon: Calendar,
                   color: "text-blue-500"
                 },
                 {
-                  title: "Current Streak",
-                  value: `${studentData.currentStreak} days`,
+                  title: t("pages.dashboard.stats.currentStreak"),
+                  value: t("pages.dashboard.days", { count: studentData.currentStreak }),
                   icon: TrendingUp,
                   color: "text-green-500"
                 },
                 {
-                  title: "Next Belt Progress",
+                  title: t("pages.dashboard.stats.nextBeltProgress"),
                   value: `${studentData.progressToNext}%`,
                   icon: Target,
                   color: "text-brand-gold"
                 },
                 {
-                  title: "Global Rank",
+                  title: t("pages.dashboard.stats.globalRank"),
                   value: `#${studentData.rank}`,
                   icon: Trophy,
                   color: "text-purple-500"
@@ -204,12 +259,14 @@ export default function DashboardPage() {
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-text-light">Progress to {studentData.nextBelt}</h3>
+                <h3 className="text-xl font-bold text-text-light">
+                  {t("pages.dashboard.progressTo", { belt: studentData.nextBelt })}
+                </h3>
                 <Badge className="bg-brand-gold text-brand-black">{studentData.progressToNext}%</Badge>
               </div>
               <Progress value={studentData.progressToNext} className="h-3 mb-4" />
               <p className="text-text-muted">
-                Keep up the great work! You're {100 - studentData.progressToNext}% away from your next belt promotion.
+                {t("pages.dashboard.progressHint", { percent: 100 - studentData.progressToNext })}
               </p>
             </motion.div>
 
@@ -220,7 +277,7 @@ export default function DashboardPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5"
             >
-              <h3 className="text-xl font-bold text-text-light mb-6">Upcoming Sessions</h3>
+              <h3 className="text-xl font-bold text-text-light mb-6">{t("pages.dashboard.upcomingSessions")}</h3>
               <div className="space-y-4">
                 {upcomingSessions.map((session, index) => (
                   <div key={session.id} className="flex items-center justify-between p-4 rounded-xl bg-brand-black/30 border border-white/5">
@@ -244,11 +301,11 @@ export default function DashboardPage() {
                             {session.location}
                           </span>
                         </div>
-                        <p className="text-sm text-brand-gold mt-1">with {session.instructor}</p>
+                        <p className="text-sm text-brand-gold mt-1">{t("pages.dashboard.withInstructor", { name: session.instructor })}</p>
                       </div>
                     </div>
                     <Button size="sm" className="bg-brand-red hover:bg-brand-red/90">
-                      Join
+                      {t("pages.dashboard.join")}
                     </Button>
                   </div>
                 ))}
@@ -269,16 +326,16 @@ export default function DashboardPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-text-light">
                     <BarChart3 className="w-5 h-5 text-brand-gold" />
-                    Skill Development
+                    {t("pages.dashboard.skillDevelopment")}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {skillProgress.map((skill, index) => (
-                    <div key={skill.skill} className="space-y-2">
+                    <div key={skill.skillKey} className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-text-light font-medium">{skill.skill}</span>
+                        <span className="text-text-light font-medium">{t(skill.skillKey)}</span>
                         <div className="flex items-center gap-2">
-                          <Badge variant="outline" className="text-xs">{skill.level}</Badge>
+                          <Badge variant="outline" className="text-xs">{t(skill.levelKey)}</Badge>
                           <span className="text-sm text-text-muted">{skill.progress}%</span>
                         </div>
                       </div>
@@ -293,26 +350,26 @@ export default function DashboardPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-text-light">
                     <TrendingUp className="w-5 h-5 text-brand-gold" />
-                    Training Statistics
+                    {t("pages.dashboard.trainingStatistics")}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center p-4 rounded-xl bg-brand-black/30">
                       <div className="text-2xl font-bold text-brand-gold mb-1">156</div>
-                      <div className="text-sm text-text-muted">Total Sessions</div>
+                      <div className="text-sm text-text-muted">{t("pages.dashboard.stats.totalSessions")}</div>
                     </div>
                     <div className="text-center p-4 rounded-xl bg-brand-black/30">
                       <div className="text-2xl font-bold text-green-500 mb-1">12</div>
-                      <div className="text-sm text-text-muted">Day Streak</div>
+                      <div className="text-sm text-text-muted">{t("pages.dashboard.stats.dayStreak")}</div>
                     </div>
                     <div className="text-center p-4 rounded-xl bg-brand-black/30">
                       <div className="text-2xl font-bold text-blue-500 mb-1">89%</div>
-                      <div className="text-sm text-text-muted">Attendance</div>
+                      <div className="text-sm text-text-muted">{t("pages.dashboard.stats.attendance")}</div>
                     </div>
                     <div className="text-center p-4 rounded-xl bg-brand-black/30">
                       <div className="text-2xl font-bold text-purple-500 mb-1">4.9</div>
-                      <div className="text-sm text-text-muted">Avg Rating</div>
+                      <div className="text-sm text-text-muted">{t("pages.dashboard.stats.avgRating")}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -328,13 +385,13 @@ export default function DashboardPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-brand-dark-grey/50 rounded-2xl p-8 border border-white/5"
             >
-              <h3 className="text-xl font-bold text-text-light mb-6">Weekly Schedule</h3>
+              <h3 className="text-xl font-bold text-text-light mb-6">{t("pages.dashboard.weeklySchedule")}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map((day) => (
+                {scheduleDays.map((day) => (
                   <div key={day} className="p-4 rounded-xl bg-brand-black/30 border border-white/5">
                     <h4 className="font-semibold text-text-light mb-3">{day}</h4>
                     <div className="space-y-2">
-                      <div className="text-sm text-text-muted">BJJ Fundamentals</div>
+                      <div className="text-sm text-text-muted">{t("pages.dashboard.bjjFundamentals")}</div>
                       <div className="text-xs text-brand-gold">6:00 PM - 8:00 PM</div>
                     </div>
                   </div>
@@ -360,8 +417,8 @@ export default function DashboardPage() {
                   className="bg-brand-dark-grey/50 rounded-2xl p-6 border border-white/5 hover:border-brand-gold/30 transition-colors"
                 >
                   <div className="text-4xl mb-4">{achievement.icon}</div>
-                  <h4 className="font-semibold text-text-light mb-2">{achievement.title}</h4>
-                  <p className="text-sm text-text-muted mb-3">{achievement.description}</p>
+                  <h4 className="font-semibold text-text-light mb-2">{t(achievement.titleKey)}</h4>
+                  <p className="text-sm text-text-muted mb-3">{t(achievement.descriptionKey)}</p>
                   <div className="flex items-center gap-2 text-xs text-text-muted">
                     <Calendar className="w-4 h-4" />
                     {new Date(achievement.date).toLocaleDateString()}

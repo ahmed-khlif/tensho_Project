@@ -8,8 +8,11 @@ import { Footer } from "@/components/layout/footer"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { BackToTop } from "@/components/layout/back-to-top"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 export default function LeadershipPage() {
+  const { t } = useTranslation("common")
+
   return (
     <main className="min-h-screen bg-brand-black">
       <Navbar />
@@ -25,7 +28,7 @@ export default function LeadershipPage() {
               transition={{ duration: 0.6 }}
               className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
             >
-              Leadership <span className="text-brand-gold">Team</span>
+              {t("pages.leadership.title")} <span className="text-brand-gold">{t("pages.leadership.titleHighlight")}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -33,7 +36,7 @@ export default function LeadershipPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-muted text-lg max-w-2xl mx-auto"
             >
-              Meet the visionary leaders guiding Tensho International Sports Academy toward excellence in martial arts education and certification worldwide.
+              {t("pages.leadership.subtitle")}
             </motion.p>
           </div>
         </div>

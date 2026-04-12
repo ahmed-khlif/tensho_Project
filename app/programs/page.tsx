@@ -9,8 +9,11 @@ import { Footer } from "@/components/layout/footer"
 import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { BackToTop } from "@/components/layout/back-to-top"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 export default function ProgramsPage() {
+  const { t } = useTranslation("common")
+
   return (
     <main className="min-h-screen bg-brand-black">
       <Navbar />
@@ -26,7 +29,7 @@ export default function ProgramsPage() {
               transition={{ duration: 0.6 }}
               className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
             >
-              Training <span className="text-brand-gold">Programs</span>
+              {t("pages.programs.title")} <span className="text-brand-gold">{t("pages.programs.titleHighlight")}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -34,7 +37,7 @@ export default function ProgramsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-muted text-lg max-w-2xl mx-auto"
             >
-              Discover comprehensive martial arts training programs designed to develop skills, discipline, and character through traditional and modern techniques.
+              {t("pages.programs.subtitle")}
             </motion.p>
           </div>
         </div>

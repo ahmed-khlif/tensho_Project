@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
@@ -10,14 +11,6 @@ import { Breadcrumb } from "@/components/layout/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { X, Filter, Grid, List, Camera, Users, Trophy, GraduationCap } from "lucide-react"
-
-const galleryCategories = [
-  { id: "all", label: "All Photos", icon: Grid },
-  { id: "training", label: "Training Sessions", icon: Users },
-  { id: "competitions", label: "Competitions", icon: Trophy },
-  { id: "graduations", label: "Graduations", icon: GraduationCap },
-  { id: "events", label: "Events", icon: Camera },
-]
 
 const galleryImages = [
   // Training Sessions
@@ -129,6 +122,15 @@ export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null)
   const [viewMode, setViewMode] = useState<"grid" | "masonry">("grid")
+  const { t } = useTranslation("common")
+
+  const galleryCategories = [
+    { id: "all", label: t("pages.gallery.categories.all"), icon: Grid },
+    { id: "training", label: t("pages.gallery.categories.training"), icon: Users },
+    { id: "competitions", label: t("pages.gallery.categories.competitions"), icon: Trophy },
+    { id: "graduations", label: t("pages.gallery.categories.graduations"), icon: GraduationCap },
+    { id: "events", label: t("pages.gallery.categories.events"), icon: Camera },
+  ]
 
   const filteredImages = selectedCategory === "all"
     ? galleryImages
@@ -150,7 +152,7 @@ export default function GalleryPage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-sm font-medium mb-6"
             >
               <Camera className="w-4 h-4" />
-              Visual Journey
+              {t("pages.gallery.badge")}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -158,7 +160,7 @@ export default function GalleryPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
             >
-              Our <span className="text-brand-red">Gallery</span>
+              {t("pages.gallery.title")} <span className="text-brand-red">{t("pages.gallery.titleHighlight")}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -166,7 +168,7 @@ export default function GalleryPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-text-muted text-lg max-w-2xl mx-auto"
             >
-              Witness the spirit, dedication, and excellence that defines Tensho International. From training sessions to championship victories, explore our visual legacy.
+              {t("pages.gallery.subtitle")}
             </motion.p>
           </div>
         </div>
@@ -303,10 +305,10 @@ export default function GalleryPage() {
           className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center"
         >
           {[
-            { value: "500+", label: "Photos Captured" },
-            { value: "50+", label: "Events Documented" },
-            { value: "12", label: "Categories" },
-            { value: "24/7", label: "Access" },
+            { value: "500+", label: t("pages.gallery.stats.photosCaptured") },
+            { value: "50+", label: t("pages.gallery.stats.eventsDocumented") },
+            { value: "12", label: t("pages.gallery.stats.categories") },
+            { value: "24/7", label: t("pages.gallery.stats.access") },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

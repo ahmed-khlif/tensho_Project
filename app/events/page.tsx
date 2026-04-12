@@ -5,8 +5,11 @@ import { EventsSection } from "@/components/sections/events-section"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 export default function EventsPage() {
+  const { t } = useTranslation("common")
+
   return (
     <main className="min-h-screen bg-brand-black">
       <Navbar />
@@ -20,7 +23,7 @@ export default function EventsPage() {
             transition={{ duration: 0.6 }}
             className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
           >
-            Upcoming <span className="text-brand-gold">Events</span>
+            {t("pages.events.title")} <span className="text-brand-gold">{t("pages.events.titleHighlight")}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -28,7 +31,7 @@ export default function EventsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-text-muted text-lg max-w-2xl mx-auto"
           >
-            Join us for tournaments, seminars, and special training sessions that bring the martial arts community together.
+            {t("pages.events.subtitle")}
           </motion.p>
         </div>
       </section>

@@ -5,8 +5,11 @@ import { BlogsSection } from "@/components/sections/blogs-section"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 export default function BlogsPage() {
+  const { t } = useTranslation("common")
+
   return (
     <main className="min-h-screen bg-brand-black">
       <Navbar />
@@ -20,7 +23,7 @@ export default function BlogsPage() {
             transition={{ duration: 0.6 }}
             className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
           >
-            Martial Arts <span className="text-brand-gold">Blog</span>
+            {t("pages.blogs.title")} <span className="text-brand-gold">{t("pages.blogs.titleHighlight")}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -28,7 +31,7 @@ export default function BlogsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-text-muted text-lg max-w-2xl mx-auto"
           >
-            Insights, techniques, and stories from the world of martial arts. Stay informed and inspired on your journey.
+            {t("pages.blogs.subtitle")}
           </motion.p>
         </div>
       </section>

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { BackToTop } from "@/components/layout/back-to-top"
@@ -23,7 +24,31 @@ import {
   ExternalLink
 } from "lucide-react"
 
-const resources = {
+type ResourceItem = {
+  title: string
+  description: string
+  type: string
+  size: string
+}
+
+type VideoItem = {
+  title: string
+  description: string
+  duration: string
+  level: "Beginner" | "Intermediate" | "Advanced" | "All Levels"
+}
+
+type BeltRequirement = {
+  belt: string
+  stripes: number
+  requirements: string[]
+}
+
+const resources: {
+  forms: ResourceItem[]
+  guides: ResourceItem[]
+  videos: VideoItem[]
+} = {
   forms: [
     { title: "Membership Application", description: "Official membership registration form", type: "PDF", size: "245 KB" },
     { title: "Waiver & Release Form", description: "Required liability waiver for all students", type: "PDF", size: "180 KB" },
@@ -47,7 +72,7 @@ const resources = {
   ]
 }
 
-const beltRequirements = [
+const beltRequirements: BeltRequirement[] = [
   { belt: "White Belt", stripes: 0, requirements: ["Basic stances", "Front punch", "Bow etiquette", "Dojo rules"] },
   { belt: "Yellow Belt", stripes: 0, requirements: ["All white belt techniques", "Reverse punch", "Front kick", "Basic blocks"] },
   { belt: "Orange Belt", stripes: 0, requirements: ["All previous techniques", "Roundhouse kick", "Advanced blocks", "Kata basics"] },
@@ -59,6 +84,7 @@ const beltRequirements = [
 ]
 
 export default function ResourcesPage() {
+  const { t } = useTranslation("common")
   const [activeTab, setActiveTab] = useState("forms")
 
   return (
@@ -77,7 +103,7 @@ export default function ResourcesPage() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-sm font-medium mb-6"
             >
               <BookOpen className="w-4 h-4" />
-              Student Resources
+              {t("pages.resources.badge")}
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -85,16 +111,16 @@ export default function ResourcesPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-4xl sm:text-6xl font-bold uppercase text-text-light mb-6"
             >
-              Your Training <span className="text-brand-red">Resources</span>
+              {t("pages.resources.title")} <span className="text-brand-red">{t("pages.resources.titleHighlight")}</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-text-muted text-lg max-w-2xl mx-auto"
-            >
-              Access forms, guides, videos, and belt requirements to support your martial arts journey. Everything you need to train effectively and advance in rank.
-            </motion.p>
+            className="text-text-muted text-lg max-w-2xl mx-auto"
+          >
+            {t("pages.resources.subtitle")}
+          </motion.p>
           </div>
         </div>
       </section>
@@ -104,19 +130,19 @@ export default function ResourcesPage() {
           <TabsList className="grid w-full grid-cols-4 bg-brand-dark-grey/50 border border-white/5 mb-12">
             <TabsTrigger value="forms" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
               <FileText className="w-4 h-4 mr-2" />
-              Forms
+              {t("pages.resources.tabs.forms")}
             </TabsTrigger>
             <TabsTrigger value="guides" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
               <BookOpen className="w-4 h-4 mr-2" />
-              Guides
+              {t("pages.resources.tabs.guides")}
             </TabsTrigger>
             <TabsTrigger value="videos" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
               <Video className="w-4 h-4 mr-2" />
-              Videos
+              {t("pages.resources.tabs.videos")}
             </TabsTrigger>
             <TabsTrigger value="belts" className="data-[state=active]:bg-brand-red data-[state=active]:text-text-light">
               <Award className="w-4 h-4 mr-2" />
-              Belt Requirements
+              {t("pages.resources.tabs.belts")}
             </TabsTrigger>
           </TabsList>
 
@@ -145,7 +171,7 @@ export default function ResourcesPage() {
                       </div>
                       <Button className="w-full bg-brand-red hover:bg-brand-red/90">
                         <Download className="w-4 h-4 mr-2" />
-                        Download
+                        {t("pages.resources.download")}
                       </Button>
                     </CardContent>
                   </Card>
@@ -179,7 +205,7 @@ export default function ResourcesPage() {
                       </div>
                       <Button className="w-full bg-brand-red hover:bg-brand-red/90">
                         <Download className="w-4 h-4 mr-2" />
-                        Download
+                        {t("pages.resources.download")}
                       </Button>
                     </CardContent>
                   </Card>
@@ -220,7 +246,7 @@ export default function ResourcesPage() {
                       </div>
                       <Button className="w-full bg-brand-red hover:bg-brand-red/90">
                         <Play className="w-4 h-4 mr-2" />
-                        Watch Video
+                        {t("pages.resources.watchVideo")}
                       </Button>
                     </CardContent>
                   </Card>
@@ -232,9 +258,9 @@ export default function ResourcesPage() {
           {/* Belt Requirements Tab */}
           <TabsContent value="belts" className="space-y-8">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-text-light mb-4">Belt Ranking System</h3>
+              <h3 className="text-2xl font-bold text-text-light mb-4">{t("pages.resources.beltRankingTitle")}</h3>
               <p className="text-text-muted max-w-2xl mx-auto">
-                Our comprehensive belt system ensures progressive skill development. Each belt represents mastery of specific techniques, knowledge, and character development.
+                {t("pages.resources.beltRankingSubtitle")}
               </p>
             </div>
 
@@ -252,7 +278,7 @@ export default function ResourcesPage() {
                         <span>{belt.belt}</span>
                         {belt.stripes > 0 && (
                           <span className="text-sm text-brand-gold">
-                            {belt.stripes} stripe{belt.stripes > 1 ? 's' : ''}
+                            {t("pages.resources.stripeCount", { count: belt.stripes })}
                           </span>
                         )}
                       </CardTitle>
@@ -280,32 +306,32 @@ export default function ResourcesPage() {
               className="mt-12 bg-gradient-to-r from-brand-red/20 to-brand-gold/20 rounded-3xl p-8 border border-white/5"
             >
               <div className="text-center mb-6">
-                <h4 className="text-xl font-bold text-text-light mb-2">Belt Testing Information</h4>
-                <p className="text-text-muted">Ready to test for your next belt? Here's what you need to know.</p>
+                <h4 className="text-xl font-bold text-text-light mb-2">{t("pages.resources.testingInfo.title")}</h4>
+                <p className="text-text-muted">{t("pages.resources.testingInfo.subtitle")}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <Calendar className="w-8 h-8 text-brand-gold mx-auto mb-3" />
-                  <h5 className="font-semibold text-text-light mb-2">Testing Schedule</h5>
-                  <p className="text-sm text-text-muted">Last Saturday of each month</p>
+                  <h5 className="font-semibold text-text-light mb-2">{t("pages.resources.testingInfo.scheduleTitle")}</h5>
+                  <p className="text-sm text-text-muted">{t("pages.resources.testingInfo.scheduleValue")}</p>
                 </div>
                 <div className="text-center">
                   <Users className="w-8 h-8 text-brand-gold mx-auto mb-3" />
-                  <h5 className="font-semibold text-text-light mb-2">Requirements</h5>
-                  <p className="text-sm text-text-muted">Complete all belt requirements</p>
+                  <h5 className="font-semibold text-text-light mb-2">{t("pages.resources.testingInfo.requirementsTitle")}</h5>
+                  <p className="text-sm text-text-muted">{t("pages.resources.testingInfo.requirementsValue")}</p>
                 </div>
                 <div className="text-center">
                   <Award className="w-8 h-8 text-brand-gold mx-auto mb-3" />
-                  <h5 className="font-semibold text-text-light mb-2">Preparation</h5>
-                  <p className="text-sm text-text-muted">Consistent training and practice</p>
+                  <h5 className="font-semibold text-text-light mb-2">{t("pages.resources.testingInfo.preparationTitle")}</h5>
+                  <p className="text-sm text-text-muted">{t("pages.resources.testingInfo.preparationValue")}</p>
                 </div>
               </div>
 
               <div className="text-center mt-8">
                 <Button className="bg-brand-red hover:bg-brand-red/90">
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  Schedule Belt Test
+                  {t("pages.resources.testingInfo.scheduleButton")}
                 </Button>
               </div>
             </motion.div>
