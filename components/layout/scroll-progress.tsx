@@ -3,6 +3,15 @@
 import { motion, useScroll, useSpring } from "framer-motion"
 import { useEffect, useState } from "react"
 
+const SCROLL_PARTICLES = [
+  { top: "24%", left: "28%" },
+  { top: "36%", left: "68%" },
+  { top: "48%", left: "42%" },
+  { top: "58%", left: "76%" },
+  { top: "67%", left: "34%" },
+  { top: "78%", left: "59%" },
+]
+
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
@@ -26,13 +35,13 @@ export function ScrollProgress() {
     <>
       {/* Top progress bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-red via-brand-gold to-brand-red z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-green via-brand-gold to-brand-green z-50 origin-left"
         style={{ scaleX }}
       />
 
       {/* Scroll to top button */}
       <motion.button
-        className="fixed bottom-8 right-8 w-14 h-14 bg-brand-red hover:bg-brand-red/90 rounded-full shadow-lg shadow-brand-red/25 flex items-center justify-center text-white z-40 relative overflow-hidden group"
+        className="fixed bottom-8 right-8 w-14 h-14 bg-brand-green hover:bg-brand-green-dark rounded-full shadow-lg shadow-brand-green/25 flex items-center justify-center text-white z-40 relative overflow-hidden group"
         initial={{ scale: 0, opacity: 0, rotate: -180 }}
         animate={{
           scale: isVisible ? 1 : 0,
@@ -46,14 +55,14 @@ export function ScrollProgress() {
         }}
         whileHover={{
           scale: 1.1,
-          boxShadow: "0 0 30px rgba(208, 28, 28, 0.6), 0 0 60px rgba(208, 28, 28, 0.3)"
+          boxShadow: "0 0 24px rgba(6, 78, 59, 0.35), 0 0 48px rgba(6, 78, 59, 0.18)"
         }}
         whileTap={{ scale: 0.95 }}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         {/* Background gradient animation */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-brand-red via-brand-red to-brand-gold rounded-full opacity-0 group-hover:opacity-100"
+          className="absolute inset-0 bg-gradient-to-br from-brand-green via-brand-green to-brand-gold rounded-full opacity-0 group-hover:opacity-100"
           initial={{ scale: 0 }}
           whileHover={{ scale: 1.2 }}
           transition={{ duration: 0.3 }}
@@ -61,7 +70,7 @@ export function ScrollProgress() {
 
         {/* Outer ring pulse */}
         <motion.div
-          className="absolute inset-0 border-2 border-brand-red/50 rounded-full"
+          className="absolute inset-0 border-2 border-brand-gold/50 rounded-full"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.5, 0, 0.5]
@@ -109,13 +118,13 @@ export function ScrollProgress() {
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
         >
-          {[...Array(6)].map((_, i) => (
+          {SCROLL_PARTICLES.map((particle, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-white rounded-full"
               style={{
-                top: `${20 + Math.random() * 60}%`,
-                left: `${20 + Math.random() * 60}%`,
+                top: particle.top,
+                left: particle.left,
               }}
               animate={{
                 y: [0, -20, 0],

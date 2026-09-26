@@ -48,8 +48,8 @@ export function Footer() {
             <motion.div whileHover={{ scale: 1.02 }} className="flex items-center gap-3 mb-4">
               <div className="relative h-10 w-10">
                 <img
-                  src="/logo.png"
-                  alt="Tensho International"
+                  src="/tensho-logo.png"
+                  alt="Tensho Martial Arts crest"
                   className="h-full w-full object-contain"
                 />
               </div>
@@ -98,7 +98,7 @@ export function Footer() {
                     whileHover={{
                       scale: 1.5,
                       opacity: 1,
-                      borderColor: "rgba(208, 28, 28, 0.6)"
+                      borderColor: "rgba(22, 122, 91, 0.55)"
                     }}
                     transition={{ duration: 0.3 }}
                   />

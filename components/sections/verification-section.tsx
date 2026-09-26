@@ -86,7 +86,7 @@ export function VerificationSection() {
                   <Button
                     onClick={handleVerify}
                     disabled={status === "scanning" || !certificateId.trim()}
-                    className="h-14 px-8 bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold w-full sm:w-auto"
+                    className="h-14 px-8 bg-brand-green hover:bg-brand-green-dark text-white font-semibold w-full sm:w-auto"
                   >
                     {status === "scanning" ? (
                       <>
@@ -150,7 +150,7 @@ export function VerificationSection() {
           ) : (
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-100 mb-6">
-                <XCircle className="w-10 h-10 text-brand-red" />
+                <XCircle className="w-10 h-10 text-destructive" />
               </div>
               <h3 className="font-serif text-2xl font-bold text-brand-black mb-2">Certificate Not Found</h3>
               <p className="text-text-muted mb-6">

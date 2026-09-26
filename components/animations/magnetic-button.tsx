@@ -72,7 +72,7 @@ export function MagneticButton({
         className={`relative overflow-hidden transition-all duration-300 ${
           variant === "outline"
             ? "border-2 border-brand-gold text-brand-gold hover:bg-brand-gold/10"
-            : "bg-brand-red hover:bg-brand-red/90 text-text-light"
+            : "bg-brand-green hover:bg-brand-green-dark text-white"
         } ${className}`}
       >
         <motion.span
@@ -103,7 +103,7 @@ export function MagneticButton({
             boxShadow: isHovered
               ? variant === "outline"
                 ? "0 0 30px rgba(212, 175, 55, 0.4)"
-                : "0 0 30px rgba(208, 28, 28, 0.4)"
+                : "0 0 20px rgba(6, 78, 59, 0.25)"
               : "0 0 0px rgba(0, 0, 0, 0)"
           }}
           transition={{ duration: 0.3 }}

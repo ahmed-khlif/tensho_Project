@@ -108,8 +108,8 @@ export default function RegisterPage() {
           >
             <div className="relative h-12 w-12 sm:h-16 sm:w-16">
               <img
-                src="/logo.png"
-                alt="Tensho International"
+                src="/tensho-logo.png"
+                alt="Tensho Martial Arts crest"
                 className="h-full w-full object-contain"
               />
             </div>
@@ -657,8 +657,8 @@ export default function RegisterPage() {
                 icon: Swords,
                 title: t("auth.register.benefits.masterInstruction.title"),
                 description: t("auth.register.benefits.masterInstruction.description"),
-                color: "from-red-500 to-red-600",
-                bgColor: "bg-red-500/10"
+                color: "from-brand-green to-brand-green-dark",
+                bgColor: "bg-brand-green/10"
               },
               {
                 icon: Calendar,

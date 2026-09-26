@@ -71,7 +71,7 @@ export function NewsletterSection() {
                   <Button
                     type="submit"
                     disabled={status === "loading"}
-                    className="h-12 px-6 bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold w-full sm:w-auto"
+                    className="h-12 px-6 bg-brand-green hover:bg-brand-green-dark text-white font-semibold w-full sm:w-auto"
                   >
                     {status === "loading" ? (
                       <motion.div

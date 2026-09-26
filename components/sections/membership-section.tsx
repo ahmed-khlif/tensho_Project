@@ -134,7 +134,7 @@ export function MembershipSection() {
                   className={`w-full py-6 text-lg font-semibold ${
                     plan.popular
                       ? "bg-brand-gold hover:bg-brand-gold/90 text-brand-black"
-                      : "bg-brand-red hover:bg-brand-red/90 text-text-light"
+                      : "bg-brand-green hover:bg-brand-green-dark text-white"
                   }`}
                 >
                   {plan.cta}

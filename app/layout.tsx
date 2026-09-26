@@ -32,10 +32,10 @@ export const metadata: Metadata = {
   keywords: ["martial arts", "academy", "certification", "dojo", "training"],
   icons: {
     icon: [
-      { url: "/logo.png", type: "image/png" },
+      { url: "/tensho-logo.png", type: "image/png" },
     ],
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    shortcut: "/tensho-logo.png",
+    apple: "/tensho-logo.png",
   },
   manifest: "/manifest.json",
   openGraph: {
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     description: 'The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.',
     images: [
       {
-        url: "/logo.png",
-        width: 1200,
-        height: 630,
+        url: "/tensho-logo.png",
+        width: 1024,
+        height: 1024,
         alt: "Tensho International Sports Academy",
       },
     ],
@@ -56,12 +56,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tensho International Sports Academy | Martial Arts Excellence',
     description: 'The global standard for martial arts excellence, certification, and dojo management. Join our network of academies worldwide.',
-    images: ['/logo.png'],
+    images: ['/tensho-logo.png'],
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: "#111111",
+  themeColor: "#064e3b",
 }
 
 export default function RootLayout({
@@ -90,7 +90,7 @@ export default function RootLayout({
                     "@type": "Organization",
                     name: "Tensho International Sports Academy",
                     url: "https://tenshoacademy.com",
-                    logo: "https://tenshoacademy.com/logo.png",
+                    logo: "https://tenshoacademy.com/tensho-logo.png",
                     description: "The global standard for martial arts excellence, certification, and dojo management.",
                     sameAs: [
                       "https://github.com/ahmedKhlif/tensho_Project"

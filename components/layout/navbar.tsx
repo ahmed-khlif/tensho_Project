@@ -100,8 +100,8 @@ export function Navbar() {
             <Link href="/">
               <div className="relative h-8 w-8 sm:h-10 sm:w-10">
                 <img
-                  src="/logo.png"
-                  alt="Tensho International"
+                  src="/tensho-logo.png"
+                  alt="Tensho Martial Arts crest"
                   className="h-full w-full object-contain"
                 />
               </div>
@@ -243,13 +243,13 @@ export function Navbar() {
             <motion.div
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 0 20px rgba(208, 28, 28, 0.3)"
+                boxShadow: "0 0 20px rgba(6, 78, 59, 0.25)"
               }}
               whileTap={{ scale: 0.95 }}
               className="relative group"
             >
               <Link href="/register">
-                <Button size="sm" className="bg-brand-red hover:bg-brand-red/90 text-text-light font-medium px-4 relative overflow-hidden">
+                <Button size="sm" className="bg-brand-green hover:bg-brand-green-dark text-white font-medium px-4 relative overflow-hidden">
                   <motion.span
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                     initial={{ x: "-100%" }}
@@ -299,13 +299,13 @@ export function Navbar() {
                 <motion.button
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 0 20px rgba(208, 28, 28, 0.3)"
+                boxShadow: "0 0 20px rgba(6, 78, 59, 0.25)"
                   }}
                   whileTap={{ scale: 0.95 }}
                   className="relative group"
                 >
                   <Link href="/register">
-                    <Button size="sm" className="bg-brand-red hover:bg-brand-red/90 text-text-light font-medium px-3 py-1 text-xs">
+                    <Button size="sm" className="bg-brand-green hover:bg-brand-green-dark text-white font-medium px-3 py-1 text-xs">
                       <UserPlus className="h-3 w-3 mr-1" />
                       {t("nav.join")}
                     </Button>

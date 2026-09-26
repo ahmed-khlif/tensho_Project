@@ -85,8 +85,8 @@ export function FloatingActionButton() {
           size="icon"
           className={`w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${
             isOpen
-              ? "bg-brand-red hover:bg-brand-red/90 rotate-45"
-              : "bg-gradient-to-r from-brand-red to-brand-gold hover:from-brand-red/90 hover:to-brand-gold/90"
+              ? "bg-brand-green hover:bg-brand-green-dark rotate-45"
+              : "bg-gradient-to-r from-brand-green to-brand-gold hover:from-brand-green-dark hover:to-brand-gold"
           }`}
           onClick={() => setIsOpen(!isOpen)}
         >

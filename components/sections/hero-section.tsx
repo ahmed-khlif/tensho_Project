@@ -147,8 +147,8 @@ export function HeroSection() {
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                 >
                   <img
-                    src="/logo.png"
-                    alt="Tensho International Logo"
+                    src="/tensho-logo.png"
+                    alt="Tensho Martial Arts crest"
                     className="h-full w-full object-contain drop-shadow-lg"
                   />
 
@@ -168,7 +168,7 @@ export function HeroSection() {
               <span className="relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-brand-black/95 to-brand-dark-grey/95 border border-brand-gold/50 text-brand-gold text-sm font-semibold shadow-xl backdrop-blur-md">
                 <motion.span
                   className="w-3 h-3 bg-gradient-to-r from-brand-gold to-brand-red rounded-full shadow-lg"
-                  animate={{ boxShadow: ["0 0 10px rgba(212, 175, 55, 0.5)", "0 0 20px rgba(208, 28, 28, 0.3)", "0 0 10px rgba(212, 175, 55, 0.5)"] }}
+                  animate={{ boxShadow: ["0 0 10px rgba(212, 168, 79, 0.4)", "0 0 16px rgba(22, 122, 91, 0.25)", "0 0 10px rgba(212, 168, 79, 0.4)"] }}
                   transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                 />
                 {t('hero.badge')}

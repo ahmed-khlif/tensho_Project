@@ -68,8 +68,8 @@ export default function LoginPage() {
           >
             <div className="relative h-12 w-12 sm:h-16 sm:w-16">
               <img
-                src="/logo.png"
-                alt="Tensho International"
+                src="/tensho-logo.png"
+                alt="Tensho Martial Arts crest"
                 className="h-full w-full object-contain"
               />
             </div>
@@ -307,8 +307,8 @@ export default function LoginPage() {
                 icon: Swords,
                 title: t("auth.login.benefits.masterTechniques.title"),
                 description: t("auth.login.benefits.masterTechniques.description"),
-                color: "from-red-500 to-red-600",
-                bgColor: "bg-red-500/10"
+                color: "from-brand-green to-brand-green-dark",
+                bgColor: "bg-brand-green/10"
               },
               {
                 icon: User,

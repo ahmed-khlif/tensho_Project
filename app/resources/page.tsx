@@ -238,7 +238,7 @@ export default function ResourcesPage() {
                         <span className={`px-2 py-1 rounded-full text-xs ${
                           video.level === 'Beginner' ? 'bg-green-500/20 text-green-400' :
                           video.level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
-                          video.level === 'Advanced' ? 'bg-red-500/20 text-red-400' :
+                          video.level === 'Advanced' ? 'bg-brand-gold/20 text-brand-gold' :
                           'bg-blue-500/20 text-blue-400'
                         }`}>
                           {video.level}

@@ -1,5 +1,5 @@
 // Service Worker for PWA
-const CACHE_NAME = 'tensho-academy-v1';
+const CACHE_NAME = 'tensho-academy-v2';
 const urlsToCache = [
   '/',
   '/about',
@@ -8,11 +8,12 @@ const urlsToCache = [
   '/testimonials',
   '/manifest.json',
   '/icon.svg',
-  '/logo.png'
+  '/tensho-logo.png'
 ];
 
 // Install Service Worker
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
@@ -21,6 +22,21 @@ self.addEventListener('install', event => {
 
 // Fetch from cache
 self.addEventListener('fetch', event => {
+  // Always fetch HTML navigations first so deployments cannot hydrate against
+  // an outdated cached page.
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const responseCopy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseCopy));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
@@ -32,6 +48,7 @@ self.addEventListener('fetch', event => {
 
 // Update Service Worker
 self.addEventListener('activate', event => {
+  event.waitUntil(self.clients.claim());
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(

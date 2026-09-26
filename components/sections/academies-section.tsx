@@ -10,6 +10,7 @@ const academies = [
     location: "Tunis, Tunisia",
     students: "200+",
     specialization: "Traditional Karate",
+    image: "/martial-arts-student-male-portrait.jpg",
   },
   {
     name: "Self-Defense Academy",
@@ -17,12 +18,14 @@ const academies = [
     location: "Sfax, Tunisia",
     students: "150+",
     specialization: "Self-Defense & Combat",
+    image: "/martial-arts-instructor-male-portrait.jpg",
   },
   {
     name: "Tensho Sport Academy",
     location: "Sousse, Tunisia",
     students: "180+",
     specialization: "Mixed Martial Arts",
+    image: "/martial-arts-competition-championship-tournament.jpg",
   },
 ]
 
@@ -63,7 +66,7 @@ export function AcademiesSection() {
                 {/* Academy Image Placeholder */}
                 <div className="aspect-video rounded-xl bg-gradient-to-br from-brand-dark-grey to-brand-black mb-4 flex items-center justify-center overflow-hidden">
                   <img
-                    src={`/.jpg?height=200&width=350&query=${encodeURIComponent(academy.name + " martial arts dojo")}`}
+                    src={academy.image}
                     alt={academy.name}
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity group-hover:scale-105 transition-transform duration-500"
                   />

@@ -145,7 +145,7 @@ export function CertificateGallerySection() {
                       <motion.button
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-4 py-2 bg-brand-red text-text-light rounded-full flex items-center gap-2 font-medium"
+                        className="px-4 py-2 bg-brand-green text-white rounded-full flex items-center gap-2 font-medium"
                       >
                         <ExternalLink className="w-4 h-4" />
                         View Certificate
@@ -183,7 +183,7 @@ export function CertificateGallerySection() {
                   <div className="absolute top-4 right-4 flex gap-2">
                     <Button
                       size="sm"
-                      className="bg-brand-red hover:bg-brand-red/90 text-text-light"
+                      className="bg-brand-green hover:bg-brand-green-dark text-white"
                       onClick={() => {
                         // Simulate PDF download
                         const link = document.createElement('a')

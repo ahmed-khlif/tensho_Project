@@ -26,7 +26,7 @@ export default function Error({
       <main className="flex items-center justify-center min-h-[80vh] px-4">
         <div className="text-center max-w-2xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-8xl font-bold text-brand-red mb-4">500</h1>
+            <h1 className="text-8xl font-bold text-destructive mb-4">500</h1>
             <h2 className="text-3xl font-bold text-text-light mb-4">
               {t('error.500.title', 'Something went wrong')}
             </h2>

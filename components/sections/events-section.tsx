@@ -141,7 +141,7 @@ export function EventsSection() {
               </div>
 
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Button className="bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold px-8 py-6 text-lg w-fit">
+                <Button className="bg-brand-green hover:bg-brand-green-dark text-white font-semibold px-8 py-6 text-lg w-fit">
                   Stay Tuned
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>

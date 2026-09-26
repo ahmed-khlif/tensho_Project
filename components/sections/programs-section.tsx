@@ -134,7 +134,7 @@ export function ProgramsSection() {
                 {/* CTA */}
                 <Button
                   variant="ghost"
-                  className="w-full justify-between text-text-light hover:text-brand-red hover:bg-brand-red/5 group/btn"
+                  className="w-full justify-between text-text-light hover:text-brand-green hover:bg-brand-green/5 group/btn"
                 >
                   Learn More
                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />

@@ -41,7 +41,7 @@ export function BackToTop() {
           <Button
             onClick={scrollToTop}
             size="icon"
-            className="bg-brand-red hover:bg-brand-red/90 text-text-light shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-brand-green hover:bg-brand-green-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <ArrowUp className="w-5 h-5" />
           </Button>

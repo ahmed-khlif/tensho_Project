@@ -117,7 +117,7 @@ export function ContactSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold py-6 text-lg"
+                  className="w-full bg-brand-green hover:bg-brand-green-dark text-white font-semibold py-6 text-lg"
                 >
                   {isSubmitting ? (
                     <>

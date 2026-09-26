@@ -200,7 +200,7 @@ export function MastersSlider() {
 
                   {/* View Profile Button */}
                   <Link href={`/masters/${masters[currentIndex].slug}`}>
-                    <Button className="w-full bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold py-2">
+                    <Button className="w-full bg-brand-green hover:bg-brand-green-dark text-white font-semibold py-2">
                       View Full Profile
                     </Button>
                   </Link>

@@ -4,6 +4,8 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { useTranslation } from 'react-i18next'
 
+const LAST_UPDATED = 'September 26, 2026'
+
 export default function TermsOfService() {
   const { t } = useTranslation('common')
 
@@ -18,7 +20,7 @@ export default function TermsOfService() {
 
           <div className="prose prose-lg prose-invert max-w-none">
             <p className="text-text-muted mb-6">
-              {t('terms.lastUpdated', 'Last updated: {{date}}', { date: new Date().toLocaleDateString() })}
+              {t('terms.lastUpdated', 'Last updated: {{date}}', { date: LAST_UPDATED })}
             </p>
 
             <section className="mb-8">

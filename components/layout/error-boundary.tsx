@@ -60,9 +60,9 @@ function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-20 h-20 mx-auto mb-6 rounded-full bg-brand-red/10 flex items-center justify-center"
+          className="w-20 h-20 mx-auto mb-6 rounded-full bg-destructive/10 flex items-center justify-center"
         >
-          <AlertTriangle className="w-10 h-10 text-brand-red" />
+          <AlertTriangle className="w-10 h-10 text-destructive" />
         </motion.div>
 
         <motion.h1
@@ -107,7 +107,7 @@ function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError
         >
           <Button
             onClick={resetError}
-            className="bg-brand-red hover:bg-brand-red/90 text-text-light"
+            className="bg-destructive hover:bg-destructive/90 text-white"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
             Try Again

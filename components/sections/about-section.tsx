@@ -76,7 +76,7 @@ export function AboutSection() {
             </p>
 
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button className="bg-brand-red hover:bg-brand-red/90 text-text-light font-semibold px-8 py-6 text-lg">
+              <Button className="bg-brand-green hover:bg-brand-green-dark text-white font-semibold px-8 py-6 text-lg">
                 Learn More About Us
               </Button>
             </motion.div>

@@ -24,8 +24,8 @@ export function MagneticCursor() {
     let mouseTimeout: number
 
     const updatePosition = (e: MouseEvent) => {
-      mouseX.set(e.clientX - 12)
-      mouseY.set(e.clientY - 12)
+      mouseX.set(e.clientX - 8)
+      mouseY.set(e.clientY - 8)
       setIsVisible(true)
 
       clearTimeout(mouseTimeout)
@@ -68,8 +68,8 @@ export function MagneticCursor() {
     // Initial setup - show cursor immediately and set initial position
     setIsVisible(true)
     // Set initial position to center of screen
-    mouseX.set(window.innerWidth / 2 - 12)
-    mouseY.set(window.innerHeight / 2 - 12)
+    mouseX.set(window.innerWidth / 2 - 8)
+    mouseY.set(window.innerHeight / 2 - 8)
 
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
@@ -93,7 +93,7 @@ export function MagneticCursor() {
         willChange: 'transform',
       }}
       animate={{
-        scale: isVisible ? (isHovering ? 1.5 : 1) : 0,
+        scale: isVisible ? (isHovering ? 1.25 : 1) : 0,
         opacity: isVisible ? 1 : 0,
       }}
       transition={{
@@ -106,12 +106,12 @@ export function MagneticCursor() {
     >
       {/* Main cursor dot */}
       <motion.div
-        className="w-6 h-6 bg-brand-gold rounded-full shadow-lg shadow-brand-gold/50 relative"
+        className="w-4 h-4 bg-brand-gold rounded-full shadow-md shadow-brand-gold/40 relative"
         animate={{
-          backgroundColor: isHovering ? "#d01c1c" : "#d4af37", // Switch to red on hover
+          backgroundColor: isHovering ? "#167a5b" : "#d4a84f",
           boxShadow: isHovering
-            ? "0 0 20px rgba(208, 28, 28, 0.6), 0 0 40px rgba(208, 28, 28, 0.3)"
-            : "0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.2)"
+            ? "0 0 16px rgba(22, 122, 91, 0.45), 0 0 32px rgba(22, 122, 91, 0.2)"
+            : "0 0 16px rgba(212, 168, 79, 0.4), 0 0 32px rgba(212, 168, 79, 0.16)"
         }}
         transition={{ duration: 0.15, ease: "easeOut" }}
       >
@@ -125,18 +125,18 @@ export function MagneticCursor() {
           transition={{ duration: 0.15 }}
         />
         {/* Outer ring */}
-        <motion.div
-          className="absolute inset-0 w-6 h-6 border-2 rounded-full"
+          <motion.div
+            className="absolute inset-0 w-4 h-4 border rounded-full"
           animate={{
-            borderColor: isHovering ? "rgba(208, 28, 28, 0.6)" : "rgba(212, 175, 55, 0.4)",
-            scale: isHovering ? 1.3 : 1,
+            borderColor: isHovering ? "rgba(22, 122, 91, 0.55)" : "rgba(212, 168, 79, 0.4)",
+            scale: isHovering ? 1.2 : 1,
           }}
           transition={{ duration: 0.2, ease: "easeOut" }}
         />
         {/* Hover indicator */}
         {isHovering && (
           <motion.div
-            className="absolute inset-0 w-8 h-8 border border-brand-red/50 rounded-full"
+            className="absolute inset-0 w-6 h-6 border border-brand-green/50 rounded-full"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1.2, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
@@ -145,7 +145,7 @@ export function MagneticCursor() {
         )}
         {/* Pulse effect for visibility */}
         <motion.div
-          className="absolute inset-0 w-6 h-6 border border-white/30 rounded-full"
+          className="absolute inset-0 w-4 h-4 border border-white/30 rounded-full"
           animate={{
             scale: [1, 1.5, 1],
             opacity: [0.3, 0, 0.3]
